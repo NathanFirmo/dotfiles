@@ -1,0 +1,21 @@
+{
+  "configurations": {
+    "attach": {
+      "adapter": "vscode-node",
+      "default": true,
+      "breakpoints": {
+        "exception": {
+          "all": "N",
+          "uncaught": "N"
+        }
+      },
+      "configuration":{
+        "name": "Attach to process",
+        "type": "node",
+        "request": "attach",
+        "skipFiles": ["<node_internals>/**/*.js"],
+        "processId": "${processId}"
+      }
+    }
+  }
+}
