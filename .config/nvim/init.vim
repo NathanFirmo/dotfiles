@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'sainnhe/sonokai'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -10,7 +11,6 @@ Plug 'dense-analysis/ale'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'puremourning/vimspector'
-Plug 'szw/vim-maximizer'
 Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi'
 if (has("nvim"))
@@ -36,7 +36,7 @@ set ignorecase       " Ingore case in search
 set smartcase        " Consider case if there is a upper case character
 set scrolloff=8      " Minimum number of lines to keep above and below the cursor
 set colorcolumn=160  " Draws a line at the given line to keep aware of the line size
-" set signcolumn=yes   " Add a column on the left. Useful for linting
+set signcolumn=yes   " Add a column on the left. Useful for linting
 set cmdheight=2      " Give more space for displaying messages
 set updatetime=100   " Time in miliseconds to consider the changes
 set encoding=utf-8   " The encoding should be utf-8 to activate the font icons
@@ -54,16 +54,14 @@ filetype indent on   " Load the indent file for the file type, if any
 
 " Remaps """"""""""
 " Copy from Clipboard """"""""""""""""""""""""""""
-map <C-y> "+y
+map <C-c> "+y
 map <C-x> "+d
 
-
 " Comment code """""""""""""""""""""""""""""""""""
-map <C-m> i// <Esc>
-
+map <leader>m  0i// <Esc><cr>
 
 " Replace """"""""""""""""""""""""""""""""""""'''''
-map <leader>r :%s/
+map <leader>rr :%s/
 
 
 " Remaps for Nvim config
@@ -137,16 +135,34 @@ endif
 " AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#formatter = 'default'
 let g:airline_theme = 'sonokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
+
+" Tmux AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""''
+" let g:tmuxline_preset = 'tmux'
+
+let g:tmuxline_preset = {
+      \'c'    : '#H',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '%R'}
+"
+let g:tmuxline_theme = {
+    \   'c'    : [ 244, 236 ],
+    \   'x'    : [ 244, 236 ],
+    \   'y'    : [ 253, 239 ],
+    \   'win'  : [ 103, 236 ],
+    \   'cwin' : [ 236, 103 ],
+    \   'bg'   : [ 244, 236 ],
+    \ }
 
 
 " NerdTree """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " nmap <C-a> :NERDTreeToggle<CR>
-
 
 
 " vim-workspace """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'''''
@@ -180,7 +196,8 @@ endif
 
 " Coc Of Completion """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 
-let g:coc_global_extensions = [ 'coc-explorer', 'coc-pairs' ]
+let g:coc_global_extensions = ['coc-explorer', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
+
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
@@ -202,15 +219,6 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -269,8 +277,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>fd <Plug>(coc-format-selected)
+nmap <leader>fd  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -351,6 +359,17 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+
+" Coc-git """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" navigate chunks of current buffer
+nmap pc <Plug>(coc-git-prevchunk)
+nmap nc <Plug>(coc-git-nextchunk)
+" show chunk diff at current position
+nmap ci <Plug>(coc-gt-chunkinfo)
+" Adicionar alterações ao staging
+nmap <leader>kk :CocCommand git.chunkStage<cr>
+" Desfazer alterações
+nmap <leader>uu :CocCommand git.chunkUndo<cr>
 
 
 " Coc Explorer """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
