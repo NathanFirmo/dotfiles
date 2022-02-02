@@ -107,11 +107,11 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias icv="v ~/Trabalho/Workspace/"
-alias icva="cd ~/Trabalho/Workspace/v2-api"
-alias icvf="cd ~/Trabalho/Workspace/v2-frontend"
-alias dotf="v ~/dotfiles"
-alias vs="v ~/Área\ de\ Trabalho/script/"
+alias ica="cd ./v2-api"
+alias yd="docker start eb6 && yarn dev"
+alias icf="cd ./v2-frontend"
+alias ys="yarn start"
+alias ga="git add ."
 alias gc="git commit -m "
 alias gp="git push"
 
