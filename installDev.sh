@@ -15,6 +15,7 @@ sudo apt-get install neovim -y
 sudo apt-get install python-neovim -y
 sudo apt-get install python3-neovim -y
 # Install Chrome
+
 # Install VSCode
 # Install Bekeeper
 # Install Workbench
