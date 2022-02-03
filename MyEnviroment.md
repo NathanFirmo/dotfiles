@@ -3,7 +3,7 @@
 # Configuração do meu ambiente
 
 ## VSCode
-Clique [aqui](code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64), para baixar o arquivo .deb.
+Clique [aqui](https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64), para baixar o arquivo .deb.
 
 ## Bekeeper Studio
 Clique [aqui](https://www.beekeeperstudio.io/).
