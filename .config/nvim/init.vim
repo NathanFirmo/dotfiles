@@ -29,5 +29,5 @@ nmap ff :vsplit<CR>
 " Close splits and others
 nmap tt :q<CR>
 
-" Add a coma in the line ends
-nmap <leader>, :%s/$/,<CR>
+" Add a comma in the line ends
+nmap <leader>, :%s/$/,<CR>G$xVGyy
