@@ -10,3 +10,8 @@ wget -O init.sh https://raw.githubusercontent.com/NathanFirmo/dotfiles/main/init
 sudo chmod +x init.sh 
 ./init.sh 
 ```
+<br>
+
+<div align='center'>
+<img width='850px' heigth='850px' src='https://user-images.githubusercontent.com/79997705/152411584-95cc35cc-05be-40ab-a71d-38d4b54d3c66.gif'>
+</div>
