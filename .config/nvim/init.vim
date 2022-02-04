@@ -30,4 +30,4 @@ nmap ff :vsplit<CR>
 nmap tt :q<CR>
 
 " Add a comma in the line ends
-nmap <leader>, :%s/$/,<CR>G$xVGyy
+nmap <leader>, :%s/$/,<CR>G$xggVGyy

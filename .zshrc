@@ -108,12 +108,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ica="cd ./v2-api"
-alias yd="docker start eb6 && yarn dev"
+alias yd="docker start 9be && yarn dev"
 alias icf="cd ./v2-frontend"
 alias ys="yarn start"
 alias ga="git add ."
 alias gc="git commit -m "
 alias gp="git pull && git push"
+alias kcleg="kubectl -n icv-legacy"
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
