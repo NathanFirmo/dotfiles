@@ -31,10 +31,20 @@ echo -e "\n\e[1;32m ########### Instaling Workbench ########### \n\e[0m"
 sudo snap install mysql-workbench-community
 # Install Docker
 echo -e "\n\e[1;32m ########### Instaling Docker ########### \n\e[0m"
-sudo snap install docker
-sudo addgroup --system docker
-sudo adduser $USER docker
-newgrp docker
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg   lsb-release
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker 
 # Install Docker Compose
 echo -e "\n\e[1;32m ########### Instaling Docker Compose ########### \n\e[0m"
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
