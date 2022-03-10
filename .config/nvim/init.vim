@@ -180,7 +180,7 @@ endif
 
 " Coc Of Completion """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
 
-let g:coc_global_extensions = ['coc-explorer', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
+let g:coc_global_extensions = ['coc-explorer', 'coc-marketplace', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
 
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some

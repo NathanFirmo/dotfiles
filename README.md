@@ -6,9 +6,7 @@ Here are some of my linux config files and automatize the instalation of my apps
 To init the environment configuration run this command.
 
 ```
-wget -O init.sh https://raw.githubusercontent.com/NathanFirmo/dotfiles/main/init.sh
-sudo chmod +x init.sh 
-./init.sh 
+wget -qO- https://raw.githubusercontent.com/NathanFirmo/dotfiles/main/init.sh | bash
 ```
 <br>
 

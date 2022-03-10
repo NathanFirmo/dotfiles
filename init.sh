@@ -12,8 +12,8 @@ if [[ -e "dotfiles" ]]; then
 else
   echo -e "\n\e[1;32m ########### Cloning repo ########### \n\e[0m"
   git clone https://github.com/NathanFirmo/dotfiles.git
-  sudo chmod +x installDev.sh
-  sudo chmod +x installAll.sh
+  sudo chmod +x ./dotfiles/installDev.sh
+  sudo chmod +x ./dotfiles/installAll.sh
 fi
 
 echo -e "\n\e[1;35m ########### Removing old files... ########### \n\e[0m"
