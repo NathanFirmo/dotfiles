@@ -161,21 +161,16 @@ sudo apt-get install filezilla
 
 # Personalização
 
-## Personalisação do XFCE
-[Clique](https://www.youtube.com/watch?v=cI8Bkma1Xdc&t=753s), para personalisar o XFCE.
-
 ## Personalização do GNOME
 [Clique](https://www.youtube.com/watch?v=S07IwKI5xH0), para personalisar o GNOME.
 
 ### Temas que eu uso
 - Sweet
 - Tela icon circle
-- Plank (dock)
+- WhiteSur
 
 ### Extensões que eu uso
 - Blur my shell ON
-- Ubuntu app indicators ON
-- Ubuntu Dock OFF
 - System-Monitor ON
 
 #### Programas para  workflow
