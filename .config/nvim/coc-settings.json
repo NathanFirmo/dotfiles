@@ -1,14 +1,6 @@
 {
   "languageserver": {},
-  "explorer.width": 30,
-  "explorer.icon.enableNerdfont": false,
-  "explorer.previewAction.onHover": false,
-  "explorer.keyMappings.global": {
-    "<cr>": ["expandable?", "expand", "open"],
-    "v": "open:vsplit",
-    "h": "open:split"
-  },
-  "explorer.git.enable": true,
+ "explorer.git.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "workspace.workspaceFolderCheckCwd": false,

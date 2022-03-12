@@ -1,15 +1,19 @@
 call plug#begin()
-Plug 'sainnhe/sonokai'
+Plug 'preservim/nerdcommenter'
+Plug 'mattn/emmet-vim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'sheerun/vim-polyglot'
-" Plug 'preservim/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
+Plug 'ianks/vim-tsx'
+Plug 'ianks/vim-tsx'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'puremourning/vimspector'
 Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi'
@@ -50,9 +54,20 @@ filetype on          " Detect and set the filetype option and trigger the FileTy
 filetype plugin on   " Load the plugin file for the file type, if any
 filetype indent on   " Load the indent file for the file type, if any
 
-" Auto cmd """""""""""""""""""""""""""""""""''''
+" Auto cmd """"""""""""""""""""""""""""""""""""""
+
+" My Anotations """"""""""""""""""""""""""""""""""""""""""
+" Use CTRL N inside a word to select it and have multiple cursors in your
+" file
 
 " Remaps """"""""""
+" Map Leader """"""""""""""""""""""""""""""""""
+let mapleader="\<space>"
+
+" Source config """""""""""""""""""""""""""""""""
+nmap <leader>! :source ~/dotfiles/.config/nvim/init.vim<cr>
+nmap <leader>@ :vsplit ~/dotfiles/.config/nvim/init.vim<cr>
+
 " Copy from Clipboard """"""""""""""""""""""""""""
 map <C-c> "+y
 map <C-x> "+d
@@ -95,6 +110,7 @@ nmap <Leader>di <Plug>VimspectorBalloonEval
 xmap <Leader>di <Plug>VimspectorBalloonEval
 
 
+
 " " Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -102,32 +118,28 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-let g:sonokai_style = 'andromeda'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 0
-let g:sonokai_diagnostic_line_highlight = 1
-let g:sonokai_current_word = 'bold'
-colorscheme dracula
 
-if (has("nvim")) "Transparent background. Only for nvim
-    highlight Normal guibg=NONE ctermbg=NONE
-    highlight EndOfBuffer guibg=NONE ctermbg=NONE
-endif
+
+colorscheme gruvbox
+
+" if (has("nvim")) "Transparent background. Only for nvim
+"     highlight Normal guibg=NONE ctermbg=NONE
+"     highlight EndOfBuffer guibg=NONE ctermbg=NONE
+" endif
 
 
 
 " AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme = 'sonokai'
+let g:airline_theme = 'gruvbox'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
-" Tmux AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""''
-" let g:tmuxline_preset = 'tmux'
 
+" Tmux AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""''
 let g:tmuxline_preset = {
       \'c'    : '#H',
       \'win'  : '#I #W',
@@ -145,8 +157,12 @@ let g:tmuxline_theme = {
     \ }
 
 
+
 " NerdTree """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" nmap <C-a> :NERDTreeToggle<CR>
+nmap <C-a> :NERDTreeToggle<CR>
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
 
 
 " vim-workspace """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'''''
@@ -163,14 +179,13 @@ let g:ale_linters = {
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
 \}
-
 let g:ale_fix_on_save = 0
 
 
 
-    " Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if (has("nvim"))
-    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     nnoremap <leader>fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -179,31 +194,22 @@ endif
 
 
 " Coc Of Completion """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
-
-let g:coc_global_extensions = ['coc-explorer', 'coc-marketplace', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
-
-
+let g:coc_global_extensions = ['coc-marketplace', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
 set encoding=utf-8
-
 " TextEdit might fail if hidden is not set.
 set hidden
-
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
-
 " Give more space for displaying messages.
 set cmdheight=2
-
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -355,64 +361,9 @@ nmap <leader>kk :CocCommand git.chunkStage<cr>
 " Desfazer alterações
 nmap <leader>uu :CocCommand git.chunkUndo<cr>
 
-
-" Coc Explorer """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:nnoremap <C-a> :CocCommand explorer<CR>
-
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\     'root-uri': '~/.vim',
-\   },
-\   'cocConfig': {
-\      'root-uri': '~/.config/coc',
-\   },
-\   'tab': {
-\     'position': 'tab',
-\     'quit-on-open': v:true,
-\   },
-\   'tab:$': {
-\     'position': 'tab:$',
-\     'quit-on-open': v:true,
-\   },
-\   'floating': {
-\     'position': 'floating',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingTop': {
-\     'position': 'floating',
-\     'floating-position': 'center-top',
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingLeftside': {
-\     'position': 'floating',
-\     'floating-position': 'left-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'floatingRightside': {
-\     'position': 'floating',
-\     'floating-position': 'right-center',
-\     'floating-width': 50,
-\     'open-action-strategy': 'sourceWindow',
-\   },
-\   'simplify': {
-\     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   },
-\   'buffer': {
-\     'sources': [{'name': 'buffer', 'expand': v:true}]
-\   },
-\ }
-
-" My editions """"""""""""""""""""""""""""""""""""""""""""""""''
-" 'simplify': {
-" \     'file-child-template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-" \   },
-
-" Use preset argument to open it
-nnoremap <space>ed :CocCommand explorer --preset .vim<CR>
-nnoremap <space>ef :CocCommand explorer --preset floating<CR>
-nnoremap <space>ec :CocCommand explorer --preset cocConfig<CR>
-nnoremap <space>eb :CocCommand explorer --preset buffer<CR>
-
 " List all presets
 nnoremap <space>el :CocList explPresets
+
+" Nerd Commenter
+let g:NERDSpaceDelims = 1
+map <leader>cc <Plug>NERDCommenterInvert
