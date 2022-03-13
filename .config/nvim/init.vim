@@ -98,6 +98,16 @@ nmap tt :q<CR>
 " Add a comma in the line ends
 nmap <leader>, :%s/$/,<CR>G$xggVGyy
 
+" Add a comma in the line ends
+nmap <leader>\ :!<space>
+
+
+" Panel Resizing """""""""""""""""""""""""""""""""""""""""""""''
+nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
 
 
 " Vimspector
@@ -108,8 +118,10 @@ nmap <leader>, :%s/$/,<CR>G$xggVGyy
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
 xmap <Leader>di <Plug>VimspectorBalloonEval
-
-
+nmap <Leader>sd :call vimspector#Launch()<CR>
+nmap <Leader>cb :call vimspector#ClearBreakpoints()<CR>
+nmap <Leader>ev :VimspectorEval<space>
+nmap <Leader>kd :call vimspector#Stop()<CR>
 
 " " Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('+termguicolors')
