@@ -117,6 +117,7 @@ alias gc="git commit -m "
 alias gp="git pull && git push"
 alias kcleg="kubectl -n icv-legacy"
 alias vspec="cp ~/dotfiles/.vimspector.json ."
+alias prettier="cp ~/dotfiles/.eslintrc.json ."
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
