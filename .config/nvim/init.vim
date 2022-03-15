@@ -12,7 +12,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dense-analysis/ale'
 Plug 'ianks/vim-tsx'
-Plug 'ianks/vim-tsx'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'puremourning/vimspector'
 Plug 'thaerkh/vim-workspace'
@@ -101,6 +100,17 @@ nmap <leader>, :%s/$/,<CR>G$xggVGyy
 " Add a comma in the line ends
 nmap <leader>\ :!<space>
 
+" Replace
+nmap <Leader>rp :%s/
+
+" Clear find
+nmap <Leader>cf :noh<cr>
+
+
+" Emmet """"""""""""""""""""""""""""""""""''
+let g:user_emmet_leader_key=','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,vue,ts,ts,js,jsx EmmetInstall
 
 " Panel Resizing """""""""""""""""""""""""""""""""""""""""""""''
 nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -123,21 +133,15 @@ nmap <Leader>cb :call vimspector#ClearBreakpoints()<CR>
 nmap <Leader>ev :VimspectorEval<space>
 nmap <Leader>kd :call vimspector#Stop()<CR>
 
+
+
 " " Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-
-
-
 colorscheme gruvbox
-
-" if (has("nvim")) "Transparent background. Only for nvim
-"     highlight Normal guibg=NONE ctermbg=NONE
-"     highlight EndOfBuffer guibg=NONE ctermbg=NONE
-" endif
 
 
 
@@ -219,7 +223,7 @@ set nowritebackup
 set cmdheight=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=100
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
@@ -362,6 +366,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
+
 " Coc-git """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " navigate chunks of current buffer
 nmap pc <Plug>(coc-git-prevchunk)
@@ -376,6 +381,10 @@ nmap <leader>uu :CocCommand git.chunkUndo<cr>
 " List all presets
 nnoremap <space>el :CocList explPresets
 
+
+
 " Nerd Commenter
+" [count]<leader>c<space> |NERDCommenterToggle|
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
-map <leader>cc <Plug>NERDCommenterInvert
