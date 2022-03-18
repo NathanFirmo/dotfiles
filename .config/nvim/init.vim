@@ -135,6 +135,11 @@ nmap <leader>fd <Plug>(Prettier)
 " when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+" Workaround to solve parse error
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#semi = 'false'
+let g:prettier#config#parser = 'babylon'
 
 
 
