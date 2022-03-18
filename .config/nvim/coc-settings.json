@@ -1,6 +1,6 @@
 {
   "languageserver": {},
- "explorer.git.enable": true,
+  "explorer.git.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "workspace.workspaceFolderCheckCwd": false,

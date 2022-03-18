@@ -9,7 +9,7 @@
           "uncaught": "N"
         }
       },
-      "configuration":{
+      "configuration": {
         "name": "Attach to process",
         "type": "node",
         "request": "attach",

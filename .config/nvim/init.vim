@@ -1,28 +1,34 @@
 call plug#begin()
-Plug 'preservim/nerdcommenter'
-Plug 'mattn/emmet-vim'
+" Themes """""
+Plug 'sainnhe/sonokai'
+" AirLine """""
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
-Plug 'sheerun/vim-polyglot'
+" NerdTree """""
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+" Patterns and produtivity
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'dense-analysis/ale'
 Plug 'ianks/vim-tsx'
-Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'puremourning/vimspector'
 Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi'
+Plug 'preservim/nerdcommenter'
+Plug 'mattn/emmet-vim'
+" Coc """""""""""
+Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
+Plug 'sheerun/vim-polyglot'
 if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 endif
 call plug#end()
 
-" Global Sets """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Global Sets """"""""
 filetype plugin on
 set clipboard+=unnamedplus
 syntax on            " Enable syntax highlight
@@ -53,21 +59,20 @@ filetype on          " Detect and set the filetype option and trigger the FileTy
 filetype plugin on   " Load the plugin file for the file type, if any
 filetype indent on   " Load the indent file for the file type, if any
 
-" Auto cmd """"""""""""""""""""""""""""""""""""""
-
-" My Anotations """"""""""""""""""""""""""""""""""""""""""
+" Auto cmd """"""""
+" My Anotations """"
 " Use CTRL N inside a word to select it and have multiple cursors in your
 " file
 
 " Remaps """"""""""
-" Map Leader """"""""""""""""""""""""""""""""""
+" Map Leader """""
 let mapleader="\<space>"
 
-" Source config """""""""""""""""""""""""""""""""
+" Source config """""""""
 nmap <leader>! :source ~/dotfiles/.config/nvim/init.vim<cr>
 nmap <leader>@ :vsplit ~/dotfiles/.config/nvim/init.vim<cr>
 
-" Copy from Clipboard """"""""""""""""""""""""""""
+" Copy from Clipboard """"
 map <C-c> "+y
 map <C-x> "+d
 
@@ -92,12 +97,12 @@ nmap çç :bd<CR>
 nmap ff :vsplit<CR>
 
 " Close splits and others
-nmap tt :q<CR>
+nmap tt :qa<CR>
 
 " Add a comma in the line ends
-nmap <leader>, :%s/$/,<CR>G$xggVGyy
+nmap <leader>, :%s/$/,<CR>G$xggVGyy:noh<CR>
 
-" Add a comma in the line ends
+" Acess command mode
 nmap <leader>\ :!<space>
 
 " Replace
@@ -106,13 +111,16 @@ nmap <Leader>rp :%s/
 " Clear find
 nmap <Leader>cf :noh<cr>
 
-
-" Emmet """"""""""""""""""""""""""""""""""''
+"
+"
+" Emmet """"""""""""""""""
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,vue,ts,ts,js,jsx EmmetInstall
 
-" Panel Resizing """""""""""""""""""""""""""""""""""""""""""""''
+
+
+" Panel Resizing """"""""""
 nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
@@ -120,8 +128,17 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 
 
+" Prettier """"""""""""""
+" Formatting selected code.
+xmap <leader>fd <Plug>(Prettier)
+nmap <leader>fd <Plug>(Prettier)
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+
+
+
 " Vimspector
-" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""''
  let g:vimspector_enable_mappings = 'HUMAN'
 " mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
 " for normal mode - the word under the cursor
@@ -135,27 +152,30 @@ nmap <Leader>kd :call vimspector#Stop()<CR>
 
 
 
-" " Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Themes """""""""""""""
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme gruvbox
+let g:sonokai_style = 'espresso'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 0
+colorscheme sonokai
 
 
 
-" AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" AirLine """""""""""""""""
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'sonokai'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 
 
-" Tmux AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""''
+" Tmux AirLine """""""""""
 let g:tmuxline_preset = {
       \'c'    : '#H',
       \'win'  : '#I #W',
@@ -174,22 +194,24 @@ let g:tmuxline_theme = {
 
 
 
-" NerdTree """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NerdTree """"""""""""""""""
 nmap <C-a> :NERDTreeToggle<CR>
 " Open the existing NERDTree on each new tab.
 autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 
 
-" vim-workspace """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'''''
+" vim-workspace """""""""""""
 let g:workspace_autosave_always = 1
 
 
 
-" ALE """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE """"""""""""""""""""""
 let g:ale_linters = {
 \   'javascript': ['prettier'],
 \   'css': ['prettier'],
+\   'yaml': ['prettier'],
+\   'json': ['prettier'],
 \}
 
 let g:ale_fixers = {
@@ -199,7 +221,7 @@ let g:ale_fix_on_save = 0
 
 
 
-" Telescope """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Telescope """"""""""""""
 if (has("nvim"))
     nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
     nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -209,21 +231,8 @@ endif
 
 
 
-" Coc Of Completion """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""'
-let g:coc_global_extensions = ['coc-marketplace', 'coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=utf-8
-" TextEdit might fail if hidden is not set.
-set hidden
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-" Give more space for displaying messages.
-set cmdheight=2
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=100
+" Coc Of Completion """""""
+let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
@@ -281,10 +290,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>fd <Plug>(coc-format-selected)
-nmap <leader>fd  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -367,20 +372,17 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 
-" Coc-git """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Coc-git """""""""""""
 " navigate chunks of current buffer
-nmap pc <Plug>(coc-git-prevchunk)
-nmap nc <Plug>(coc-git-nextchunk)
-" show chunk diff at current position
-nmap ci <Plug>(coc-gt-chunkinfo)
+nmap <Leader>pc <Plug>(coc-git-prevchunk)
+nmap <Leader>nc <Plug>(coc-git-nextchunk)
 " Adicionar alterações ao staging
-nmap <leader>kk :CocCommand git.chunkStage<cr>
+nmap <leader>ss :CocCommand git.chunkStage<cr>
 " Desfazer alterações
 nmap <leader>uu :CocCommand git.chunkUndo<cr>
 
 " List all presets
 nnoremap <space>el :CocList explPresets
-
 
 
 " Nerd Commenter
