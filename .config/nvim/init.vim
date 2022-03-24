@@ -1,6 +1,7 @@
 call plug#begin()
 " Themes """""
 Plug 'sainnhe/sonokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 " AirLine """""
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'vim-airline/vim-airline'
@@ -19,6 +20,7 @@ Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
+Plug 'akinsho/toggleterm.nvim'
 " Coc """""""""""
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'sheerun/vim-polyglot'
@@ -32,7 +34,7 @@ call plug#end()
 filetype plugin on
 set clipboard+=unnamedplus
 syntax on            " Enable syntax highlight
-set nu               " Enable line numbers
+set nu
 set tabstop=2        " Show existing tab with 4 spaces width
 set softtabstop=2    " Show existing tab with 4 spaces width
 set shiftwidth=2    " When indenting with '>', use 4 spaces width
@@ -48,7 +50,7 @@ set colorcolumn=160  " Draws a line at the given line to keep aware of the line 
 set signcolumn=yes   " Add a column on the left. Useful for linting
 set cmdheight=2      " Give more space for displaying messages
 set updatetime=100   " Time in miliseconds to consider the changes
-set encoding=utf-8   " The encoding should be utf-8 to activate the font icons
+set encoding=UTF-8   " The encoding should be utf-8 to activate the font icons
 set nobackup         " No backup files
 set nowritebackup    " No backup files
 set splitright       " Create the vertical splits to the right
@@ -71,10 +73,6 @@ let mapleader="\<space>"
 " Source config """""""""
 nmap <leader>! :source ~/dotfiles/.config/nvim/init.vim<cr>
 nmap <leader>@ :vsplit ~/dotfiles/.config/nvim/init.vim<cr>
-
-" Copy from Clipboard """"
-map <C-c> "+y
-map <C-x> "+d
 
 " Shortcuts for split navigation
 map <C-h> <C-w>h
@@ -102,9 +100,6 @@ nmap tt :qa<CR>
 " Add a comma in the line ends
 nmap <leader>, :%s/$/,<CR>G$xggVGyy:noh<CR>
 
-" Acess command mode
-nmap <leader>\ :!<space>
-
 " Replace
 nmap <Leader>rp :%s/
 
@@ -128,16 +123,27 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 
 
+" Toggle term """""""""""""
+let g:toggleterm_terminal_mapping = '<C-x>'
+" or manually...
+autocmd TermEnter term://*toggleterm#*
+      \ tnoremap <silent><C-x> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+" By applying the mappings this way you can pass a count to your
+" mapping to open a specific window.
+" For example: 2<C-t> will open terminal 2
+nnoremap <silent><C-x> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><C-x> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
+
 " Prettier """"""""""""""
-" Formatting selected code.
-xmap <leader>fd <Plug>(Prettier)
-nmap <leader>fd <Plug>(Prettier)
 " when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
-autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+let g:prettier#quickfix_enabled = 1
+" autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
+nmap fd <Plug>(Prettier)
 " Workaround to solve parse error
 let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#semi = 'false'
 let g:prettier#config#parser = 'babylon'
 
@@ -166,7 +172,7 @@ endif
 let g:sonokai_style = 'espresso'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 0
-colorscheme sonokai
+colorscheme dracula
 
 
 
@@ -228,16 +234,16 @@ let g:ale_fix_on_save = 0
 
 " Telescope """"""""""""""
 if (has("nvim"))
-    nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
+    nnoremap fg <cmd>Telescope live_grep<cr>
+    nnoremap fb <cmd>Telescope buffers<cr>
     nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 endif
 
 
 
 " Coc Of Completion """""""
-let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git']
+let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git', 'coc-restclient', 'coc-snippets']
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
@@ -261,15 +267,20 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+"Rest Client """"""""""""''
+noremap <Leader>\ :CocCommand rest-client.request <cr>
+
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
+" Formatting selected code.
+xmap <leader>fd <Plug><Plug>(coc-format-selected)
+nmap <leader>fd <Plug><Plug>(coc-format-selected)
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -316,17 +327,6 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Run the Code Lens action on the current line.
 nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Map function and class text objects
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap ic <Plug>(coc-classobj-i)
-omap ic <Plug>(coc-classobj-i)
-xmap ac <Plug>(coc-classobj-a)
-omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -379,12 +379,14 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Coc-git """""""""""""
 " navigate chunks of current buffer
-nmap <Leader>pc <Plug>(coc-git-prevchunk)
-nmap <Leader>nc <Plug>(coc-git-nextchunk)
+nmap ]c <Plug>(coc-git-prevchunk)
+nmap [c <Plug>(coc-git-nextchunk)
 " Adicionar alterações ao staging
 nmap <leader>ss :CocCommand git.chunkStage<cr>
 " Desfazer alterações
 nmap <leader>uu :CocCommand git.chunkUndo<cr>
+nmap gs <Plug>(coc-git-chunkinfo)
+
 
 " List all presets
 nnoremap <space>el :CocList explPresets

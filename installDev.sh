@@ -14,6 +14,9 @@ echo -e "\n\e[1;32m ########### Instaling Neovim ########### \n\e[0m"
 sudo apt-get install neovim -y
 sudo apt-get install python-neovim -y
 sudo apt-get install python3-neovim -y
+echo -e "\n\e[1;32m ########### Instaling Plug ########### \n\e[0m"
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 # Install Chrome
 echo -e "\n\e[1;32m ########### Instaling Chrome ########### \n\e[0m"
 sudo apt install google-chrome-stable -y

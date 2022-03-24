@@ -1,8 +1,21 @@
 {
   "languageserver": {},
-  "explorer.git.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "workspace.workspaceFolderCheckCwd": false,
-  "tsserver.tsdk": ".yarn/sdks/typescript/lib"
+  "tsserver.tsdk": ".yarn/sdks/typescript/lib",
+  "git.removedSign.text": "-",
+  "git.addGBlameToVirtualText": true,
+  "rest-client.enable": true,
+  "rest-client.showHeaders": true,
+  "rest-client.proxy": "",
+  "rest-client.proxyStrictSSL": false,
+  "rest-client.excludeHostsForProxy": [],
+  "rest-client.timeoutinmilliseconds": 0,
+  "rest-client.followredirect": true,
+  "rest-client.certificates": {},
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  }
 }

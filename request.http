@@ -1,0 +1,11 @@
+# @name AwesomeApi
+POST https://awesome-api-alpha.vercel.app/api/hello
+Content-Type: application/json
+
+{
+    "name":"test",
+    "salary":"123",
+    "age":"23"
+}
+
+
