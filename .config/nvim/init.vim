@@ -3,7 +3,7 @@ call plug#begin()
 Plug 'sainnhe/sonokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 " AirLine """""
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim' """ MERGE TEST """
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
