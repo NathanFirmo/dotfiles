@@ -1,5 +1,5 @@
 call plug#begin()
-" Themes """""
+" Visual """""
 Plug 'sainnhe/sonokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -12,18 +12,18 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Patterns and produtivity
-Plug 'tanvirtin/vgit.nvim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'dense-analysis/ale'
-Plug 'ianks/vim-tsx'
 Plug 'puremourning/vimspector'
-Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'akinsho/toggleterm.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'thaerkh/vim-workspace'
+" Linters, Formaters and Language Servers
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'ianks/vim-tsx'
 " Coc """""""""""
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'sheerun/vim-polyglot'
@@ -168,7 +168,10 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-colorscheme dracula
+let g:sonokai_style = 'atlantis'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 0
+colorscheme sonokai
 
 
 
@@ -215,10 +218,10 @@ let g:workspace_autosave_always = 1
 
 " ALE """"""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\   'yaml': ['prettier'],
-\   'json': ['prettier'],
+\ 'javascript': ['prettier'],
+\ 'css': ['prettier'],
+\ 'yaml': ['prettier'],
+\ 'json': ['prettier'],
 \}
 
 let g:ale_fixers = {
@@ -236,9 +239,14 @@ nnoremap fb <cmd>Telescope buffers<cr>
 
 
 " Coc Of Completion """""""
-" let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git', 'coc-restclient', 'coc-snippets']
+let g:coc_global_extensions = [
+\ 'coc-pairs',
+\ 'coc-json', 
+\ 'coc-tsserver', 
+\ 'coc-restclient',
+\ 'coc-snippets',
+\]
 
-let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-restclient', 'coc-snippets']
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
@@ -350,16 +358,20 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 
 
+" Coc-git """""""""""""
+" navigate chunks of current buffer
+nmap ]c <Plug>(coc-git-prevchunk)
+nmap [c <Plug>(coc-git-nextchunk)
+" Adicionar alterações ao staging
+nmap <leader>ss :CocCommand git.chunkStage<cr>
+" Desfazer alterações
+nmap <leader>uu :CocCommand git.chunkUndo<cr>
+nmap gs <Plug>(coc-git-chunkinfo)
 
-" Visual git """""""""""
-lua << EOF
-require('vgit').setup()
-EOF
-map <Leader>vg :VGit
-map gs :VGit buffer_diff_preview<CR>
-map GS :VGit project_diff_preview<CR>
 
 
 " Nerd Commenter
