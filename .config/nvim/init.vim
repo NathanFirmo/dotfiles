@@ -2,8 +2,8 @@ call plug#begin()
 " Themes """""
 Plug 'sainnhe/sonokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
-" AirLine """""
 Plug 'lukas-reineke/indent-blankline.nvim'
+" AirLine """""
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
@@ -12,6 +12,7 @@ Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Patterns and produtivity
+Plug 'tanvirtin/vgit.nvim'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 Plug 'dense-analysis/ale'
 Plug 'ianks/vim-tsx'
@@ -21,13 +22,11 @@ Plug 'mg979/vim-visual-multi'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
 Plug 'akinsho/toggleterm.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 " Coc """""""""""
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'sheerun/vim-polyglot'
-if (has("nvim"))
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-endif
 call plug#end()
 
 " Global Sets """"""""
@@ -169,9 +168,6 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-let g:sonokai_style = 'espresso'
-let g:sonokai_enable_italic = 1
-let g:sonokai_disable_italic_comment = 0
 colorscheme dracula
 
 
@@ -233,17 +229,16 @@ let g:ale_fix_on_save = 0
 
 
 " Telescope """"""""""""""
-if (has("nvim"))
-    nnoremap ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
-    nnoremap fg <cmd>Telescope live_grep<cr>
-    nnoremap fb <cmd>Telescope buffers<cr>
-    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-endif
+nnoremap ff <cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files<cr>
+nnoremap fg <cmd>Telescope live_grep<cr>
+nnoremap fb <cmd>Telescope buffers<cr>
 
 
 
 " Coc Of Completion """""""
-let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git', 'coc-restclient', 'coc-snippets']
+" let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-git', 'coc-restclient', 'coc-snippets']
+
+let g:coc_global_extensions = ['coc-pairs', 'coc-json', 'coc-tsserver', 'coc-restclient', 'coc-snippets']
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
@@ -275,8 +270,8 @@ noremap <Leader>\ :CocCommand rest-client.request <cr>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Formatting selected code.
-xmap <leader>fd <Plug><Plug>(coc-format-selected)
-nmap <leader>fd <Plug><Plug>(coc-format-selected)
+xmap <leader>fd <Plug>(coc-format-selected)
+nmap <leader>fd <Plug>(coc-format-selected)
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
@@ -315,13 +310,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -362,38 +350,17 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
 nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 
 
-" Coc-git """""""""""""
-" navigate chunks of current buffer
-nmap ]c <Plug>(coc-git-prevchunk)
-nmap [c <Plug>(coc-git-nextchunk)
-" Adicionar alterações ao staging
-nmap <leader>ss :CocCommand git.chunkStage<cr>
-" Desfazer alterações
-nmap <leader>uu :CocCommand git.chunkUndo<cr>
-nmap gs <Plug>(coc-git-chunkinfo)
-
-
-" List all presets
-nnoremap <space>el :CocList explPresets
+" Visual git """""""""""
+lua << EOF
+require('vgit').setup()
+EOF
+map <Leader>vg :VGit
+map gs :VGit buffer_diff_preview<CR>
+map GS :VGit project_diff_preview<CR>
 
 
 " Nerd Commenter
-" [count]<leader>c<space> |NERDCommenterToggle|
-" Create default mappings
-let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1

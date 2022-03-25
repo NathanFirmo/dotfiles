@@ -1,5 +1,6 @@
 {
   "languageserver": {},
+  "tsserver.npm":"/home/nathan/.nvm/versions/node/v16.13.1",
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
   "workspace.workspaceFolderCheckCwd": false,
