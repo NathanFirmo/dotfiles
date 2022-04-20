@@ -110,6 +110,13 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 
 
+" AutoCMDs """"""""""""
+" Remaps do Caps_Lock
+au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
+
+
 " Emmet """"""""""""""""""
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
