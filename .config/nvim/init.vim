@@ -1,7 +1,6 @@
 call plug#begin()
 " Visual """""
 Plug 'sainnhe/sonokai'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 " AirLine """""
 Plug 'vim-airline/vim-airline'
@@ -60,11 +59,6 @@ filetype on          " Detect and set the filetype option and trigger the FileTy
 filetype plugin on   " Load the plugin file for the file type, if any
 filetype indent on   " Load the indent file for the file type, if any
 
-" Auto cmd """"""""
-" My Anotations """"
-" Use CTRL N inside a word to select it and have multiple cursors in your
-" file
-
 " Remaps """"""""""
 " Map Leader """""
 let mapleader="\<space>"
@@ -100,19 +94,13 @@ nmap tt :qa<CR>
 nmap <leader>, :%s/$/,<CR>G$xggVGyy:noh<CR>
 
 " Replace
-nmap <Leader>rp :%s/
+nmap rp :%s/
+
+" Replace across files
+nmap <Leader>rp :windo %s/
 
 " Clear find
 nmap <Leader>cf :noh<cr>
-
-"
-"
-" Emmet """"""""""""""""""
-let g:user_emmet_leader_key=','
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,vue,ts,ts,js,jsx EmmetInstall
-
-
 
 " Panel Resizing """"""""""
 nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
@@ -122,23 +110,24 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 
 
+" Emmet """"""""""""""""""
+let g:user_emmet_leader_key=','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,vue,ts,ts,js,jsx EmmetInstall
+
+
+
 " Toggle term """""""""""""
 let g:toggleterm_terminal_mapping = '<C-x>'
 " or manually...
 autocmd TermEnter term://*toggleterm#*
       \ tnoremap <silent><C-x> <Cmd>exe v:count1 . "ToggleTerm"<CR>
-
-" By applying the mappings this way you can pass a count to your
-" mapping to open a specific window.
-" For example: 2<C-t> will open terminal 2
 nnoremap <silent><C-x> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><C-x> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 
 " Prettier """"""""""""""
-" when running at every change you may want to disable quickfix
 let g:prettier#quickfix_enabled = 1
-" autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html PrettierAsync
 nmap fd <Plug>(Prettier)
 " Workaround to solve parse error
 let g:prettier#config#single_quote = 'true'
@@ -150,7 +139,6 @@ let g:prettier#config#parser = 'babylon'
 
 " Vimspector
  let g:vimspector_enable_mappings = 'HUMAN'
-" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
 " for normal mode - the word under the cursor
 nmap <Leader>di <Plug>VimspectorBalloonEval
 " for visual mode, the visually selected text
@@ -162,7 +150,7 @@ nmap <Leader>kd :call vimspector#Stop()<CR>
 
 
 
-" " Themes """""""""""""""
+" Themes """""""""""""""
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -213,8 +201,9 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " vim-workspace """""""""""""
 let g:workspace_autosave_always = 1
-
-
+let g:workspace_autocreate = 1
+let g:workspace_session_name = 'Session.vim'
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 " ALE """"""""""""""""""""""
 let g:ale_linters = {
@@ -238,20 +227,25 @@ nnoremap fb <cmd>Telescope buffers<cr>
 
 
 
+"Rest Client """"""""""""''
+noremap <Leader>\ :CocCommand rest-client.request <cr>
+
+
+
+" Nerd Commenter
+let g:NERDSpaceDelims = 1
+
+
+
 " Coc Of Completion """""""
 let g:coc_global_extensions = [
 \ 'coc-pairs',
 \ 'coc-json', 
 \ 'coc-tsserver', 
 \ 'coc-restclient',
-\ 'coc-snippets',
 \]
 
-" Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -262,26 +256,20 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
-" Use <c-space> to trigger completion.
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-"Rest Client """"""""""""''
-noremap <Leader>\ :CocCommand rest-client.request <cr>
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"
 " Formatting selected code.
 xmap <leader>fd <Plug>(coc-format-selected)
 nmap <leader>fd <Plug>(coc-format-selected)
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+
+" Navigate on diagnostics
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
@@ -294,6 +282,15 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Run the Code Lens action on the current line.
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -304,11 +301,7 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
 
 augroup mygroup
   autocmd!
@@ -317,13 +310,6 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -372,7 +358,3 @@ nmap <leader>ss :CocCommand git.chunkStage<cr>
 nmap <leader>uu :CocCommand git.chunkUndo<cr>
 nmap gs <Plug>(coc-git-chunkinfo)
 
-
-
-" Nerd Commenter
-let g:NERDSpaceDelims = 1

@@ -10,6 +10,7 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nathan/.oh-my-zsh"
+export NX_DAEMON=false
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -107,16 +108,14 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias yd="docker start local-dev-db && yarn dev"
+alias ica="cd ./v2-api"
+alias yd="docker start eb6 && yarn dev"
+alias icf="cd ./v2-frontend"
 alias ys="yarn start"
-alias gs="git status"
 alias ga="git add ."
 alias gc="git commit -m "
 alias gp="git pull && git push"
-alias kcleg="kubectl -n icv-legacy"
-alias vspec="cp ~/dotfiles/.vimspector.json ."
-alias prettier="cp ~/dotfiles/.eslintrc.json ."
-alias request="cp ~/dotfiles/request.http ."
+alias kctl="kubectl"
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
