@@ -110,13 +110,6 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 
 
-" AutoCMDs """"""""""""
-" Remaps do Caps_Lock
-au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-
-
-
 " Emmet """"""""""""""""""
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
@@ -208,9 +201,8 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " vim-workspace """""""""""""
 let g:workspace_autosave_always = 1
-let g:workspace_autocreate = 1
-let g:workspace_session_name = 'Session.vim'
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+
+
 
 " ALE """"""""""""""""""""""
 let g:ale_linters = {
