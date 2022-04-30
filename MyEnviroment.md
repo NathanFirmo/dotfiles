@@ -170,8 +170,8 @@ sudo apt-get install filezilla
 - WhiteSur
 
 ### Extensões que eu uso
-- Blur my shell ON
-- System-Monitor ON
+- [Blur my shell](https://extensions.gnome.org/extension/3193/blur-my-shell/) ON
+- [System-Monitor](https://extensions.gnome.org/extension/4506/simple-system-monitor/) ON
 
 #### Programas para  workflow
 - [Touchegg](https://github.com/JoseExposito/touchegg/releases/download/2.0.12/touchegg_2.0.12_amd64.deb)
