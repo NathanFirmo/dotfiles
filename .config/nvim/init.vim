@@ -1,6 +1,7 @@
 call plug#begin()
 " Visual """""
 Plug 'sainnhe/sonokai'
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 " AirLine """""
 Plug 'vim-airline/vim-airline'
@@ -85,7 +86,7 @@ nmap nn :bp<CR>
 nmap çç :bd<CR>
 
 " Create splits
-nmap ff :vsplit<CR>
+nmap qq :vsplit<CR>
 
 " Close splits and others
 nmap tt :qa<CR>
@@ -159,7 +160,7 @@ endif
 let g:sonokai_style = 'atlantis'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 0
-colorscheme sonokai
+colorscheme dracula
 
 
 
@@ -239,7 +240,7 @@ let g:NERDSpaceDelims = 1
 " Coc Of Completion """""""
 let g:coc_global_extensions = [
 \ 'coc-pairs',
-\ 'coc-json', 
+\ 'coc-json',
 \ 'coc-tsserver', 
 \ 'coc-restclient',
 \]
