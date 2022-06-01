@@ -1,7 +1,6 @@
 call plug#begin()
 " Visual """""
 Plug 'sainnhe/sonokai'
-Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'lukas-reineke/indent-blankline.nvim'
 " AirLine """""
 Plug 'vim-airline/vim-airline'
@@ -157,10 +156,10 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
-let g:sonokai_style = 'atlantis'
+let g:sonokai_style = 'andromeda'
 let g:sonokai_enable_italic = 1
 let g:sonokai_disable_italic_comment = 0
-colorscheme dracula
+colorscheme sonokai
 
 
 
@@ -241,7 +240,7 @@ let g:NERDSpaceDelims = 1
 let g:coc_global_extensions = [
 \ 'coc-pairs',
 \ 'coc-json',
-\ 'coc-tsserver', 
+\ 'coc-tsserver',
 \ 'coc-restclient',
 \]
 
