@@ -8,11 +8,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 " NerdTree """""
 Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Patterns and produtivity
 Plug 'dense-analysis/ale'
-Plug 'puremourning/vimspector'
 Plug 'mg979/vim-visual-multi'
 Plug 'preservim/nerdcommenter'
 Plug 'mattn/emmet-vim'
@@ -137,19 +135,6 @@ let g:prettier#config#parser = 'babylon'
 
 
 
-" Vimspector
- let g:vimspector_enable_mappings = 'HUMAN'
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
-nmap <Leader>sd :call vimspector#Launch()<CR>
-nmap <Leader>cb :call vimspector#ClearBreakpoints()<CR>
-nmap <Leader>ev :VimspectorEval<space>
-nmap <Leader>kd :call vimspector#Stop()<CR>
-
-
-
 " Themes """""""""""""""
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -201,7 +186,8 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " vim-workspace """""""""""""
 let g:workspace_autosave_always = 1
-
+let g:workspace_autocreate = 1
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 
 " ALE """"""""""""""""""""""
@@ -319,11 +305,6 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
 
@@ -355,5 +336,11 @@ nmap [c <Plug>(coc-git-nextchunk)
 nmap <leader>ss :CocCommand git.chunkStage<cr>
 " Desfazer alterações
 nmap <leader>uu :CocCommand git.chunkUndo<cr>
+" Manter alterações remotas
+nmap <leader>ki :CocCommand git.keepIncoming<cr>
+" Manter alterações locais
+nmap <leader>kc :CocCommand git.keepCurrent<cr>
+" Mantes ambas as alterações
+nmap <leader>kb :CocCommand git.keepBoth<cr>
 nmap gs <Plug>(coc-git-chunkinfo)
 
