@@ -186,8 +186,8 @@ autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
 
 " vim-workspace """""""""""""
 let g:workspace_autosave_always = 1
-let g:workspace_autocreate = 1
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+" let g:workspace_autocreate = 1
+" let g:workspace_session_directory = $HOME . '/.vim/sessions/'
 
 
 " ALE """"""""""""""""""""""
