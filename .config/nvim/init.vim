@@ -124,6 +124,7 @@ nnoremap <silent><C-x> <Cmd>exe v:count1 . "ToggleTerm"<CR>
 inoremap <silent><C-x> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
 
 
+
 " Prettier """"""""""""""
 let g:prettier#quickfix_enabled = 1
 nmap fd <Plug>(Prettier)
