@@ -16,7 +16,7 @@ set.smartcase = true        -- Consider case if there is a upper case character
 set.scrolloff = 8      -- Minimum number of lines to keep above and below the cursor
 -- set.colorcolumn = 160  -- Draws a line at the given line to keep aware of the line size
 set.signcolumn= 'yes'   -- Add a column on the left. Useful for linting
-set.cmdheight = 2      -- Give more space for displaying messages
+set.cmdheight = 1      -- Give more space for displaying messages
 set.updatetime = 100   -- Time in miliseconds to consider the changes
 set.encoding = 'UTF-8'   -- The encoding should be utf-8 to activate the font icons
 set.backup = false         -- No backup files
@@ -28,3 +28,4 @@ set.mouse = 'a'          -- Enable mouse support
 -- filetype on          -- Detect and set the filetype option and trigger the FileType Event
 -- filetype plugin on   -- Load the plugin file for the file type, if any
 -- filetype indent on   -- Load the indent file for the file type, if any
+
