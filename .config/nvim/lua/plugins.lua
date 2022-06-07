@@ -18,7 +18,6 @@ return require('packer').startup(function(use)
   -- Aparência
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin" }
-  use 'folke/tokyonight.nvim'
   -- Produtividade
   use {'akinsho/toggleterm.nvim', tag = 'v1.*'}
   use 'numToStr/Comment.nvim'

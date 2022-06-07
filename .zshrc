@@ -108,14 +108,19 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias ica="cd ./v2-api"
-alias yd="docker start local-dev-db && yarn dev"
-alias icf="cd ./v2-frontend"
+alias v2a="cd ~/Trabalho/Workspace/v2/v2-api"
+alias v2f="cd ~/Trabalho/Workspace/v2/v2-frontend"
+alias icvw="/home/nathan/Trabalho/Workspace/incentive-me"
+alias v3DbUp="~/V3_db_up.sh"
+alias v3DbDown="~/V3_db_down.sh"
 alias ys="yarn start"
+alias yd="yarn dev"
 alias gs="git status"
 alias ga="git add ."
 alias gc="git commit -m "
 alias gp="git pull && git push"
+alias gss="git stash save"
+alias gsa="git stash apply"
 alias kctl="kubectl"
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
@@ -165,14 +170,10 @@ zinit light-mode for \
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 export NVM_DIR=~/.nvm
  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# Typwritten: https://typewritten.dev/#/installation; Dracula compliment, purple based
-ZSH_THEME="typewritten"
-
-export TYPEWRITTEN_SYMBOL="λ "
-export DRACULA_TYPEWRITTEN_COLOR_MAPPINGS="primary:#d5ccff;secondary:#9580ff;info_neutral_1:#d0ffcc;info_neutral_2:#ffffcc;info_special:#ff9580;info_negative:#ff5555;notice:#ffff80;accent:#d5ccff"
-export TYPEWRITTEN_COLOR_MAPPINGS="${DRACULA_TYPEWRITTEN_COLOR_MAPPINGS}"
-export TYPEWRITTEN_PROMPT_LAYOUT="half_pure"
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

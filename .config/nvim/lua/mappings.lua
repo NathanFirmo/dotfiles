@@ -8,11 +8,6 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
--- Navigate between buffers
-
-map('n', 'mm', ':bn<CR>')
-map('n', 'nn', ':bp<CR>')
-
 -- Delete a buffer
 map('n', 'çç', ':bd<CR>')
 
