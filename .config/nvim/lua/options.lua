@@ -6,6 +6,7 @@ set.nu = true -- Usar numeração absoluta nas linhas
 set.tabstop = 2        -- Show existing tab with 4 spaces width
 set.softtabstop = 2    -- Show existing tab with 4 spaces width
 set.shiftwidth = 2    -- When indenting with '>', use 4 spaces width
+set.laststatus = 3 -- Use global status bar
 set.expandtab = true        -- On pressing tab, insert 4 spaces
 set.smarttab  = true        -- insert tabs on the start of a line according to shiftwidth
 set.smartindent = true      -- Automatically inserts one extra level of indentation in some cases

@@ -5,16 +5,9 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
---[[
-  PLUGINS QUE FALTAM
-    * Auto pairs OK
-    * Prettier OK
-    * Language server / Code completion
---]]
-
 return require('packer').startup(function(use)
   -- Core
-  use 'wbthomason/packer.nvim' -- Isso é essencial
+  use 'wbthomason/packer.nvim' -- Isso é essencial 
   -- Aparência
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin" }
@@ -40,7 +33,6 @@ return require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-buffer' -- Suporte ao Buffer no autocomplete
   use 'windwp/nvim-ts-autotag'
-  -- use 'glepnir/lspsaga.nvim'
   if packer_bootstrap then
     require('packer').sync()
   end
