@@ -24,7 +24,7 @@ map('n', '<leader>,', ':%s/$/,<CR>G$xggVGyy:noh<CR>')
 map('n', 'rp', ':%s/')
 
 -- Replace across files
-map('n', '<Leader>rp', ':windo %s/')
+map('n', '<Leader>rp', ":find . -wholename '' | xargs sed -i 's///'")
 
 -- Clear find
 map('n', '<Leader>cf', ':noh<cr>')
