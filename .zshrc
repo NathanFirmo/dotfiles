@@ -31,6 +31,7 @@ alias v2f="cd ~/Trabalho/Workspace/v2/v2-frontend"
 alias icvw="/home/nathan/Trabalho/Workspace/incentive-me"
 alias v3DbUp="~/scripts/shell/V3_db_up.sh"
 alias v3DbDown="~/scripts/shell/V3_db_down.sh"
+alias icv3="~/scripts/shell/icv3/main.sh"
 alias ys="yarn start"
 alias yd="yarn dev"
 alias gs="git status"
@@ -41,7 +42,9 @@ alias gss="git stash save"
 alias gsa="git stash apply"
 alias kctl="kubectl"
 
-export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$GOPATH/bin:$GOROOT/bin
+export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap
+export DENO_INSTALL="/home/nathan/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section

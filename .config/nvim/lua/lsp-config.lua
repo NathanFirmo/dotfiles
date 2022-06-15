@@ -34,48 +34,48 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver' }
-for _, lsp in pairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      -- This will be the default in neovim 0.7+
-      debounce_text_changes = 150,
-    },
-    capabilities = capabilities
-  }
-end
-
-lspconfig.gopls.setup {
-    cmd = {"gopls", "serve"},
-    capabilities = capabilities,
-    on_attach = on_attach,
-    filetypes = {"go", "gomod"},
-    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-    settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
-        },
-        staticcheck = true,
-      },
-    },
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  root_dir = util.root_pattern("package.json"),
 }
 
-function OrgImports(wait_ms)
-  local params = vim.lsp.util.make_range_params()
-  params.context = {only = {"source.organizeImports"}}
-  local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
-  for _, res in pairs(result or {}) do
-    for _, r in pairs(res.result or {}) do
-      if r.edit then
-        vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
-      else
-        vim.lsp.buf.execute_command(r.command)
-      end
-    end
-  end
-end
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+-- Comentando implementação para golang, que não vou usar por enquanto
+-- lspconfig.gopls.setup {
+--     cmd = {"gopls", "serve"},
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+--     filetypes = {"go", "gomod"},
+--     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+--     settings = {
+--       gopls = {
+--         analyses = {
+--           unusedparams = true,
+--         },
+--         staticcheck = true,
+--       },
+--     },
+-- }
+
+-- function OrgImports(wait_ms)
+--   local params = vim.lsp.util.make_range_params()
+--   params.context = {only = {"source.organizeImports"}}
+--   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+--   for _, res in pairs(result or {}) do
+--     for _, r in pairs(res.result or {}) do
+--       if r.edit then
+--         vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
+--       else
+--         vim.lsp.buf.execute_command(r.command)
+--       end
+--     end
+--   end
+-- end
 
 -- To get your imports ordered on save, like goimports does
 vim.cmd[[ autocmd BufWritePre *.go lua OrgImports(1000) ]]

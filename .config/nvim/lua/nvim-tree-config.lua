@@ -3,7 +3,7 @@ local map = function(mode, key, command)
 end
 
 require'nvim-tree'.setup {
-    view = {
+  view = {
     adaptive_size = true,
   },
   renderer = {
@@ -40,7 +40,22 @@ require'nvim-tree'.setup {
       },
     },
     special_files = {},
-  }
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = false,
+    ignore_list = {},
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = true,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
 }
 
 map('n', '<C-a>', ':NvimTreeToggle<CR>')
