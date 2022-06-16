@@ -11,6 +11,8 @@ return require('packer').startup(function(use)
   -- Aparência
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin" }
+  use 'nvim-lualine/lualine.nvim'
+  use 'kyazdani42/nvim-web-devicons'
   -- Produtividade
   use {'akinsho/toggleterm.nvim', tag = 'v1.*'}
   use 'numToStr/Comment.nvim'

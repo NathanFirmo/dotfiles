@@ -104,10 +104,20 @@ _G.packer_plugins = {
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["nvim-autopairs"] = {
     loaded = true,
@@ -139,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -158,11 +173,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
     url = "https://github.com/akinsho/toggleterm.nvim"
-  },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-prettier"] = {
     loaded = true,

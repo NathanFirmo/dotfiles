@@ -6,7 +6,20 @@ require'nvim-tree'.setup {
   view = {
     adaptive_size = true,
   },
+  live_filter = {
+    prefix = "[FILTER]: ",
+    always_show_folders = false,
+  },
   renderer = {
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        item = "│ ",
+        none = "  ",
+      },
+    },
     icons = {
       webdev_colors = false,
       show = {
@@ -29,8 +42,8 @@ require'nvim-tree'.setup {
           symlink_open = "",
         },
         git = {
-          unstaged = "",
-          staged = "",
+          unstaged = "", -- 
+          staged = "",
           unmerged = "",
           renamed = "➜",
           untracked = "",
@@ -48,7 +61,7 @@ require'nvim-tree'.setup {
   },
   diagnostics = {
     enable = true,
-    show_on_dirs = true,
+    show_on_dirs = false,
     icons = {
       hint = "",
       info = "",
