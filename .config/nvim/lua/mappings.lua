@@ -8,17 +8,17 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
--- Delete a buffer
-map('n', 'çç', ':bd<CR>')
+-- Close panel
+map('n', 'çç', ':x<CR>')
 
 -- Create splits
 map('n', 'qq', ':vsplit<CR>')
 
--- Close splits and others
+-- Close all
 map('n', 'tt', ':qa!<CR>')
 
 -- Add a comma in the line ends
-map('n', '<leader>,', ':%s/$/,<CR>G$xggVGyy:noh<CR>')
+map('n', '<leader>,', ':%s/$/,<CR>G$xggyG:noh<cr>')
 
 -- Replace
 map('n', 'rp', ':%s/')
@@ -28,6 +28,10 @@ map('n', '<Leader>rp', ":find . -wholename '' | xargs sed -i 's///'")
 
 -- Clear find
 map('n', '<Leader>cf', ':noh<cr>')
+
+-- Stay in indent mode
+map('v', '<', '<gv')
+map('v', '>', '>gv')
 
 -- Panel Resizing """"""""""
 map('n', '<Leader>+', ':exe "resize " . (winheight(0) * 3/2)<CR>')

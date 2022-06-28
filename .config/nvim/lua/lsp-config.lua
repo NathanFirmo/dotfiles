@@ -19,7 +19,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
@@ -32,8 +31,7 @@ local util = require "lspconfig/util"
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
+-- Language servers
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -45,40 +43,11 @@ lspconfig.denols.setup {
   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 }
 
--- Comentando implementação para golang, que não vou usar por enquanto
--- lspconfig.gopls.setup {
---     cmd = {"gopls", "serve"},
---     capabilities = capabilities,
---     on_attach = on_attach,
---     filetypes = {"go", "gomod"},
---     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
---     settings = {
---       gopls = {
---         analyses = {
---           unusedparams = true,
---         },
---         staticcheck = true,
---       },
---     },
--- }
-
--- function OrgImports(wait_ms)
---   local params = vim.lsp.util.make_range_params()
---   params.context = {only = {"source.organizeImports"}}
---   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
---   for _, res in pairs(result or {}) do
---     for _, r in pairs(res.result or {}) do
---       if r.edit then
---         vim.lsp.util.apply_workspace_edit(r.edit, "UTF-8")
---       else
---         vim.lsp.buf.execute_command(r.command)
---       end
---     end
---   end
--- end
-
--- To get your imports ordered on save, like goimports does
-vim.cmd[[ autocmd BufWritePre *.go lua OrgImports(1000) ]]
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+  capabilities = capabilities,
+  root_dir = util.root_pattern("package.json"),
+}
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
@@ -122,4 +91,53 @@ cmp.setup {
     { name = 'luasnip' }
   },
 }
+
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = false,
+})
+
+local signs = { Error = "", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+-- Open definition in a split window
+local function goto_definition(split_cmd)
+  local util = vim.lsp.util
+  local log = require("vim.lsp.log")
+  local api = vim.api
+
+  -- note, this handler style is for neovim 0.5.1/0.6, if on 0.5, call with function(_, method, result)
+  local handler = function(_, result, ctx)
+    if result == nil or vim.tbl_isempty(result) then
+      local _ = log.info() and log.info(ctx.method, "No location found")
+      return nil
+    end
+
+    if split_cmd then
+      vim.cmd(split_cmd)
+    end
+
+    if vim.tbl_islist(result) then
+      util.jump_to_location(result[1])
+
+      if #result > 1 then
+        util.set_qflist(util.locations_to_items(result))
+        api.nvim_command("copen")
+        api.nvim_command("wincmd p")
+      end
+    else
+      util.jump_to_location(result)
+    end
+  end
+
+  return handler
+end
+
+vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')
 

@@ -12,15 +12,14 @@ require('lualine').setup {
     lualine_a = {},
     lualine_b = {
       {'branch', icon = ''}, 
-
     },
-    lualine_c = {'filename'},
+    lualine_c = {{'filename', path = 1}},
     lualine_x = {},
     lualine_y = {{
       'diagnostics',
       symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
       colored = true,           -- Displays diagnostics status in color if set to true.
-      update_in_insert = false, -- Update diagnostics in insert mode.
+      update_in_insert = true, -- Update diagnostics in insert mode.
       always_visible = true,   -- Show diagnostics even if there are none.
     }},
     lualine_z = {'mode'}
@@ -30,7 +29,7 @@ require('lualine').setup {
     lualine_b = {
       {'branch', icon = ''}, 
     },
-    lualine_c = {'filename'},
+    lualine_c = {{'filename', path = 1}},
     lualine_x = {},
     lualine_y = {{
       'diagnostics',

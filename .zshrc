@@ -11,14 +11,15 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nathan/.oh-my-zsh"
 export NX_DAEMON=false
+# export GOOGLE_APPLICATION_CREDENTIALS="/home/nathan/incentive-me-2019-a25ec95f2a99.json"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-export GOROOT="/usr/local/go"
-export GOPATH=$HOME/go
+# export GOROOT="/usr/local/go"
+# export GOPATH=$HOME/go
 
 ZSH_THEME="spaceship"
 
@@ -98,3 +99,5 @@ export NVM_DIR=~/.nvm
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
