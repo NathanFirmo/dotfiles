@@ -24,7 +24,8 @@ map('n', '<leader>,', ':%s/$/,<CR>G$xggyG:noh<cr>')
 map('n', 'rp', ':%s/')
 
 -- Replace across files
-map('n', '<Leader>rp', ":find . -wholename '' | xargs sed -i 's///'")
+map('n', '<Leader>ro', ":vimgrep /search_term/gj **/*")
+map('n', '<Leader>rp', ":cfdo %s/foo/bar/gc | update")
 
 -- Clear find
 map('n', '<Leader>cf', ':noh<cr>')

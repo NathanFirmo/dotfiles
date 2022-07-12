@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   -- Produtividade
+  use 'akinsho/git-conflict.nvim'
   use {'akinsho/toggleterm.nvim', tag = 'v1.*'}
   use 'numToStr/Comment.nvim'
   use 'Pocco81/AutoSave.nvim'

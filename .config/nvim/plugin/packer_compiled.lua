@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["git-conflict.nvim"] = {
+    loaded = true,
+    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
+    url = "https://github.com/akinsho/git-conflict.nvim"
+  },
   ["gitsigns.nvim"] = {
     loaded = true,
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
@@ -153,11 +158,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
-  },
-  ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

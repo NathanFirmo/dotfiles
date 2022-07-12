@@ -15,4 +15,4 @@ require('gitsigns-config')
 require('lualine-config')
 require('treesitter-config')
 require('colorizer-config')
-
+require('git-conflict-config')
