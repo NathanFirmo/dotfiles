@@ -12,13 +12,13 @@ map('n', '<C-l>', '<C-w>l')
 map('n', 'çç', ':x<CR>')
 
 -- Create splits
-map('n', 'qq', ':vsplit<CR>')
+map('n', 'qq', ':split<CR>')
 
 -- Close all
 map('n', 'tt', ':qa!<CR>')
 
 -- Add a comma in the line ends
-map('n', '<leader>,', ':%s/$/,<CR>G$xggyG:noh<cr>')
+map('n', '<leader>,', ':%s/$/,<CR>G$xggyG:noh<CR>')
 
 -- Replace
 map('n', 'rp', ':%s/')
@@ -33,6 +33,10 @@ map('n', '<Leader>cf', ':noh<cr>')
 -- Stay in indent mode
 map('v', '<', '<gv')
 map('v', '>', '>gv')
+
+-- Format Json
+map('n', '<Leader>fj', ':e temp-file.json<CR>p:PrettierAsync<CR>')
+map('n', '<Leader>cj', 'ggyG:bd!<CR>:! rm temp-file.json<CR><CR>')
 
 -- Panel Resizing """"""""""
 map('n', '<Leader>+', ':exe "resize " . (winheight(0) * 3/2)<CR>')

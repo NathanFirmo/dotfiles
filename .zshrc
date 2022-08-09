@@ -27,21 +27,40 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+### ALIASES ###
+
 alias v2a="cd ~/Trabalho/Workspace/v2/v2-api"
 alias v2f="cd ~/Trabalho/Workspace/v2/v2-frontend"
 alias icvw="/home/nathan/Trabalho/Workspace/incentive-me"
+alias api-awards-gateway="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-awards-gateway --inspect false"
+alias api-awards="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-awards --inspect false"
+alias api-accounts="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-accounts --inspect false"
+alias api-incents="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-incents --inspect false"
+alias api-tracking="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-tracking --inspect false"
+alias api-bank="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-bank --inspect false"
+alias api-promo="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-promo --inspect false"
 alias v3DbUp="~/scripts/shell/V3_db_up.sh"
 alias v3DbDown="~/scripts/shell/V3_db_down.sh"
 alias icv3="~/scripts/shell/icv3/main.sh"
 alias ys="yarn start"
 alias yd="yarn dev"
 alias gs="git status"
-alias ga="git add ."
 alias gc="git commit -m "
-alias gp="git pull && git push"
+alias gp="git pull --rebase && git push"
 alias gss="git stash save"
 alias gsa="git stash apply"
 alias kctl="kubectl"
+unalias ga
+
+### FUNCTIONS ###
+
+function ga() {
+  if [[ $1 == '.' ]] then
+    git add .
+  else
+    git status | ag $1 | awk '{ print $NF }' | xargs git add
+  fi
+}
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap
 export DENO_INSTALL="/home/nathan/.deno"

@@ -39,11 +39,6 @@ lspconfig.tsserver.setup {
   root_dir = util.root_pattern("package.json"),
 }
 
-lspconfig.denols.setup {
-  on_attach = on_attach,
-  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-}
-
 lspconfig.cssls.setup {
   capabilities = capabilities,
   capabilities = capabilities,
