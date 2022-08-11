@@ -50,21 +50,23 @@ alias gp="git pull --rebase && git push"
 alias gss="git stash save"
 alias gsa="git stash apply"
 alias kctl="kubectl"
+alias gdiff="git difftool -y --no-symlinks"
 unalias ga
+unalias gl
 
 ### FUNCTIONS ###
 
 function ga() {
-  if [[ $1 == '.' ]] then
+  if [[ $* == '' ]] then
     git add .
   else
     git status | ag $1 | awk '{ print $NF }' | xargs git add
   fi
 }
+export GOROOT="/usr/local/go"
+export GOPATH=$HOME/go
 
-export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap
-export DENO_INSTALL="/home/nathan/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap:$GOPATH/bin:$GOROOT/bin
 
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
