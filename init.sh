@@ -34,3 +34,5 @@ echo -e "\e[1;32m Linking .zshrc \e[0m"
 echo -e "\e[1;32m Linking nvim config \e[0m"
 ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.config/nvim ~/.config
+ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
+ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf

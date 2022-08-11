@@ -43,3 +43,26 @@ map('n', '<Leader>+', ':exe "resize " . (winheight(0) * 3/2)<CR>')
 map('n', '<Leader>-', ':exe "resize " . (winheight(0) * 2/3)<CR>')
 map('n', '<Leader>>', ':exe "vertical resize " . (winwidth(0) * 3/2)<CR>')
 map('n', '<Leader><', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>')
+
+-- These are to cancel the default behavior of d, D, c, C, s, S and x
+-- to put the text they delete in the default register.
+-- Note that this means e.g. "ad won't copy the text into
+-- register a anymore.  You have to explicitly yank it.
+-- and reselect and re-yank any text that is pasted in visual mode
+map('n', 'd', '"_d')
+map('v', 'd', '"_d')
+map('n', 'D', '"_D')
+map('v', 'D', '"_D')
+map('n', 'c', '"_c')
+map('v', 'c', '"_c')
+map('n', 'C', '"_C')
+map('v', 'C', '"_C')
+map('v', 'C', '"_C')
+map('n', 's', '"_s')
+map('v', 's', '"_s')
+map('n', 'S', '"_S')
+map('v', 'S', '"_S')
+map('n', 'x', '"_x')
+map('v', 'x', '"_x')
+map('x', 'p', 'pgvy')
+
