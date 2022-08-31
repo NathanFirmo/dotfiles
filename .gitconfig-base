@@ -1,0 +1,20 @@
+[credential "https://github.com"]
+	helper =
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	name = NathanFirmo
+	email = nathanssfirmo@gmail.com
+[core]
+	editor = nvim
+[merge]
+	tool = vimdiff
+[core]
+	excludesfile = /home/nathan/.gitignore-global
+[advice]
+	addIgnoredFile = false
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
