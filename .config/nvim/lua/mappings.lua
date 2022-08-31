@@ -12,7 +12,7 @@ map('n', '<C-l>', '<C-w>l')
 map('n', 'çç', ':x<CR>')
 
 -- Create splits
-map('n', 'qq', ':split<CR>')
+map('n', 'qq', ':vsplit<CR>')
 
 -- Close all
 map('n', 'tt', ':qa!<CR>')
@@ -35,7 +35,7 @@ map('v', '<', '<gv')
 map('v', '>', '>gv')
 
 -- Format Json
-map('n', '<Leader>fj', ':e temp-file.json<CR>p:PrettierAsync<CR>')
+map('n', '<Leader>fj', ':e temp-file.json<CR>ggvGp:PrettierAsync<CR>')
 map('n', '<Leader>cj', 'ggyG:bd!<CR>:! rm temp-file.json<CR><CR>')
 
 -- Panel Resizing """"""""""
@@ -49,14 +49,9 @@ map('n', '<Leader><', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>')
 -- Note that this means e.g. "ad won't copy the text into
 -- register a anymore.  You have to explicitly yank it.
 -- and reselect and re-yank any text that is pasted in visual mode
-map('n', 'd', '"_d')
-map('v', 'd', '"_d')
-map('n', 'D', '"_D')
-map('v', 'D', '"_D')
 map('n', 'c', '"_c')
 map('v', 'c', '"_c')
 map('n', 'C', '"_C')
-map('v', 'C', '"_C')
 map('v', 'C', '"_C')
 map('n', 's', '"_s')
 map('v', 's', '"_s')

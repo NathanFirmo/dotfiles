@@ -10,14 +10,14 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Isso é essencial 
   -- Aparência
   use 'lukas-reineke/indent-blankline.nvim'
-  use { 'catppuccin/nvim', as = "catppuccin" }
+  use { 'catppuccin/nvim', as = "catppuccin", tag = "v0.2" }
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   -- Produtividade
   use 'akinsho/git-conflict.nvim'
   use {'akinsho/toggleterm.nvim', tag = 'v2.*'}
   use 'numToStr/Comment.nvim'
-  use 'Pocco81/AutoSave.nvim'
+  use 'Pocco81/auto-save.nvim'
   use 'windwp/nvim-autopairs'
   use {
     'nvim-telescope/telescope.nvim',
