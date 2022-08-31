@@ -21,6 +21,18 @@ if [[ -e ".zshrc" ]]; then
   echo -e "\e[1;35m Removing .zshrc \e[0m"
   rm ~/.zshrc
 fi
+if [[ -e ".zshrc" ]]; then
+  echo -e "\e[1;35m Removing .config \e[0m"
+  rm ~/.config
+fi
+if [[ -e ".zshrc" ]]; then
+  echo -e "\e[1;35m Removing .p10k.zsh \e[0m"
+  rm ~/.p10k.zsh
+fi
+if [[ -e ".zshrc" ]]; then
+  echo -e "\e[1;35m Removing .tmux.conf \e[0m"
+  rm ~/.tmux.conf
+fi
 
 # ~/.config
 cd .config
