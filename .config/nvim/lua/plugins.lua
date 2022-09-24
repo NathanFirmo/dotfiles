@@ -8,12 +8,12 @@ end
 return require('packer').startup(function(use)
   -- Core
   use 'wbthomason/packer.nvim' -- Isso é essencial 
-  -- Aparência
+  -- Apearence
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin", tag = "v0.2" }
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  -- Produtividade
+  -- Produtivity
   use 'akinsho/git-conflict.nvim'
   use {'akinsho/toggleterm.nvim', tag = 'v2.*'}
   use 'numToStr/Comment.nvim'
@@ -27,9 +27,9 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'windwp/nvim-ts-autotag'
   use 'norcalli/nvim-colorizer.lua' -- Highlight hex colors
-  -- Formatadores
+  -- Formatters
   use 'prettier/vim-prettier'
-  -- Parsers e language servers
+  -- Parsers and language servers
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
