@@ -32,7 +32,14 @@ sudo apt install gh -y
 # Install neovim
 echo -e "\n\e[1;32m ########### Instaling Neovim ########### \n\e[0m"
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
-cd && git clone https://github.com/neovim/neovim
+cd
+if [[ -e "neovim" ]]; then
+  echo -e "\n\e[1;32m ########### Fetching repo ########### \n\e[0m"
+  git pull
+else
+  echo -e "\n\e[1;32m ########### Cloning repo ########### \n\e[0m"
+  git clone https://github.com/neovim/neovim
+fi
 cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 cd
