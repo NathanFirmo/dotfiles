@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Isso é essencial 
   -- Apearence
   use 'lukas-reineke/indent-blankline.nvim'
-  use { 'catppuccin/nvim', as = "catppuccin", tag = "v0.2" }
+  use { 'catppuccin/nvim', as = "catppuccin" }
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   -- Produtivity
