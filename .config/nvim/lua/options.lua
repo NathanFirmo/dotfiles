@@ -3,7 +3,7 @@ local set = vim.opt
 vim.g.mapleader = ' ' -- Usar a tecla de espaço como tecla líder
 set.clipboard:append('unnamedplus') -- Copiar e colar texto da área de tranferência
 set.nu = true -- Usar numeração absoluta nas linhas
-set.wrap = false -- Desabilitar a quebra de linha
+set.wrap = true -- Habilitar a quebra de linha
 set.tabstop = 2        -- Show existing tab with 4 spaces width
 set.softtabstop = 2    -- Show existing tab with 4 spaces width
 set.shiftwidth = 2    -- When indenting with '>', use 4 spaces width

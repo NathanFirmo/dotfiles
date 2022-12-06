@@ -2,6 +2,9 @@ local map = function(mode, key, command)
   vim.api.nvim_set_keymap(mode, key, command, { noremap = true, silent = true })
 end
 
+-- Go to the middle of the line
+map('n', 'gm', ':call cursor(0, len(getline(\'.\'))/2)<CR>')
+
 -- Shortcuts for split navigation
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
