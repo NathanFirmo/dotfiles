@@ -39,6 +39,7 @@ alias api-incents="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-
 alias api-tracking="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-tracking --inspect false"
 alias api-bank="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-bank --inspect false"
 alias api-promo="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-promo --inspect false"
+alias api-payments="/home/nathan/Trabalho/Workspace/incentive-me && nx serve api-payments --inspect false"
 alias ui-wallet="/home/nathan/Trabalho/Workspace/incentive-me && nx serve ui-wallet -c ssl"
 alias ui-profarma="/home/nathan/Trabalho/Workspace/incentive-me && nx serve ui-profarma -c ssl"
 alias ui-studio="/home/nathan/Trabalho/Workspace/incentive-me && nx serve ui-studio -c ssl"
@@ -49,13 +50,14 @@ alias ys="yarn start"
 alias yd="yarn dev"
 alias gs="git status"
 alias gc="git commit -m "
-alias gp="git pull --rebase && git push"
+alias gp="git pull --ff-only && git push"
 alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsl="git stash list"
 alias minikubectl="minikube kubectl --"
 alias gdiff="git difftool -y --no-symlinks"
 alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
+alias azrun="az aks command invoke --resource-group k8s --name dev --command"
 unalias ga
 
 ### FUNCTIONS ###
