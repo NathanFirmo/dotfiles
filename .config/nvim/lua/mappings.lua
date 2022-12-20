@@ -64,3 +64,25 @@ map('n', 'x', '"_x')
 map('v', 'x', '"_x')
 map('x', 'p', 'pgvy')
 
+-- Terminal
+map('t', '<C-h>', "<C-\\><C-n><C-w>h")
+map('t', '<C-n>', "<C-\\><C-n>")
+map('n', '<Leader>j', ':lua nxJest()<CR>')
+map('n', '<Leader>jw', ':lua nxJestWatch()<CR>')
+
+function _G.nxJest()
+  local filepath = vim.fn.expand('%')
+  local api = string.gsub(string.gsub(filepath, '/home/nathan/Trabalho/Workspace/incentive.me/apps/api/', ''), '/.*', '')
+
+  local command = 'edit term://nx test api-' .. api .. ' --all'
+  local teste = string.gsub(filepath, '/home/nathan/Trabalho/Workspace/incentive.me/app', '')
+  vim.cmd(command)
+end
+
+function _G.nxJestWatch()
+  local filepath = vim.fn.expand('%')
+  local api = string.gsub(string.gsub(filepath, '/home/nathan/Trabalho/Workspace/incentive.me/apps/api/', ''), '/.*', '')
+
+  local command = 'vsplit term://nx test api-' .. api .. ' --all --watch'
+  vim.cmd(command)
+end

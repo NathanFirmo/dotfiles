@@ -31,3 +31,4 @@ set.mouse = 'a'          -- Enable mouse support
 -- filetype plugin on   -- Load the plugin file for the file type, if any
 -- filetype indent on   -- Load the indent file for the file type, if any
 
+vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber') -- Disable numbers on terminal buffer
