@@ -30,5 +30,6 @@ set.mouse = 'a'          -- Enable mouse support
 -- filetype on          -- Detect and set the filetype option and trigger the FileType Event
 -- filetype plugin on   -- Load the plugin file for the file type, if any
 -- filetype indent on   -- Load the indent file for the file type, if any
+set.guicursor = 'i:block'
 
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber') -- Disable numbers on terminal buffer
