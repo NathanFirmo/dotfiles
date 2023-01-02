@@ -7,7 +7,7 @@ end
 
 return require('packer').startup(function(use)
   -- Core
-  use 'wbthomason/packer.nvim' -- Isso é essencial 
+  use 'wbthomason/packer.nvim'
   -- Apearence
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin" }
