@@ -26,7 +26,6 @@ set.writebackup = false    -- No backup files
 set.splitright = true       -- Create the vertical splits to the right
 set.splitbelow = true       -- Create the horizontal splits below
 set.autoread = true         -- Update vim after file update from outside
-set.mouse = 'a'          -- Enable mouse support
 -- filetype on          -- Detect and set the filetype option and trigger the FileType Event
 -- filetype plugin on   -- Load the plugin file for the file type, if any
 -- filetype indent on   -- Load the indent file for the file type, if any

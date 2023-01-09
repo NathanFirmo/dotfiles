@@ -11,6 +11,51 @@ map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 
+-- Use H, J, K, L to navigation on Insert Mode ---
+map('i', '<C-h>', '<Esc>i')
+map('i', '<C-j>', '<Esc>jli')
+map('i', '<C-k>', '<Esc>kli')
+map('i', '<C-l>', '<Esc>lli')
+
+-- Remap backspace and delete on Insert Mode -------------
+map('i', '<C-s>', '<BS>')
+map('i', '<C-d>', '<Del>')
+
+-- Use CTRL + v to paste on Insert Mode -------------
+map('i', '<C-v>', '<Esc>pi')
+
+-- Remove newbie crutches in Command Mode ------------
+map('c', '<Down>', '<Nop>')
+map('c', '<Left>', '<Nop>')
+map('c', '<Right>', '<Nop>')
+map('c', '<Up>', '<Nop>')
+map('c', '<PageUp>', '<Nop>')
+map('c', '<PageDown>', '<Nop>')
+
+-- Remove newbie crutches in Insert Mode ------------
+map('i', '<Down>', '<Nop>')
+map('i', '<Left>', '<Nop>')
+map('i', '<Right>', '<Nop>')
+map('i', '<Up>', '<Nop>')
+map('i', '<PageUp>', '<Nop>')
+map('i', '<PageDown>', '<Nop>')
+
+-- Remove newbie crutches in Normal Mode ------------
+map('n', '<Down>', '<Nop>')
+map('n', '<Left>', '<Nop>')
+map('n', '<Right>', '<Nop>')
+map('n', '<Up>', '<Nop>')
+map('n', '<PageUp>', '<Nop>')
+map('n', '<PageDown>', '<Nop>')
+
+-- Remove newbie crutches in Visual Mode ------------
+map('v', '<Down>', '<Nop>')
+map('v', '<Left>', '<Nop>')
+map('v', '<Right>', '<Nop>')
+map('v', '<Up>', '<Nop>')
+map('v', '<PageUp>', '<Nop>')
+map('v', '<PageDown>', '<Nop>')
+
 -- Close panel ----------------------------------------
 map('n', 'çç', ':x<CR>')
 
@@ -70,6 +115,7 @@ map('x', 'p', 'pgvy')
 -- Terminal --------------------------------------
 map('t', '<C-h>', '<C-\\><C-n><C-w>h')
 map('t', '<C-n>', '<C-\\><C-n>')
+map('t', '<C-a>', '<C-\\><C-n>:NvimTreeToggle<CR>')
 map('t', '<C-s>', '<C-\\><C-n>:b#<CR>')
 map('t', '<C-x>', '<C-\\><C-n>:bd!<CR>')
 map('n', '<C-s>', ':edit term://zsh<CR>')

@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   -- Produtivity
+  use 'max397574/better-escape.nvim'
   use 'akinsho/git-conflict.nvim'
   use 'numToStr/Comment.nvim'
   use 'Pocco81/auto-save.nvim'
