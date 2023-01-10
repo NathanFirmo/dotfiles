@@ -16,6 +16,7 @@ map('i', '<C-h>', '<Esc>i')
 map('i', '<C-j>', '<Esc>jli')
 map('i', '<C-k>', '<Esc>kli')
 map('i', '<C-l>', '<Esc>lli')
+map('i', '<C-a>', '<Esc>:NvimTreeToggle<CR>i')
 
 -- Remap backspace and delete on Insert Mode -------------
 map('i', '<C-s>', '<BS>')
@@ -94,6 +95,9 @@ map('n', '<Leader>+', ':exe "resize " . (winheight(0) * 3/2)<CR>')
 map('n', '<Leader>-', ':exe "resize " . (winheight(0) * 2/3)<CR>')
 map('n', '<Leader>>', ':exe "vertical resize " . (winwidth(0) * 3/2)<CR>')
 map('n', '<Leader><', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>')
+
+-- Exec last comand line command --------------------
+map('n', '<C-\\>', '@:')
 
 -- These are to cancel the default behavior of d, D, c, C, s, S and x
 -- to put the text they delete in the default register.
