@@ -24,6 +24,9 @@ else
   git clone https://github.com/NathanFirmo/dotfiles.git
 fi
 
+# Intall Space Mono Font
+cp ~/dotfiles/fonts/Space\ Mono\ Nerd\ Font\ Complete\ Mono.ttf ~/.local/share/fonts
+
 # Install snap
 echo -e "\n\e[1;32mInstaling snap\e[0m"
 sudo apt install snapd -y
