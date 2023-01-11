@@ -2,7 +2,7 @@
 
 # Get user confirmation
 echo See the complete script at https://github.com/NathanFirmo/dotfiles/blob/main/init.sh
-echo -e -n "\e[1;32mThis script will install some programs and move file. Are you sure to continue? y/n  \e[0m"
+echo -e -n "\e[1;32mThis script will install some programs and move files. Are you sure to continue? y/n  \e[0m"
 read -r usr_response
 if [[ $usr_response == 'y' ]]; then
   sudo echo -e "\n\e[1;32mInitializing process\e[0m"
