@@ -1,0 +1,51 @@
+local map = function(mode, key, command)
+  vim.api.nvim_set_keymap(mode, key, command, { noremap = true, silent = true })
+end
+
+-- Remove newbie crutches in Command Mode ------------
+map('c', '<Down>', '<Nop>')
+map('c', '<Left>', '<Nop>')
+map('c', '<Right>', '<Nop>')
+map('c', '<Up>', '<Nop>')
+map('c', '<C-Down>', '<Nop>')
+map('c', '<C-Left>', '<Nop>')
+map('c', '<C-Right>', '<Nop>')
+map('c', '<C-Up>', '<Nop>')
+map('c', '<PageUp>', '<Nop>')
+map('c', '<PageDown>', '<Nop>')
+
+-- Remove newbie crutches in Insert Mode ------------
+map('i', '<Down>', '<Nop>')
+map('i', '<Left>', '<Nop>')
+map('i', '<Right>', '<Nop>')
+map('i', '<Up>', '<Nop>')
+map('i', '<C-Down>', '<Nop>')
+map('i', '<C-Left>', '<Nop>')
+map('i', '<C-Right>', '<Nop>')
+map('i', '<C-Up>', '<Nop>')
+map('i', '<PageUp>', '<Nop>')
+map('i', '<PageDown>', '<Nop>')
+
+-- Remove newbie crutches in Normal Mode ------------
+map('n', '<Down>', '<Nop>')
+map('n', '<Left>', '<Nop>')
+map('n', '<Right>', '<Nop>')
+map('n', '<Up>', '<Nop>')
+map('n', '<C-Down>', '<Nop>')
+map('n', '<C-Left>', '<Nop>')
+map('n', '<C-Right>', '<Nop>')
+map('n', '<C-Up>', '<Nop>')
+map('n', '<PageUp>', '<Nop>')
+map('n', '<PageDown>', '<Nop>')
+
+-- Remove newbie crutches in Visual Mode ------------
+map('v', '<Down>', '<Nop>')
+map('v', '<Left>', '<Nop>')
+map('v', '<Right>', '<Nop>')
+map('v', '<Up>', '<Nop>')
+map('v', '<C-Down>', '<Nop>')
+map('v', '<C-Left>', '<Nop>')
+map('v', '<C-Right>', '<Nop>')
+map('v', '<C-Up>', '<Nop>')
+map('v', '<PageUp>', '<Nop>')
+map('v', '<PageDown>', '<Nop>')

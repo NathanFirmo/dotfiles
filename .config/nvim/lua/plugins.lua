@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin" }
   use 'nvim-lualine/lualine.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '48a3da710369688df80beb2847dabbbd02e2180e', lock = true}
   use 'nvim-tree/nvim-web-devicons'
   -- Produtivity
   use 'max397574/better-escape.nvim'

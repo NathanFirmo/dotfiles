@@ -25,38 +25,6 @@ map('i', '<C-d>', '<Del>')
 -- Use CTRL + v to paste on Insert Mode -------------
 map('i', '<C-v>', '<Esc>pi')
 
--- Remove newbie crutches in Command Mode ------------
-map('c', '<Down>', '<Nop>')
-map('c', '<Left>', '<Nop>')
-map('c', '<Right>', '<Nop>')
-map('c', '<Up>', '<Nop>')
-map('c', '<PageUp>', '<Nop>')
-map('c', '<PageDown>', '<Nop>')
-
--- Remove newbie crutches in Insert Mode ------------
-map('i', '<Down>', '<Nop>')
-map('i', '<Left>', '<Nop>')
-map('i', '<Right>', '<Nop>')
-map('i', '<Up>', '<Nop>')
-map('i', '<PageUp>', '<Nop>')
-map('i', '<PageDown>', '<Nop>')
-
--- Remove newbie crutches in Normal Mode ------------
-map('n', '<Down>', '<Nop>')
-map('n', '<Left>', '<Nop>')
-map('n', '<Right>', '<Nop>')
-map('n', '<Up>', '<Nop>')
-map('n', '<PageUp>', '<Nop>')
-map('n', '<PageDown>', '<Nop>')
-
--- Remove newbie crutches in Visual Mode ------------
-map('v', '<Down>', '<Nop>')
-map('v', '<Left>', '<Nop>')
-map('v', '<Right>', '<Nop>')
-map('v', '<Up>', '<Nop>')
-map('v', '<PageUp>', '<Nop>')
-map('v', '<PageDown>', '<Nop>')
-
 -- Close panel ----------------------------------------
 map('n', 'çç', ':x<CR>')
 

@@ -38,7 +38,7 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/gi
 sudo apt update
 sudo apt install gh -y
 
-# Install neovim
+# Build neovim
 echo -e "\n\e[1;32mInstaling Neovim\e[0m"
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
 cd
@@ -78,27 +78,17 @@ curl -SL https://github.com/docker/compose/releases/download/v2.2.3/docker-compo
  chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
 
 # Remove old files
-echo -e "\n\e[1;32mRemoving old files...\e[0m"
-if [[ -e ".zshrc" ]]; then
-  mv ~/.zshrc ~/.zshrc-old
-fi
-if [[ -e ".p10k.zsh" ]]; then
-  mv ~/.p10k.zsh ~/.p10k.zsh-old
-fi
-if [[ -e ".tmux.conf" ]]; then
-  mv ~/.tmux.conf ~/.tmux.conf-old
-fi
-if [[ -h ".gitconfig" ]]; then
-  mv ~/.gitconfig ~/.gitconfig-old
-fi
-if [[ -h ".gitignore" ]]; then
-  mv ~/.gitignore ~/.gitignore-old
-fi
+echo -e "\n\e[1;32mRenaming old files...\e[0m"
+mv ~/.zshrc ~/.zshrc-old
+mv ~/.p10k.zsh ~/.p10k.zsh-old
+mv ~/.tmux.conf ~/.tmux.conf-old
+mv ~/.gitconfig ~/.gitconfig-old
+mv ~/.gitignore ~/.gitignore-old
 [ -h /usr/bin/nvim ] && sudo rm /usr/bin/nvim
+[ -h /usr/bin/v ] && sudo rm /usr/bin/v
+[ -h /usr/local/bin/nvim ] && sudo rm /usr/local/bin/nvim
 cd .config
-if [[ -d "nvim" ]]; then
-  mv ~/.config/nvim ~/.config/nvim-old
-fi
+mv ~/.config/nvim ~/.config/nvim-old
 
 echo -e "\n\e[1;32mCreating symbolic links...\e[0m"
 echo -e "Linking .zshrc"
@@ -115,3 +105,4 @@ ln -s ~/dotfiles/.config/nvim ~/.config
 ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 sudo ln -s ~/neovim/build/bin/nvim /usr/bin
+sudo ln -s ~/neovim/build/bin/nvim /usr/bin/v

@@ -25,24 +25,12 @@ require'nvim-tree'.setup {
       show = {
         file = true,
         folder = true,
-        folder_arrow = false,
+        folder_arrow = true,
         git = true
       },
       glyphs = {
-        default = "",
-        symlink = "",
-        folder = {
-          arrow_closed = "",
-          arrow_open = "",
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-          symlink_open = "",
-        },
         git = {
-          unstaged = "", -- 
+          unstaged = "",
           staged = "",
           unmerged = "",
           renamed = "➜",
