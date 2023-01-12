@@ -1,14 +1,6 @@
 #!/bin/bash
 
-# Get user confirmation
-echo See the complete script at https://github.com/NathanFirmo/dotfiles/blob/main/init.sh
-echo -e -n "\e[1;32mThis script will install some programs and move files. Are you sure to continue? y/n  \e[0m"
-read -r usr_response
-if [[ $usr_response == 'y' ]]; then
-  sudo echo -e "\n\e[1;32mInitializing process\e[0m"
-else
-  exit 1
-fi
+sudo echo -e "\n\e[1;32mInitializing process\e[0m"
 
 # Install git
 echo -e "\n\e[1;32mInstaling git\e[0m"
@@ -16,12 +8,20 @@ sudo apt install git -y
 
 cd
 
-# Clone repo
+# Clone dotfiles
 if [[ -e "dotfiles" ]]; then
   echo -e "\n\e[1;32mdotfiles folder already exists\e[0m"
 else
   echo -e "\n\e[1;32mCloning repo\e[0m"
   git clone https://github.com/NathanFirmo/dotfiles.git
+fi
+
+# Clone packer
+if [[ -e ".local/share/nvim/site/pack/packer/start/packer.nvim" ]]; then
+  echo -e "\n\e[1;32mpacker already exists\e[0m"
+else
+  echo -e "\n\e[1;32mCloning repo\e[0m"
+  git clone --depth 1 https://github.com/wbthomason/packer.nvim .local/share/nvim/site/pack/packer/start/packer.nvim
 fi
 
 # Intall Space Mono Font
@@ -106,3 +106,6 @@ ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 sudo ln -s ~/neovim/build/bin/nvim /usr/bin
 sudo ln -s ~/neovim/build/bin/nvim /usr/bin/v
+
+nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
+nvim ~/dotfiles
