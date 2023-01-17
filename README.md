@@ -1,7 +1,11 @@
 # 📂 dotfiles
 
 Here are some of my linux config files and automatize the instalation of my apps. 
-To init the environment configuration run `init.sh`.
+To apply the environment configuration run the command bellow:
+
+~~~bash
+wget -qO- https://raw.githubusercontent.com/NathanFirmo/dotfiles/main/init.sh | bash
+~~~
 
 ## My NeoVim
 
