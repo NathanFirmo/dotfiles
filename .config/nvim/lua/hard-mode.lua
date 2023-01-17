@@ -13,6 +13,8 @@ map('c', '<C-Right>', '<Nop>')
 map('c', '<C-Up>', '<Nop>')
 map('c', '<PageUp>', '<Nop>')
 map('c', '<PageDown>', '<Nop>')
+map('c', '<Home>', '<Nop>')
+map('c', '<End>', '<Nop>')
 
 -- Remove newbie crutches in Insert Mode ------------
 map('i', '<Down>', '<Nop>')
@@ -25,6 +27,8 @@ map('i', '<C-Right>', '<Nop>')
 map('i', '<C-Up>', '<Nop>')
 map('i', '<PageUp>', '<Nop>')
 map('i', '<PageDown>', '<Nop>')
+map('i', '<Home>', '<Nop>')
+map('i', '<End>', '<Nop>')
 
 -- Remove newbie crutches in Normal Mode ------------
 map('n', '<Down>', '<Nop>')
@@ -37,6 +41,8 @@ map('n', '<C-Right>', '<Nop>')
 map('n', '<C-Up>', '<Nop>')
 map('n', '<PageUp>', '<Nop>')
 map('n', '<PageDown>', '<Nop>')
+map('n', '<Home>', '<Nop>')
+map('n', '<End>', '<Nop>')
 
 -- Remove newbie crutches in Visual Mode ------------
 map('v', '<Down>', '<Nop>')
@@ -49,3 +55,5 @@ map('v', '<C-Right>', '<Nop>')
 map('v', '<C-Up>', '<Nop>')
 map('v', '<PageUp>', '<Nop>')
 map('v', '<PageDown>', '<Nop>')
+map('v', '<Home>', '<Nop>')
+map('v', '<End>', '<Nop>')
