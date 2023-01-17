@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or 'all'
-  ensure_installed = { 'javascript', 'typescript', 'tsx', 'json', 'yaml', 'html', 'css', 'scss' },
+  ensure_installed = { 'javascript', 'typescript', 'tsx', 'json', 'yaml', 'html', 'css', 'prisma' },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,
   highlight = {
