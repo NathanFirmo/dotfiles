@@ -32,6 +32,7 @@ local util = require "lspconfig/util"
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 -- Language servers
 lspconfig.tsserver.setup {
   on_attach = on_attach,
@@ -41,8 +42,21 @@ lspconfig.tsserver.setup {
 
 lspconfig.cssls.setup {
   capabilities = capabilities,
-  capabilities = capabilities,
   root_dir = util.root_pattern("package.json"),
+}
+
+lspconfig.clangd.setup {
+  capabilities = capabilities,
+  filetipes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  root_dir = util.root_pattern(
+    '.clangd',
+    '.clang-tidy',
+    '.clang-format',
+    'compile_commands.json',
+    'compile_flags.txt',
+    'configure.ac',
+    '.git'
+  ),
 }
 
 -- nvim-cmp setup
