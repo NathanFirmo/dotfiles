@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
+  nomodoro = {
+    loaded = true,
+    path = "/home/nathan/.local/share/nvim/site/pack/packer/start/nomodoro",
+    url = "https://github.com/dbinagi/nomodoro"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "/home/nathan/.local/share/nvim/site/pack/packer/start/nvim-autopairs",

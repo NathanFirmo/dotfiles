@@ -72,7 +72,7 @@ function ga() {
 export GOROOT="/usr/local/go"
 export GOPATH=$HOME/go
 
-export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap:$GOPATH/bin:$GOROOT/bin
+export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap:$GOPATH/bin:$GOROOT/bin:/home/nathan/lua-language-server/bin
 
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
@@ -323,3 +323,5 @@ if [ "$funcstack[1]" = "_kubectl" ]; then
 	_kubectl
 fi
 
+alias luamake=/home/nathan/lua-language-server/3rd/luamake/luamake
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
