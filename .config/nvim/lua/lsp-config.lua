@@ -23,7 +23,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  -- vim.keymap.set('n', '<space>fd', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<C-i>', vim.lsp.buf.format, { noremap = true, silent = true })
 end
 
 local lspconfig = require('lspconfig')
