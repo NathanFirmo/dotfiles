@@ -49,6 +49,18 @@ lspconfig.prismals.setup {
   capabilities = capabilities,
 }
 
+lspconfig.dockerls.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.html.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+}
+
 lspconfig.clangd.setup {
   capabilities = capabilities,
 }
