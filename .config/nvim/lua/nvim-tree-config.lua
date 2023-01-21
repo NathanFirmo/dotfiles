@@ -7,7 +7,7 @@ require'nvim-tree'.setup {
     adaptive_size = true,
   },
   live_filter = {
-    prefix = "[FILTER]: ",
+    prefix = "    ",
     always_show_folders = false,
   },
   renderer = {
