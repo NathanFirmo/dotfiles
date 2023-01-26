@@ -33,6 +33,9 @@ map('n', 'qq', ':vsplit<CR>')
 
 -- Back to previous buffer --------------------------------------
 map('n', '<Leader>bb', ':b#<CR>')
+-- 
+-- Close all buffers --------------------------------------
+map('n', 'QQ', ':bufdo bd<CR>')
 
 -- Close all ------------------------------------------
 map('n', 'tt', ':qa!<CR>')
