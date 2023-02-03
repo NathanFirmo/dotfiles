@@ -79,6 +79,9 @@ mv ~/.gitignore ~/.gitignore-old
 [ -h /usr/local/bin/nvim ] && sudo rm /usr/local/bin/nvim
 cd .config
 mv ~/.config/nvim ~/.config/nvim-old
+cd
+mv ./WhiteSur-gtk-theme ~/.themes
+mv ./WhiteSur-icon-theme/ ~/.icons
 
 logStep "Creating symbolic links..."
 echo -e "Linking .zshrc"
