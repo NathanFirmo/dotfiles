@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '48a3da710369688df80beb2847dabbbd02e2180e', lock = true}
   use 'nvim-tree/nvim-web-devicons'
+  use 'onsails/lspkind.nvim'
   -- Produtivity
   use 'max397574/better-escape.nvim'
   use 'akinsho/git-conflict.nvim'
