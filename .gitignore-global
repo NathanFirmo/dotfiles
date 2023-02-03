@@ -3,3 +3,6 @@ request.http
 .rgignore
 .tn-cli-articles-cache.json
 *.http
+http_requests/*
+http-requests/*
+httpRequests/*
