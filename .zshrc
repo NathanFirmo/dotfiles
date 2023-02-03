@@ -57,7 +57,7 @@ alias gsl="git stash list"
 alias minikubectl="minikube kubectl --"
 alias gdiff="git difftool -y --no-symlinks"
 alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
-alias azrun="az aks command invoke --resource-group k8s --name dev --command"
+alias azrun="az aks command invoke --resource-group k7s --name dev --command"
 unalias ga
 
 ### FUNCTIONS ###
@@ -328,3 +328,8 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # To customize prompt, run `p10k configure` or edit ~/dotfiles/.p10k.zsh.
 [[ ! -f ~/dotfiles/.p10k.zsh ]] || source ~/dotfiles/.p10k.zsh
+
+# pnpm
+export PNPM_HOME="/home/nathan/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end

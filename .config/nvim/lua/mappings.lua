@@ -69,6 +69,12 @@ map('n', '<Leader><', ':exe "vertical resize " . (winwidth(0) * 2/3)<CR>')
 
 -- Exec last comand line command --------------------
 map('n', '<C-\\>', '@:')
+-- 
+-- Open translator --------------------
+map('n', 'tr', ':Pantran<CR>')
+
+-- Make HTTP request --------------------
+map('n', 'mr', ':lua require("rest-nvim").run()<CR>')
 
 -- These are to cancel the default behavior of d, D, c, C, s, S and x
 -- to put the text they delete in the default register.

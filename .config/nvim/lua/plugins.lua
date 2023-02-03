@@ -14,7 +14,6 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '48a3da710369688df80beb2847dabbbd02e2180e', lock = true}
   use 'nvim-tree/nvim-web-devicons'
-  use 'onsails/lspkind.nvim'
   -- Produtivity
   use 'max397574/better-escape.nvim'
   use 'akinsho/git-conflict.nvim'
@@ -29,10 +28,13 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'windwp/nvim-ts-autotag'
   use 'norcalli/nvim-colorizer.lua' -- Highlight hex colors
+  use 'potamides/pantran.nvim'
+  use 'rest-nvim/rest.nvim'
   -- Formatters
   use 'prettier/vim-prettier'
   -- Parsers and language servers
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
+  use 'onsails/lspkind.nvim'
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
   use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
