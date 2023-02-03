@@ -1,0 +1,16 @@
+# randomInt is a value between 0 and 1000
+
+POST https://reqres.in/api/users
+Content-Type: application/json
+
+{
+  "userid" : "{{$uuid}}",
+  "time" : "{{$timestamp}}",
+  "randomValue": "{{$randomInt}}",
+  "name": "morpheus",
+  "job": "leader",
+  "array": ["a", "b", "c"],
+  "object_ugly_closing": {
+    "some_key": "some_value"
+  }
+}
