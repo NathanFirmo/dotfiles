@@ -3,9 +3,9 @@ local map = function(mode, key, command)
 end
 
 -- Keymappings
-map('n', 'ff', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files <cr>')
-map('n', 'fg', '<cmd>Telescope live_grep<cr>')
-map('n', 'fb', '<cmd>Telescope buffers<cr>')
+map('n', 'ff', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files <CR>')
+map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
+map('n', 'fb', '<cmd>Telescope buffers<CR>')
 
 local present, telescope = pcall(require, "telescope")
 
@@ -65,7 +65,7 @@ local options = {
     },
   },
 
-  extensions_list = { "themes", "terms" },
+  extensions_list = { "themes", "terms", "live_grep_args" },
 }
 
 telescope.setup(options)

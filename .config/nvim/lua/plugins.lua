@@ -22,7 +22,10 @@ return require('packer').startup(function(use)
   use 'windwp/nvim-autopairs'
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { 
+      {'nvim-lua/plenary.nvim'},
+      { "nvim-telescope/telescope-live-grep-args.nvim" }
+    }
   }
   use 'kyazdani42/nvim-tree.lua' 
   use 'lewis6991/gitsigns.nvim'
