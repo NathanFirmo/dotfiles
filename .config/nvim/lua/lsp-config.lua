@@ -79,6 +79,14 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
 }
 
+lspconfig.gopls.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.bashls.setup {
+  capabilities = capabilities,
+}
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'

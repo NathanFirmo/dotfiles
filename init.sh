@@ -108,6 +108,19 @@ cp ~/dotfiles/fonts/Space\ Mono\ Nerd\ Font\ Complete\ Mono.ttf ~/.local/share/f
 logStep "Installing nvm"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
+logStep "Instaling NodeJS"
+nvm install 16.16
+nvm use 16.16
+
+logStep "Instaling XPTO language server"
+
+logStep "Instaling Tidy"
+wget -O tidy.deb https://github.com/htacg/tidy-html5/releases/download/5.8.0/tidy-5.8.0-Linux-64bit.deb
+sudo dpkg -i tidy.deb
+rm tidy.deb
+
+logStep "Instaling RipGrep"
+
 logStep "Instaling snap"
 sudo apt install snapd -y
 
@@ -180,5 +193,6 @@ wget -O bitwarden https://vault.bitwarden.com/download/?app=desktop&platform=lin
 logStep "Instaling Azure CLI"
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
+logStep "Entering in the Matrix"
 sudo apt install cmatrix -y
 cmatrix

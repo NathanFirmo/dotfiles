@@ -58,6 +58,7 @@ alias minikubectl="minikube kubectl --"
 alias gdiff="git difftool -y --no-symlinks"
 alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
 alias azrun="az aks command invoke --resource-group k7s --name dev --command"
+alias swagger2http="node ~/Projetos/swagger2http/index.js"
 unalias ga
 
 ### FUNCTIONS ###
