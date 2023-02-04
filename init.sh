@@ -112,7 +112,24 @@ logStep "Instaling NodeJS"
 nvm install 16.16
 nvm use 16.16
 
-logStep "Instaling XPTO language server"
+logStep "Instaling TypeScript language server"
+npm install -g typescript typescript-language-server
+
+logStep "Instaling HTML language server"
+npm i -g vscode-langservers-extracted
+
+logStep "Instaling Prisma language server"
+npm install -g @prisma/language-server
+
+logStep "Instaling Docker language server"
+npm install -g dockerfile-language-server-nodejs
+
+logStep "Instaling Bash language server"
+npm i -g bash-language-server
+
+logStep "Instaling C language server"
+sudo apt install clangd-12
+sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 
 logStep "Instaling Tidy"
 wget -O tidy.deb https://github.com/htacg/tidy-html5/releases/download/5.8.0/tidy-5.8.0-Linux-64bit.deb
@@ -120,6 +137,10 @@ sudo dpkg -i tidy.deb
 rm tidy.deb
 
 logStep "Instaling RipGrep"
+RIPGREP_VERSION=$(curl -s "https://api.github.com/repos/BurntSushi/ripgrep/releases/latest" | grep -Po '"tag_name": "\K[0-9.]+')
+wget -O ripgrep.deb "https://github.com/BurntSushi/ripgrep/releases/latest/download/ripgrep_${RIPGREP_VERSION}_amd64.deb"
+sudo dpkg -i ./ripgrep.deb
+rm -rf ripgrep.deb
 
 logStep "Instaling snap"
 sudo apt install snapd -y
@@ -138,7 +159,7 @@ sudo snap install redis-desktop-manager
 
 logStep "Instaling Insomnia"
 wget -O insomnia.deb https://updates.insomnia.rest/downloads/ubuntu/latest?&app=com.insomnia.app&source=website
-sudo apt install ./insomnia.deb -y
+sudo dpkg -i ./insomnia.deb -y
 rm insomnia.deb
 
 logStep "Instaling qbittorrent"
@@ -146,7 +167,7 @@ sudo apt install qbittorrent -y
 
 logStep "Instaling Google Chrome Dev"
 wget -O chrome.deb https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
-sudo apt install ./chrome.deb -y
+sudo dpkg -i ./chrome.deb -y
 rm chrome.deb
 
 logStep "Instaling SoapUI"
@@ -172,7 +193,7 @@ sudo apt install filezilla -y
 
 logStep "Instaling MongoDB Compass"
 wget -O mongodb-compass.deb https://downloads.mongodb.com/compass/mongodb-compass_1.35.0_amd64.deb
-sudo apt install ./mongodb.deb
+sudo dpkg -i ./mongodb.deb
 rm mongodb-compass.deb
 
 logStep "Instaling HeroicGamesLauncher"
