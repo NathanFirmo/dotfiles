@@ -9,9 +9,11 @@ require('nomodoro').setup({
         timer_format = '!%0M:%0S' -- To include hours: '!%0H:%0M:%0S'
     },
     on_work_complete = function()
-      os.execute("notify-send 'Hora de descansar um pouco!' && paplay /usr/share/sounds/freedesktop/stereo/complete.oga")
+      os.execute("paplay /usr/share/sounds/freedesktop/stereo/complete.oga")
+      os.execute("notify-send 'Hora de descansar um pouco!'")
     end,
     on_break_complete = function()
-      os.execute("notify-send 'Hora de focar no trabalho!' && paplay /usr/share/sounds/freedesktop/stereo/complete.oga")
+      os.execute("paplay /usr/share/sounds/freedesktop/stereo/complete.oga")
+      os.execute("notify-send 'Hora de focar no trabalho!'")
     end
 })

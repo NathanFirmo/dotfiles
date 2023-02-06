@@ -21,8 +21,6 @@ export NX_DAEMON=false
 # export GOROOT="/usr/local/go"
 # export GOPATH=$HOME/go
 
-ZSH_THEME="spaceship"
-
 plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
@@ -45,11 +43,9 @@ alias ui-profarma="/home/nathan/Trabalho/Workspace/incentive-me && nx serve ui-p
 alias ui-studio="/home/nathan/Trabalho/Workspace/incentive-me && nx serve ui-studio -c ssl"
 alias v3DbUp="~/scripts/shell/V3_db_up.sh"
 alias v3DbDown="~/scripts/shell/V3_db_down.sh"
-alias icv3="~/scripts/shell/icv3/main.sh"
 alias ys="yarn start"
 alias yd="yarn dev"
 alias gs="git status"
-alias gc="git commit -m "
 alias gp="git pull --rebase --autostash && git push"
 alias gss="git stash save"
 alias gsa="git stash apply"
@@ -57,11 +53,11 @@ alias gsl="git stash list"
 alias minikubectl="minikube kubectl --"
 alias gdiff="git difftool -y --no-symlinks"
 alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
-alias azrun="az aks command invoke --resource-group k7s --name dev --command"
 alias swagger2http="node ~/Projetos/swagger2http/index.js"
 unalias ga
+unalias gc
 
-### FUNCTIONS ###
+### Functions ###
 
 function ga() {
   if [[ $* == '' ]] then
@@ -70,30 +66,21 @@ function ga() {
     git status | ag $1 | awk '{ print $NF }' | xargs git add
   fi
 }
+
+function gc() {
+  git commit -m "$*"
+}
+
+function azrun() {
+  az aks command invoke --resource-group k8s --name dev --command "$*"
+}
+
+### End of functions
+
 export GOROOT="/usr/local/go"
 export GOPATH=$HOME/go
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap:$GOPATH/bin:$GOROOT/bin:/home/nathan/lua-language-server/bin
-
-SPACESHIP_PROMPT_ORDER=(
-  user          # Username section
-  dir           # Current directory section
-  host          # Hostname section
-  git           # Git section (git_branch + git_status)
-  hg            # Mercurial section (hg_branch  + hg_status)
-  exec_time     # Execution time
-  line_sep      # Line break
-  vi_mode       # Vi-mode indicator
-  jobs          # Background jobs indicator
-  exit_code     # Exit code section
-  char          # Prompt character
-)
-
-SPACESHIP_USER_SHOW=always
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_CHAR_SYMBOL="$"
-SPACESHIP_CHAR_SUFFIX=" "
-
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
