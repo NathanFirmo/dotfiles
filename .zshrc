@@ -46,6 +46,7 @@ alias v3DbDown="~/scripts/shell/V3_db_down.sh"
 alias ys="yarn start"
 alias yd="yarn dev"
 alias gs="git status"
+alias gc="git commit -m "
 alias gp="git pull --rebase --autostash && git push"
 alias gss="git stash save"
 alias gsa="git stash apply"
@@ -53,9 +54,9 @@ alias gsl="git stash list"
 alias minikubectl="minikube kubectl --"
 alias gdiff="git difftool -y --no-symlinks"
 alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
+alias azrun="az aks command invoke --resource-group k7s --name dev --command"
 alias swagger2http="node ~/Projetos/swagger2http/index.js"
 unalias ga
-unalias gc
 
 ### Functions ###
 
@@ -63,16 +64,10 @@ function ga() {
   if [[ $* == '' ]] then
     git add .
   else
-    git status | ag $1 | awk '{ print $NF }' | xargs git add
+    for word in "$@"; do 
+      git status | ag "$word" | awk '{ print $NF }' | xargs git add
+    done 
   fi
-}
-
-function gc() {
-  git commit -m "$*"
-}
-
-function azrun() {
-  az aks command invoke --resource-group k8s --name dev --command "$*"
 }
 
 ### End of functions
