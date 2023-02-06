@@ -33,6 +33,7 @@ return require('packer').startup(function(use)
   use 'norcalli/nvim-colorizer.lua' -- Highlight hex colors
   use 'potamides/pantran.nvim'
   use 'rest-nvim/rest.nvim'
+  use 'dbinagi/nomodoro'
   -- Formatters
   use 'prettier/vim-prettier'
   -- Parsers and language servers
