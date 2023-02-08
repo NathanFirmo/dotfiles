@@ -14,7 +14,7 @@ require('lualine').setup {
       {'branch', icon = ''}, 
     },
     lualine_c = {{'filename', path = 1}},
-    lualine_x = {require('nomodoro').status},
+    lualine_x = {},
     lualine_y = {{
       'diagnostics',
       symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
@@ -30,7 +30,7 @@ require('lualine').setup {
       {'branch', icon = ''}, 
     },
     lualine_c = {{'filename', path = 1}},
-    lualine_x = {require('nomodoro').status},
+    lualine_x = {},
     lualine_y = {{
       'diagnostics',
       symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '},
