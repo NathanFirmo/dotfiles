@@ -31,6 +31,9 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/trusted.gpg.d/gi
 sudo apt update
 sudo apt install gh -y
 
+logStep "Instaling ag"
+sudo apt install silversearcher-ag
+
 logStep "Instaling dependencies to build NeoVim"
 sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen -y
 cd
@@ -46,18 +49,27 @@ cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 cd
 
+logStep "Instaling xclip"
+sudo apt install xclip -y
+
+logStep "Installing zsh"
+sudo apt install zsh -y
+chsh -s $(which zsh)
+
 logStep "Instaling Docker"
 sudo apt update
 sudo apt install \
     ca-certificates \
     curl \
     gnupg \
+sudo mkdir -m 0755 -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg   lsb-release
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt update
-sudo apt install docker-ce docker-ce-cli containerd.io -y
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
@@ -80,8 +92,6 @@ mv ~/.gitignore ~/.gitignore-old
 cd .config
 mv ~/.config/nvim ~/.config/nvim-old
 cd
-mv ./WhiteSur-gtk-theme ~/.themes
-mv ./WhiteSur-icon-theme/ ~/.icons
 
 logStep "Creating symbolic links..."
 echo -e "Linking .zshrc"
@@ -98,19 +108,29 @@ ln -s ~/dotfiles/.config/nvim ~/.config
 ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
 sudo ln -s ~/neovim/build/bin/nvim /usr/bin
-sudo ln -s ~/neovim/build/bin/nvim /usr/bin/v
 
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
 
+logStep "Cloning themes"
+mkdir -p ~/.themes
+cd ~/.themes
+gh repo clone vinceliuice/WhiteSur-gtk-theme
+mkdir -p ~/.icons
+cd ~/.icons
+gh repo clone vinceliuice/Tela-circle-icon-theme
+gh repo clone varlesh/volantes-cursors
+cd
+
 logStep "Installing Space Mono Nerd Font"
+mkdir -p ~/.local/share/fonts
 cp ~/dotfiles/fonts/Space\ Mono\ Nerd\ Font\ Complete\ Mono.ttf ~/.local/share/fonts
 
 logStep "Installing nvm"
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 logStep "Instaling NodeJS"
-nvm install 16.16
-nvm use 16.16
+nvm install v16
+nvm use v16
 
 logStep "Instaling TypeScript language server"
 npm install -g typescript typescript-language-server
@@ -182,14 +202,16 @@ rm minikube_latest_amd64.deb
 
 logStep "Instaling GCloud CLI"
 sudo apt install apt-transport-https ca-certificates gnupg -y
-echo "deb https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-sudo apt update && sudo apt install google-cloud-cli
+sudo apt update 
+sudo apt install google-cloud-cli
 
 logStep "Instaling Filezilla"
 sudo add-apt-repository ppa:sicklylife/filezilla
 sudo apt update
 sudo apt install filezilla -y
+sudo add-apt-repository --remove ppa:sicklylife/filezilla
 
 logStep "Instaling MongoDB Compass"
 wget -O mongodb-compass.deb https://downloads.mongodb.com/compass/mongodb-compass_1.35.0_amd64.deb
@@ -204,6 +226,7 @@ logStep "Instaling Kazam"
 sudo add-apt-repository ppa:kazam-team/stable-series
 sudo apt update
 sudo apt install kazam
+sudo add-apt-repository --remove ppa:kazam-team/stable-series
 
 logStep "Instaling Electrum"
 wget -O electrum https://download.electrum.org/4.3.4/electrum-4.3.4-x86_64.AppImage
@@ -212,7 +235,18 @@ logStep "Instaling Bitwarden"
 wget -O bitwarden https://vault.bitwarden.com/download/?app=desktop&platform=linux
 
 logStep "Instaling Azure CLI"
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+sudo apt-get update
+sudo apt-get install ca-certificates curl apt-transport-https lsb-release gnupg
+sudo mkdir -p /etc/apt/keyrings
+curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
+    gpg --dearmor |
+    sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
+sudo chmod go+r /etc/apt/keyrings/microsoft.gpg
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=`dpkg --print-architecture` signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" |
+    sudo tee /etc/apt/sources.list.d/azure-cli.list
+sudo apt-get update
+sudo apt-get install azure-cli
 
 logStep "Entering in the Matrix"
 sudo apt install cmatrix -y

@@ -57,6 +57,10 @@ map('n', '<Leader>cf', ':noh<cr>')
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
+-- Ignore black characters when going to the end oof line --
+map('n', '$', 'g_')
+map('v', '$', 'g_')
+
 -- Format Json --------------------------------------
 map('n', '<Leader>fj', ':e temp-file.json<CR>ggvGp:PrettierAsync<CR>')
 map('n', '<Leader>cj', 'ggyG:bd!<CR>:! rm temp-file.json<CR><CR>')
