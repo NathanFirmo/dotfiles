@@ -147,6 +147,9 @@ npm install -g dockerfile-language-server-nodejs
 logStep "Instaling Bash language server"
 npm i -g bash-language-server
 
+logStep "Instaling Yaml language server"
+npm i -g yaml-language-server
+
 logStep "Instaling C language server"
 sudo apt install clangd-12
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
