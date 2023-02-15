@@ -54,7 +54,7 @@ alias gsl="git stash list"
 alias minikubectl="minikube kubectl --"
 alias gdiff="git difftool -y --no-symlinks"
 alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
-alias azrun="az aks command invoke --resource-group k7s --name dev --command"
+alias azrun="az aks command invoke --resource-group k8s --name dev --command"
 alias swagger2http="node ~/Projetos/swagger2http/index.js"
 alias v="nvim"
 unalias ga
@@ -75,6 +75,7 @@ function ga() {
 
 export GOROOT="/usr/local/go"
 export GOPATH=$HOME/go
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap:$GOPATH/bin:$GOROOT/bin:/home/nathan/lua-language-server/bin
 
