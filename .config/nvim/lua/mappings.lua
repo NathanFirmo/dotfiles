@@ -23,7 +23,7 @@ map('i', '<C-s>', '<BS>')
 map('i', '<C-d>', '<Del>')
 
 -- Use CTRL + v to paste on Insert Mode -------------
-map('i', '<C-v>', '<Esc>pi')
+map('i', '<C-v>', '<Esc>pa')
 
 -- Close panel ----------------------------------------
 map('n', 'çç', ':x<CR>')
