@@ -2,6 +2,10 @@ local map = function(mode, key, command)
   vim.api.nvim_set_keymap(mode, key, command, { noremap = true, silent = true })
 end
 
+-- vim.g['copilot_no_tab_map'] = true
+-- vim.g['copilot_assume_mapped'] = true
+-- vim.api.nvim_set_keymap("i", "hj", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 -- Go to the middle of the line ------------------------
 map('n', 'gm', ':call cursor(0, len(getline(\'.\'))/2)<CR>')
 

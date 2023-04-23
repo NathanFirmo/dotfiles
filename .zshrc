@@ -11,6 +11,7 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nathan/.oh-my-zsh"
 export NX_DAEMON=false
+export EDITOR=nvim
 # export GOOGLE_APPLICATION_CREDENTIALS="/home/nathan/incentive-me-2019-a25ec95f2a99.json"
 
 # Set name of the theme to load --- if set to "random", it will
@@ -57,6 +58,7 @@ alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
 alias azrun="az aks command invoke --resource-group k8s --name dev --command"
 alias swagger2http="node ~/Projetos/swagger2http/index.js"
 alias v="nvim"
+alias chat="shell-genie ask"
 unalias ga
 
 ### Functions ###
@@ -525,3 +527,6 @@ if [ "$funcstack[1]" = "_ngrok" ]; then
     _ngrok
 fi
 compdef _ngrok ngrok
+
+# Created by `pipx` on 2023-04-21 16:38:20
+export PATH="$PATH:/home/nathan/.local/bin"
