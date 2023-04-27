@@ -3,7 +3,7 @@ local map = function(mode, key, command)
 end
 
 -- Keymappings
-map('n', 'ff', '<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files <CR>')
+map('n', 'ff', '<cmd>Telescope find_files find_command=rg,--hidden,--files <CR>')
 map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
 map('n', 'fb', '<cmd>Telescope buffers<CR>')
 
