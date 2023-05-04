@@ -16,7 +16,6 @@ set.incsearch = true        -- Incremental search
 set.ignorecase = true       -- Ingore case in search
 set.smartcase = true        -- Consider case if there is a upper case character
 set.scrolloff = 12      -- Minimum number of lines to keep above and below the cursor
--- set.colorcolumn = 160  -- Draws a line at the given line to keep aware of the line size
 set.signcolumn= 'yes'   -- Add a column on the left. Useful for linting
 set.cmdheight = 1      -- Give more space for displaying messages
 set.updatetime = 100   -- Time in miliseconds to consider the changes
@@ -26,9 +25,7 @@ set.writebackup = false    -- No backup files
 set.splitright = true       -- Create the vertical splits to the right
 set.splitbelow = true       -- Create the horizontal splits below
 set.autoread = true         -- Update vim after file update from outside
--- filetype on          -- Detect and set the filetype option and trigger the FileType Event
--- filetype plugin on   -- Load the plugin file for the file type, if any
--- filetype indent on   -- Load the indent file for the file type, if any
-set.guicursor = 'i:block'
+set.guicursor = 'i:block' -- Use block format in cursor
+set.swapfile = false -- Disable swap file
 
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber') -- Disable numbers on terminal buffer

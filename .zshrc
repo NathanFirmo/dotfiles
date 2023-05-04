@@ -49,6 +49,8 @@ alias azrun="az aks command invoke --resource-group k8s --name dev --command"
 alias swagger2http="node ~/Projetos/swagger2http/index.js"
 alias v="nvim"
 alias chat="shell-genie ask"
+alias samsung-monitor-brightness="xrandr --output HDMI-A-0 --brightness"
+alias notebook-monitor-brightness="xrandr --output eDP --brightness"
 unalias ga
 
 ### Functions ###
@@ -519,4 +521,4 @@ fi
 compdef _ngrok ngrok
 
 # Created by `pipx` on 2023-04-21 16:38:20
-export PATH="$PATH:/home/nathan/.local/bin"
+export PATH="$PATH:/home/nathan/.local/bin:/home/linuxbrew/.linuxbrew/bin"
