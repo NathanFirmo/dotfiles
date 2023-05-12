@@ -89,22 +89,43 @@ lspconfig.bashls.setup {
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
-local luasnip = require 'luasnip'
 local lspkind = require('lspkind')
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
   formatting = {
     format = lspkind.cmp_format({
-      mode = 'symbol_text', -- show only symbol annotations
+      mode = 'symbol', -- show only symbol annotations
       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-
       -- The function below will be called before any actual modifications from lspkind
       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+      symbol_map = {
+        Text = "  (text)",
+        Method = "  (method)",
+        Function = "  (function)",
+        Constructor = "  (constructor)",
+        Field = "ﰠ  (field)",
+        Variable = " (var)",
+        Class = "ﴯ  (class)",
+        Interface = "  (interface)",
+        Module = "  (module)",
+        Property = "ﰠ  (property)",
+        Unit = "塞 (unit)",
+        Value = "  (value)",
+        Enum = "  (enum)",
+        Keyword = "  (keyword)",
+        Snippet = "  (snippet)",
+        Color = "  (color)",
+        File = "  (file)",
+        Reference = "  (reference)",
+        Folder = "  (folder)",
+        EnumMember = " (enum)",
+        Constant = " (const)",
+        Struct = " (struct)",
+        Event = " (event)",
+        Operator = "塞 (operator)",
+        TypeParameter = "  (type)",
+        Copilot = " (copilot)",
+      },
       before = function (entry, vim_item)
         return vim_item
       end
@@ -118,29 +139,11 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
   }),
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    { name = 'luasnip' }
+    { name = "copilot", group_index = 2 },
+    { name = "nvim_lsp", group_index = 2 },
+    { name = 'buffer', group_index = 2 },
   },
 }
 
@@ -157,4 +160,3 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
-

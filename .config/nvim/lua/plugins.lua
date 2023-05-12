@@ -15,6 +15,21 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '48a3da710369688df80beb2847dabbbd02e2180e', lock = true}
   use 'nvim-tree/nvim-web-devicons'
   -- Produtivity
+  use {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function ()
+      require("copilot-config")
+    end
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function ()
+      require("copilot_cmp").setup()
+    end
+  }
   use 'max397574/better-escape.nvim'
   use 'akinsho/git-conflict.nvim'
   use 'numToStr/Comment.nvim'
@@ -40,8 +55,6 @@ return require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'
   use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
   use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
   use 'hrsh7th/cmp-buffer' -- Suporte ao Buffer no autocomplete
   if packer_bootstrap then
     require('packer').sync()
