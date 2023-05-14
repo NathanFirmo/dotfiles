@@ -88,9 +88,15 @@ lspconfig.bashls.setup {
 }
 
 -- nvim-cmp setup
-local cmp = require 'cmp'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 local lspkind = require('lspkind')
 cmp.setup {
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
   formatting = {
     format = lspkind.cmp_format({
       mode = 'symbol', -- show only symbol annotations
@@ -144,6 +150,7 @@ cmp.setup {
     { name = "copilot", group_index = 2 },
     { name = "nvim_lsp", group_index = 2 },
     { name = 'buffer', group_index = 2 },
+    { name = 'luasnip', group_index = 2 }
   },
 }
 
