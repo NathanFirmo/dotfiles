@@ -130,7 +130,7 @@ cmp.setup {
         Event = " (event)",
         Operator = "塞 (operator)",
         TypeParameter = "  (type)",
-        Copilot = " (copilot)",
+        -- Copilot = " (copilot)",
       },
       before = function (entry, vim_item)
         return vim_item
@@ -145,12 +145,29 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif cmp.visible() then
+        cmp.select_next_item()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      elseif cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
   }),
   sources = {
-    { name = "copilot", group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = 'buffer', group_index = 2 },
-    { name = 'luasnip', group_index = 2 }
+    { name = "nvim_lsp", group_index = 1 },
+    { name = 'luasnip', group_index = 1 },
+    { name = 'buffer', group_index = 1 },
   },
 }
 
@@ -167,3 +184,4 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+

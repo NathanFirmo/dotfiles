@@ -15,21 +15,6 @@ return require('packer').startup(function(use)
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '48a3da710369688df80beb2847dabbbd02e2180e', lock = true}
   use 'nvim-tree/nvim-web-devicons'
   -- Produtivity
-  use {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function ()
-      require("copilot-config")
-    end
-  }
-  use {
-    "zbirenbaum/copilot-cmp",
-    after = { "copilot.lua" },
-    config = function ()
-      require("copilot_cmp").setup()
-    end
-  }
   use 'max397574/better-escape.nvim'
   use 'akinsho/git-conflict.nvim'
   use 'numToStr/Comment.nvim'
