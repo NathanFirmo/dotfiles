@@ -166,8 +166,8 @@ cmp.setup {
   }),
   sources = {
     { name = "nvim_lsp", group_index = 1 },
-    { name = 'luasnip', group_index = 1 },
     { name = 'buffer', group_index = 1 },
+    { name = 'luasnip', group_index = 1 },
   },
 }
 
