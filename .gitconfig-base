@@ -9,7 +9,7 @@
 [merge]
 	tool = vimdiff
 [core]
-	excludesfile = /home/nathan/.gitignore-global
+	excludesfile = /home/nathan/.gitignore
 [advice]
 	addIgnoredFile = false
 [difftool]
@@ -18,3 +18,5 @@
     tool = nvimdiff
 [difftool "nvimdiff"]
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[commit]
+	gpgsign = true
