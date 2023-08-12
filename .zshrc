@@ -56,7 +56,7 @@ function ga() {
     git add .
   else
     for word in "$@"; do 
-      git status | ag "$word" | awk '{ print $NF }' | xargs git add
+      git status | grep "$word" | awk '{ print $NF }' | xargs git add
     done 
   fi
 }

@@ -1,6 +1,7 @@
 .undodir
 request.http
 .rgignore
+.ripgreprc
 .tn-cli-articles-cache.json
 *.http
 http_requests/*
