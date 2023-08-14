@@ -39,6 +39,9 @@ bindsym Print       exec flameshot gui -p ~/images/screenshots/
 
 bindsym $mod+Return exec alacritty
 bindsym $mod+b exec google-chrome-stable
+bindsym $mod+d exec dbeaver
+bindsym $mod+i exec insomnia
+bindsym $mod+c exec mongodb-compass
 bindsym $mod+m exec --no-startup-id dmenu_run
 bindsym $mod+q kill
 
@@ -57,6 +60,12 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+F11 fullscreen toggle
+
+set $resizing_gap 5
+bindsym $mod+Control+l resize grow width $resizing_gap px or $resizing_gap ppt
+bindsym $mod+Control+h resize shrink width $resizing_gap px or $resizing_gap ppt
+bindsym $mod+Control+k resize grow height $resizing_gap px or $resizing_gap ppt
+bindsym $mod+Control+j resize shrink height $resizing_gap px or $resizing_gap ppt
 
 # Change split cursor position
 bindsym $mod+semicolon split toggle 
@@ -113,6 +122,9 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Use tabs by default (useful to work only on notebook)
+# workspace_layout tabbed
 
 
 
