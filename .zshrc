@@ -48,6 +48,7 @@ alias samsung-monitor-brightness="xrandr --output HDMI-1 --brightness"
 alias notebook-monitor-brightness="xrandr --output eDP-1 --brightness"
 alias mic-volume="amixer sset Capture"
 alias master-volume="amixer sset Master"
+unalias ga
 
 ### Functions ###
 
@@ -63,8 +64,6 @@ function ga() {
 
 ### End of functions
 
-export GOROOT="/usr/bin/go"
-export GOPATH=$HOME/go
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # export PATH=/home/nathan/.nvm/versions/node/v16.13.1/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap:$GOPATH/bin:$GOROOT/bin:/home/nathan/lua-language-server/bin
@@ -910,3 +909,7 @@ _kind()
 if [ "$funcstack[1]" = "_kind" ]; then
     _kind
 fi
+
+export GOROOT="/usr/lib/go"
+export GOPATH="/home/nathan/go"
+export PATH="$PATH:/usr/local/go/bin"
