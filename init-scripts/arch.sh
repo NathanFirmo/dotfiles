@@ -14,11 +14,14 @@ logStep "Initializing process"
 # install neovim
 # install neofetch
 # install docker
-#
+
 ln -s ~/dotfiles/.gitconfig-base ~/.gitconfig
 ln -s ~/dotfiles/.gitignore-global ~/.gitignore
-ln -s ~/dotfiles/.zshrc ~/.zshrc
 ln -s ~/dotfiles/.config/nvim ~/.config
 ln -s ~/dotfiles/.config/i3 ~/.config
+ln -s ~/dotfiles/.config/cava ~/.config
+ln -s ~/dotfiles/.config/luakit ~/.config
 ln -s ~/dotfiles/.config/alacritty ~/.config
-ln -s ~/dotfiles/.p10k.zsh ~/.p10k.zsh
+ln -s ~/dotfiles/.zsh .zsh
+ln -s ~/dotfiles/.zsh/.zshrc .zshrc
+ln -s ~/dotfiles/.zsh/.p10k.zsh .p10k.zsh

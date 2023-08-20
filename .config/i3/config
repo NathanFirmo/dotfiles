@@ -38,6 +38,7 @@ bindsym Print       exec flameshot gui -p ~/images/screenshots/
 #######################
 
 bindsym $mod+Return exec alacritty
+bindsym $mod+t exec SKIP_TANDEM_OVERLAY=1 tandem
 bindsym $mod+b exec google-chrome-stable
 bindsym $mod+d exec dbeaver
 bindsym $mod+i exec insomnia
@@ -72,6 +73,14 @@ bindsym $mod+semicolon split toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
+
+
+
+#######################
+#  WINDOWS BEHAVIOUR  #
+#######################
+
+for_window [class="Tandem"] floating enable
 
 
 

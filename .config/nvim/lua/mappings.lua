@@ -6,9 +6,6 @@ end
 -- vim.g['copilot_assume_mapped'] = true
 -- vim.api.nvim_set_keymap("i", "hj", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
--- Go to the middle of the line ------------------------
-map('n', 'gm', ':call cursor(0, len(getline(\'.\'))/2)<CR>')
-
 -- Shortcuts for split navigation ----------------------
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
@@ -117,22 +114,3 @@ map('t', '<C-a>', '<C-\\><C-n>:NvimTreeToggle<CR>')
 map('t', '<C-s>', '<C-\\><C-n>:b#<CR>')
 map('t', '<C-x>', '<C-\\><C-n>:bd!<CR>')
 map('n', '<C-s>', ':edit term://zsh<CR>')
-map('n', '<Leader>j', ':lua nxJest()<CR>')
-map('n', '<Leader>jw', ':lua nxJestWatch()<CR>')
-
-function _G.nxJest()
-  local filepath = vim.fn.expand('%')
-  local api = string.gsub(string.gsub(filepath, '/home/nathan/Trabalho/Workspace/incentive.me/apps/api/', ''), '/.*', '')
-
-  local command = 'edit term://nx test api-' .. api .. ' --all'
-  local teste = string.gsub(filepath, '/home/nathan/Trabalho/Workspace/incentive.me/app', '')
-  vim.cmd(command)
-end
-
-function _G.nxJestWatch()
-  local filepath = vim.fn.expand('%')
-  local api = string.gsub(string.gsub(filepath, '/home/nathan/Trabalho/Workspace/incentive.me/apps/api/', ''), '/.*', '')
-
-  local command = 'vsplit term://nx test api-' .. api .. ' --all --watch'
-  vim.cmd(command)
-end

@@ -1,0 +1,192 @@
+This cheat sheet is a version of shariebeth.com/computers/luakitcheatsheet.txt I modified
+to suit me better.
+
+:=command mode
+f=follow mode (use F to load urls in new tab)
+F=follow mode into new tab
+i=insert mode
+Esc=clear all modes, undoes last keypress command
+
+j k h l scroll
+Ctrl-e,y,d,u,f,b scrolling
+space, shift space page scrolling
+gg top of document
+G botoom of document
+x% go to x% of document
+
++=zoom in
+-=zoom out
+==set zoom
+
+o(O)=open url in same tab
+t(T)=open with new tab
+w(W)=open url in new window
+gt,gr=next (previous) tab [gr is not in default config]
+alt+{1,..}=go to specific tab
+d or ctrl w=close tab
+D or ZQ=close window
+
+< >=reorder tab
+
+gh(gH) open homepage
+gd(gD) download page
+ga(gA) adblock
+gb(gB) bookmarks
+gy duplicate current tab
+
+B[Enter]=create bookmark of current url
+
+Ctrl t=new tab
+r=reload current url
+R=reload current url skipping cache
+s=stop page loading
+u=opens the last closed tabs
+
+Ctrl+Shift+R=Restart Luakit
+ZZ=Quit and save the session
+ZQ=Quit and dont save the session
+
+y=yank element uri or description into primary selection (onto clipboard)
+Y=Yank element description (copy onto clipboard)
+
+;;=focus element
+;i= for opening image sources
+;I= for opening image sources in new tab
+[num]b=load back page [num] in history
+ctrl z=passthrough mode (NO idea what this is yet)
+ctrl-ZZ=quit and save session for next time
+ZQ=quits without saving
+
+M[letter or number]=quickmark url to that letter or number
+(activate by go[quickmark] or gn[quickmark] (for new tab)
+
+Ctrl w=delete word
+Ctrl u=delete line
+Ctrl h=delete backward one character
+Ctrl d=delete forward one character
+Ctrl a=go to beginning of line
+Ctrl e=go to end of line
+Ctrl f=go forward one character
+Ctrl b=go backward one character
+Mod1 f=go forward one word
+Mod1 b=go backward one word
+
+Browser Commands:
+:quit
+:restart
+:open
+:lua <code>
+:viewsource (views the source)
+:viewsource! (goes back to webpage)
+
+***************************************************
+Quickmarks: Let's you assign a webpage to a specified key. Type M followed by key you wish to assign the page to. To open that page at a later time, type go[assigned-key] to open in current tab, or gn[assigned-key] to open in a new tab.
+
+***************************************************
+Pressing f highlights all the links on the page and assigns them a number. At bottom of page, type the corresponding number after Follow: to go to it.
+
+***************************************************
+Adblock for luakit:
+
+Use https://gist.github.com/1073680 and put it in your ~/.config/luakit. Name it adblock.lua 
+
+Edit your rc.lua and include:
+       ******
+require "adblock"
+       ******
+
+Then create a file ~/.config/luakit/adblock.blacklist according to the comment in the adblock.lua. Here's what works for facebook for example:
+facebook%.com
+
+Here's a script which translates hosts files for adblocking into an adblock.blacklist file. Use it as an example only!
+http://pae.st/4aiQ/
+(courtesy Army in Arch Linux Forums)
+
+***************************************************
+How to change useragent:
+globals.useragent = "Mozilla/5.0 (X11; Linux i686) AppleWebKit/535.1 (KHTML, like Gecko) Chromium/14.0.825.0"
+
+If you append ?nobrowsercheck=true to the end of the gmail.com url (or any other url that rejects unknown browsers?) it will let you access it with the normal luakit user agent.
+
+***************************************************
+How to group bookmarks:
+Type "B" and then after the link add a word, e.g.
+:bookmark https://bbs.archlinux.org/viewtopic.php?pid=983863 Archlinux
+:bookmark https://bbs.archlinux.org/viewtopic.php?id=125310 Archlinux
+
+**************************************************
+To use ctrl-c to copy to clipboard, go to insert mode first (press i)
+You can then use ctrl-v to paste.
+
+**************************************************
+How to set luakit to save the current session every time instead of only by ZZ, even if it's closed by the window manager:
+
+In your rc.lua, place a session.save() at the top of the window.methods.close_win function:
+
+               ********
+
+local close_win = window.methods.close_win
+window.methods.close_win = function (w, ...)
+    session.save{w}
+    close_win(w, ...)
+end
+
+              ********
+
+Another option offered:
+Edit window.lua (should be in ~/.config/luakit, or you should copy it to there from the xdg folder).
+On line 658 you'll find a function called "navigate".  Add a line just before the closing "end" which is on line 671.  The line should save the current session by calling w:save_session().
+
+               ********
+
+    navigate = function (w, uri, view)
+        view = view or w.view
+        if view then
+            local js = string.match(uri, "^javascript:(.+)$")
+            if js then
+                --return view:eval_js(luakit.uri_decode(js), "(javascript-uri)")
+                return view:eval_js(luakit.uri_decode(js),
+                    "(luakit::navigate)", true)
+            end
+            view.uri = uri
+        else
+            return w:new_tab(uri)
+        end
+        w:save_session()  -- THIS LINE WAS ADDED
+    end,
+
+              **********
+
+*************************************************
+To use userconf.lua to remap binds, 
+paste the binding aliases there:
+-- Binding aliases
+local key, buf, but = lousy.bind.key, lousy.bind.buf, lousy.bind.but
+then add binds within the brackets:
+------------------ binds.lua 
+add_binds("normal", {
+--for example
+   -- History
+    key({},          "b",           function (w, m) w:back(m.count)    end),
+    key({},          "n",           function (w, m) w:forward(m.count) end),
+}, true)
+
+**************************************************
+To disable/enable javascript, scripts, and plugins:
+
+Add this to your rc.lua somewhere between the 'require "webview"' line (make sure it is after "binds" as well) and the "end user script loading" 
+
+     *****
+require "noscript"
+noscript.enable_scripts = false
+noscript.enable_plugins = false
+     *****
+
+Then use:
+,ts to toggle scripts such as javascript and others for the current domain.
+,tp to toggle plugins such as Flash for the current domain.
+,tr to remove NoScript rules for a given domain.
+
+Note the , must be typed as well.
+
+**************************************************
