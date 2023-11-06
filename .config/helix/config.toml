@@ -1,0 +1,26 @@
+theme = "catppuccin_mocha"
+
+[editor]
+auto-save = true
+idle-timeout = 0
+
+[editor.file-picker]
+hidden = false
+
+[editor.soft-wrap]
+enable = true
+
+[editor.indent-guides]
+render = true
+character = "┆" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[keys.insert.j]
+k = "normal_mode" # Maps `jk` to exit insert mode
+
+# create a new minor mode bound to `+`
+[keys.normal."+"]
+m = ":run-shell-command echo test"
+c = ":run-shell-command cargo build"
+t = ":run-shell-command cargo test"
+

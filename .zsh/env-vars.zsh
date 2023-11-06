@@ -2,7 +2,6 @@ export GPG_TTY=/dev/pts/1
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nathan/.oh-my-zsh"
-export NX_DAEMON=false
 export EDITOR=nvim
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
@@ -19,7 +18,7 @@ export PATH="$PNPM_HOME:$PATH"
 # Created by `pipx` on 2023-04-21 16:38:20
 export PATH="$PATH:/home/nathan/.local/bin:/home/linuxbrew/.linuxbrew/bin"
 
-export GOROOT="/usr/lib/go"
 export GOPATH="/home/nathan/go"
 export GOBIN="/home/nathan/go/bin"
-export PATH="$PATH:/usr/local/go/bin:$GOBIN"
+export PATH="PATH=$PATH:$GOBIN"
+export OPENSSL_CONF="/dev/null"

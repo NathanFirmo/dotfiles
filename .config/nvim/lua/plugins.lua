@@ -31,8 +31,6 @@ return require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'windwp/nvim-ts-autotag'
   use 'norcalli/nvim-colorizer.lua' -- Highlight hex colors
-  use 'potamides/pantran.nvim'
-  use 'rest-nvim/rest.nvim'
   -- Formatters
   use 'prettier/vim-prettier'
   -- Parsers and language servers

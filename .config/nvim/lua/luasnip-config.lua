@@ -37,48 +37,83 @@ ls.add_snippets("all", {
 	})
 })
 
-ls.add_snippets("all", {
-	s({
-    trig = "s:if",
-    docstring = "if statement"
-  }, {
-		t("if ("), i(1, "condition"), t({") {", "  "}),
-    i(2, {"// Do something"}),
-    t({ "", "}" }),
-	})
-})
+for index, value in ipairs({"go"}) do
+  ls.add_snippets(value, {
+    s({
+      trig = "s:if",
+      docstring = "if statement"
+    }, {
+      t("if "), i(1, "condition"), t({" {", "  "}),
+      i(2, {"// Do something"}),
+      t({ "", "}" }),
+    })
+  })
 
-ls.add_snippets("all", {
-	s({
-   trig = "s:else",
-   docstring = "else statement"
-  }, {
-		t("else ("), i(1, "condition"), t({") {", "  "}),
-    i(2, {"// Do something"}),
-    t({ "", "}" }),
-	})
-})
+  ls.add_snippets(value, {
+    s({
+     trig = "s:else",
+     docstring = "else statement"
+    }, {
+      t("else "), i(1, "condition"), t({" {", "  "}),
+      i(2, {"// Do something"}),
+      t({ "", "}" }),
+    })
+  })
 
-ls.add_snippets("all", {
-	s({
-   trig = "s:else if",
-   docstring = "else if statement"
-  }, {
-		t("else if ("), i(1, "condition"), t({") {", "  "}),
-    i(2, {"// Do something"}),
-    t({ "", "}" }),
-	})
-})
+  ls.add_snippets(value, {
+    s({
+     trig = "s:else if",
+     docstring = "else if statement"
+    }, {
+      t("else if "), i(1, "condition"), t({" {", "  "}),
+      i(2, {"// Do something"}),
+      t({ "", "}" }),
+    })
+  })
+end
 
 -- Snippets for JavaScript, TypeScript, Jsx and Tsx 
 
 for index, value in ipairs({"javascript", "javascriptreact", "typescript", "typescriptreact"}) do
   ls.add_snippets(value, {
     s({
-      trig = "s:it",
-      docstring = "Generates an \"it\" block for Jest test"
+      trig = "s:if",
+      docstring = "if statement"
     }, {
-      t("it('"), i(1, "should be able to do something"), t({"', async () => {", "  "}),
+      t("if ("), i(1, "condition"), t({") {", "  "}),
+      i(2, {"// Do something"}),
+      t({ "", "}" }),
+    })
+  })
+
+  ls.add_snippets(value, {
+    s({
+     trig = "s:else",
+     docstring = "else statement"
+    }, {
+      t("else ("), i(1, "condition"), t({") {", "  "}),
+      i(2, {"// Do something"}),
+      t({ "", "}" }),
+    })
+  })
+
+  ls.add_snippets(value, {
+    s({
+     trig = "s:else if",
+     docstring = "else if statement"
+    }, {
+      t("else if ("), i(1, "condition"), t({") {", "  "}),
+      i(2, {"// Do something"}),
+      t({ "", "}" }),
+    })
+  })
+
+  ls.add_snippets(value, {
+    s({
+      trig = "s:test",
+      docstring = "Generates an \"test\" block for Jest test"
+    }, {
+      t("test('"), i(1, "do something"), t({"', async () => {", "  "}),
       i(2, {"// Do something"}),
       t({ "", "})" }),
     })
@@ -86,10 +121,10 @@ for index, value in ipairs({"javascript", "javascriptreact", "typescript", "type
 
   ls.add_snippets(value, {
     s({
-      trig = "s:it.todo",
-      docstring = "Generates an \"it.todo\" block for Jest test"
+      trig = "s:test.todo",
+      docstring = "Generates an \"test.todo\" block for Jest test"
     }, {
-      t("it.todo('"), i(1, "should be able to do something"), t({"')"}),
+      t("test.todo('"), i(1, "do something"), t({"')"}),
     })
   })
 
@@ -244,6 +279,46 @@ for index, value in ipairs({"javascript", "javascriptreact", "typescript", "type
     },
     {
       t("console.log("), i(1), t(")"),
+    })
+  })
+
+  ls.add_snippets(value, {
+    s({
+      trig = "s:expect",
+      docstring = "Creates a default expect block",
+    },
+    {
+      t("expect(result).toEqual("), i(1), t(")"),
+    })
+  })
+
+  ls.add_snippets(value, {
+    s({
+      trig = "s:anyString",
+      docstring = "Expect any String",
+    },
+    {
+      t("expect.any(String)"),
+    })
+  })
+  
+  ls.add_snippets(value, {
+    s({
+      trig = "s:anyNumber",
+      docstring = "Expect any Number",
+    },
+    {
+      t("expect.any(Number)"),
+    })
+  })
+
+  ls.add_snippets(value, {
+    s({
+      trig = "s:anyDate",
+      docstring = "Expect any Date",
+    },
+    {
+      t("expect.any(Date)"),
     })
   })
   

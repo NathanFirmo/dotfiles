@@ -15,17 +15,17 @@ alias gss="git stash save"
 alias gsa="git stash apply"
 alias gsl="git stash list"
 alias gdiff="git difftool -y --no-symlinks"
-alias gl="git log --pretty=format:\"%h - %an, %ar: %s\""
+alias gl="git log --oneline --decorate --graph --all"
 alias azrun="az aks command invoke --resource-group k8s --name dev --command"
-alias swagger2http="node ~/Projetos/swagger2http/index.js"
-alias samsung-monitor-brightness="xrandr --output HDMI-1 --brightness"
-alias notebook-monitor-brightness="xrandr --output eDP-1 --brightness"
-alias mic-volume="amixer sset Capture"
-alias master-volume="amixer sset Master"
-alias ls="nnn -deaH"
+alias swagger2http="node ~/projects/swagger2http/index.js"
+alias mic="amixer sset Capture"
+alias volume="amixer sset Master"
+alias l="/usr/bin/nnn -deaH"
+alias ls="/usr/bin/ls --color=auto -la"
 alias copy="xclip -sel clip"
-alias luamake=/home/nathan/lua-language-server/3rd/luamake/luamake
+alias luamake="/home/nathan/lua-language-server/3rd/luamake/luamake"
 alias c='clear'
+alias grep='grep --color=auto'
 
 ## Functions ###
 
