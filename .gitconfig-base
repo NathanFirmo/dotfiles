@@ -8,7 +8,7 @@
 	signingkey = 917742DCC7209291
 
 [core]
-	editor = hx
+	editor = nvim
 
 [core]
 	excludesfile = /home/nathan/.gitignore

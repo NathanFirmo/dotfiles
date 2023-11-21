@@ -2,7 +2,7 @@ export GPG_TTY=/dev/pts/1
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/nathan/.oh-my-zsh"
-export EDITOR=hx
+export EDITOR=nvim
 
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
