@@ -13,6 +13,7 @@ return require('packer').startup(function(use)
   use { 'catppuccin/nvim', as = "catppuccin" }
   use 'nvim-lualine/lualine.nvim'
   use 'nvim-tree/nvim-web-devicons'
+  use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
   -- Produtivity
   use 'max397574/better-escape.nvim'
   use 'akinsho/git-conflict.nvim'

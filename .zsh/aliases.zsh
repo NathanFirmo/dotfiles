@@ -24,6 +24,7 @@ alias volume="amixer sset Master"
 # alias l="/usr/bin/nnn -deaH"
 alias ls="/usr/bin/ls --color=auto -la"
 alias copy="xclip -sel clip"
+alias cpwd="pwd | xclip -sel clip"
 alias luamake="/home/nathan/lua-language-server/3rd/luamake/luamake"
 alias c='clear'
 alias grep='grep --color=auto'
