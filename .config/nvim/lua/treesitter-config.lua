@@ -13,7 +13,8 @@ require'nvim-treesitter.configs'.setup {
     'cpp',
     'lua',
     'go',
-    'http'
+    'http',
+    'angular'
   },
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = true,

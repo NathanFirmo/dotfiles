@@ -17,6 +17,8 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # NetworkManager 
 exec --no-startup-id nm-applet
+# Autostart picom when starting the i3 window manager
+exec_always --no-startup-id picom -b
 
 
 
@@ -38,11 +40,12 @@ bindsym Print       exec flameshot gui -p ~/images/screenshots/
 #######################
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+t exec SKIP_TANDEM_OVERLAY=1 tandem
+bindsym $mod+t exec tandem
 bindsym $mod+b exec google-chrome-stable
 bindsym $mod+d exec dbeaver
 bindsym $mod+i exec insomnia
 bindsym $mod+c exec mongodb-compass
+bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 bindsym $mod+m exec --no-startup-id dmenu_run
 bindsym $mod+q kill
 

@@ -23,5 +23,4 @@ zinit light-mode for \
 
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
+zinit light spaceship-prompt/spaceship-prompt

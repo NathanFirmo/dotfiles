@@ -1,9 +1,9 @@
 ## Aliases ###
 
 unalias -a
-alias v2a="cd ~/work/v2/api"
-alias v2f="cd ~/work/v2/frontend"
-alias icvw="~/work/v3/monorepo"
+alias v2a="cd ~/work/main/v2/api"
+alias v2f="cd ~/work/main/v2/frontend"
+alias icvw="~/work/main/v3/monorepo"
 alias ys="yarn start"
 alias yd="yarn dev"
 alias gs="git status"
@@ -28,6 +28,7 @@ alias cpwd="pwd | xclip -sel clip"
 alias luamake="/home/nathan/lua-language-server/3rd/luamake/luamake"
 alias c='clear'
 alias grep='grep --color=auto'
+alias awslocal="aws --endpoint-url=http://localhost:4566"
 
 ## Functions ###
 

@@ -112,3 +112,11 @@ npm i -g yaml-language-server
 logStep "Installing noto-color-emoji-fontconfig"
 
 yay -S noto-color-emoji-fontconfig
+
+logStep "Installing ripgrep"
+
+sudo pacman -S ripgrep
+
+logStep "Installing silver-searcher-git"
+
+yay -S silver-searcher-git

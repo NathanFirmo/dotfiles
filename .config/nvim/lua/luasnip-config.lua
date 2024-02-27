@@ -91,7 +91,7 @@ for index, value in ipairs({"javascript", "javascriptreact", "typescript", "type
      trig = "s:else",
      docstring = "else statement"
     }, {
-      t("else ("), i(1, "condition"), t({") {", "  "}),
+      t("else "), t({"{", "  "}),
       i(2, {"// Do something"}),
       t({ "", "}" }),
     })
