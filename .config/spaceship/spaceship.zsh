@@ -7,8 +7,6 @@ SPACESHIP_PROMPT_ORDER=(
   node           # Node.js section
   python         # Python section
   golang         # Go section
-  docker         # Docker section
-  docker_compose # Docker section
   kubectl_context        # Kubectl context section
   exec_time      # Execution time
   line_sep       # Line break
