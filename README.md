@@ -26,4 +26,5 @@ docker run -w /root -it --rm alpine:edge sh -uelic '
 
 ## My Zsh
 
-![2024-01-02_22-03](https://github.com/NathanFirmo/dotfiles/assets/79997705/6f279d24-a9ca-472a-8638-dd4c25885ffc)
+![2024-04-06_11-17](https://github.com/NathanFirmo/dotfiles/assets/79997705/b0a0b1c7-1a45-4563-86a4-93a2f0782cc4)
+
