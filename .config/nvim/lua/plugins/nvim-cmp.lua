@@ -1,13 +1,13 @@
 return {
   'hrsh7th/nvim-cmp',
-
+  event = "InsertEnter",
+  config = true,
   dependencies = { 
     'onsails/lspkind.nvim', 
     'hrsh7th/cmp-nvim-lsp', 
     'hrsh7th/cmp-buffer', 
     'saadparwaiz1/cmp_luasnip' 
   },
-
   config = function()
     local cmp = require('cmp')
     local luasnip = require('luasnip')

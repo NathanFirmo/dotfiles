@@ -1,19 +1,13 @@
 return {
   'nvim-telescope/telescope.nvim',
   dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-live-grep-args.nvim' },
-
+  keys = {
+    { 'ff', '<cmd>Telescope find_files find_command=rg,--hidden,--files <CR>', noremap = true, silent = true, mode = "n" },
+    { 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', noremap = true, silent = true, mode = "n" },
+    { 'fb', '<cmd>Telescope buffers<CR>', noremap = true, silent = true, mode = "n" },
+  },
   config = function()
-    local map = function(mode, key, command)
-      vim.api.nvim_set_keymap(mode, key, command, { noremap = true, silent = true })
-    end
-
-    -- Keymappings
-    map('n', 'ff', '<cmd>Telescope find_files find_command=rg,--hidden,--files <CR>')
-    map('n', 'fg', ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>')
-    map('n', 'fb', '<cmd>Telescope buffers<CR>')
-
     vim.g.theme_switcher_loaded = true
-
     require("telescope").setup({
       defaults = {
         vimgrep_arguments = {
@@ -65,11 +59,8 @@ return {
           }
         },
       },
-
       extensions_list = { "themes", "terms", "live_grep_args" },
     })
-
-    -- load extensions
     pcall(function()
       for _, ext in ipairs(options.extensions_list) do
         telescope.load_extension(ext)

@@ -19,6 +19,9 @@ map('i', '<C-a>', '<Esc>:NvimTreeToggle<CR>i')
 map('i', '<C-s>', '<BS>')
 map('i', '<C-d>', '<Del>')
 
+-- Open Lazy UI ---------------------------------------
+map('n', '<leader>L', ':Lazy<CR>')
+
 -- Use CTRL + v to paste on Insert Mode -------------
 map('i', '<C-v>', '<Esc>pa')
 
