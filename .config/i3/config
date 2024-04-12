@@ -39,6 +39,8 @@ bindsym Print       exec flameshot gui -p ~/images/screenshots/
 # LAUNCH APPLICATIONS #
 #######################
 
+# bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec warp-terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+t exec tandem
 bindsym $mod+b exec google-chrome-stable

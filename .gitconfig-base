@@ -16,67 +16,6 @@
 [advice]
 	addIgnoredFile = false
 
-[core]
-    pager = delta
-
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-
-[delta]
-    features = decorations
-    line-numbers = true
-    side-by-side = false
-
-[delta "interactive"]
-    keep-plus-minus-markers = false
-
-[delta "decorations"]
-    # author: https://github.com/maxfangx
-    # General appearance
-    dark = true
-    syntax-theme = Nord
-    # File
-    file-style = "#FFFFFF" bold
-    file-added-label = [added]
-    file-copied-label = [copied]
-    file-modified-label = [modified]
-    file-removed-label = [removed]
-    file-renamed-label = [renamed]
-    file-decoration-style = "#FFFFFF" ul
-    ; # No hunk headers
-    hunk-header-style = omit
-    ; # Line numbers
-    line-numbers = true
-    line-numbers-left-style = "#45475A"
-    line-numbers-right-style = "#45475A"
-    line-numbers-minus-style = "#F38BA8"
-    line-numbers-plus-style = "#A6E3A1"
-    line-numbers-zero-style = "#45475A"
-    line-numbers-left-format = " {nm:>3} │"
-    line-numbers-right-format = " {np:>3} │"
-    ; # Diff contents
-    inline-hint-style = syntax
-    minus-style = syntax "#330011"
-    minus-emph-style = syntax "#45475A"
-    minus-non-emph-style = syntax auto
-    plus-style = syntax "#001a00"
-    plus-emph-style = syntax "#45475A"
-    plus-non-emph-style = syntax auto
-    whitespace-error-style = "#FB4934" reverse
-    ; # Commit hash
-    commit-decoration-style = normal box
-    commit-style = "#ffffff" bold
-    ; # Blame
-    blame-code-style = syntax
-    blame-palette = "#1E1E2E" 
-    ; # Merge conflicts
-    merge-conflict-begin-symbol = ⌃
-    merge-conflict-end-symbol = ⌄
-    merge-conflict-ours-diff-header-style = "#FABD2F" bold
-    merge-conflict-theirs-diff-header-style = "#FABD2F" bold overline
-    merge-conflict-ours-diff-header-decoration-style = ''
-    merge-conflict-theirs-diff-header-decoration-style = ''
-
 [merge]
     conflictstyle = diff3
 

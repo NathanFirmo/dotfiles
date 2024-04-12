@@ -21,9 +21,9 @@ require'nvim-tree'.setup {
       },
     },
     icons = {
-      webdev_colors = true,
+      webdev_colors = false,
       show = {
-        file = true,
+        file = false,
         folder = true,
         folder_arrow = false,
         git = true

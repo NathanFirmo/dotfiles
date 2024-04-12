@@ -12,7 +12,6 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use { 'catppuccin/nvim', as = "catppuccin" }
   use 'nvim-lualine/lualine.nvim'
-  use 'nvim-tree/nvim-web-devicons'
   use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate', commit = '48a3da710369688df80beb2847dabbbd02e2180e', lock = true })
   -- Produtivity
   use 'max397574/better-escape.nvim'
@@ -27,7 +26,8 @@ return require('packer').startup(function(use)
       { "nvim-telescope/telescope-live-grep-args.nvim" }
     }
   }
-  use 'kyazdani42/nvim-tree.lua' 
+  use 'nvim-tree/nvim-tree.lua'
+  -- use('nvim-tree/nvim-web-devicons', { commit = '808627b8d412b2a6b6fc6eed816fec3557198b01', lock = true })
   use 'lewis6991/gitsigns.nvim'
   use 'norcalli/nvim-colorizer.lua' -- Highlight hex colors
   -- Formatters
