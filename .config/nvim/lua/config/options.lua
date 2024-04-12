@@ -1,9 +1,9 @@
 local set = vim.opt
 
-vim.g.mapleader = ' ' -- Usar a tecla de espaço como tecla líder
+vim.g.mapleader = ' ' -- Use space as leader key
 set.clipboard:append('unnamedplus') -- Copiar e colar texto da área de tranferência
-set.nu = true -- Usar numeração absoluta nas linhas
-set.wrap = true -- Habilitar a quebra de linha
+set.nu = true -- Use absolute numbers
+set.wrap = true -- Enable line wrap
 set.tabstop = 2        -- Show existing tab with 2 spaces width
 set.softtabstop = 2    -- Show existing tab with 2 spaces width
 set.shiftwidth = 2    -- When indenting with '>', use 2 spaces width

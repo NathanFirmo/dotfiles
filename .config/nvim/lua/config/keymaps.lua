@@ -2,10 +2,6 @@ local map = function(mode, key, command)
   vim.api.nvim_set_keymap(mode, key, command, { noremap = true, silent = true })
 end
 
--- vim.g['copilot_no_tab_map'] = true
--- vim.g['copilot_assume_mapped'] = true
--- vim.api.nvim_set_keymap("i", "hj", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
 -- Shortcuts for split navigation ----------------------
 map('n', '<C-h>', '<C-w>h')
 map('n', '<C-j>', '<C-w>j')
