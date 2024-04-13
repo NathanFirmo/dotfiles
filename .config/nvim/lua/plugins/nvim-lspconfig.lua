@@ -1,7 +1,20 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = { 'hrsh7th/cmp-nvim-lsp' },
-  event = "VeryLazy",
+  -- event = "VeryLazy",
+  ft = {
+    'javascript',
+    'javascriptreact',
+    'jsx',
+    'typescript',
+    'typescriptreact',
+    'tsx',
+    'html',
+    'css',
+    'yaml',
+    'c',
+    'go'
+  },
   config = function()
     -- Mappings.
     -- See `:help vim.diagnostic.*` for documentation on any of the below functions
