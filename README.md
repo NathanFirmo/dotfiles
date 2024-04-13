@@ -1,28 +1,16 @@
 # 📂 dotfiles
 
-Here are some of my linux config files and automatize the instalation of my apps. 
-To apply the environment configuration run the command bellow:
-
-~~~bash
-wget -qO- https://raw.githubusercontent.com/NathanFirmo/dotfiles/main/init.sh | bash
-~~~
-
 ## My NeoVim
 
-You can test inside a docker container just using this command:
+```bash
+# Performance test
+hyperfine 'nvim --headless "+qa"' --warmup 10 --runs 250
+Benchmark 1: nvim --headless "+qa"
+  Time (mean ± σ):      71.3 ms ±   7.6 ms    [User: 43.2 ms, System: 25.8 ms]
+  Range (min … max):    58.8 ms … 115.7 ms    250 runs
+```
 
-~~~bash
-docker run -w /root -it --rm alpine:edge sh -uelic '
-    apk add git nodejs neovim ripgrep alpine-sdk --update
-    git clone https://github.com/NathanFirmo/dotfiles          
-    cp -r dotfiles/.config .config
-    git clone --depth 1 https://github.com/wbthomason/packer.nvim .local/share/nvim/site/pack/packer/start/packer.nvim
-    nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
-    nvim
-'
- ~~~
-
-![2024-01-02_21-50](https://github.com/NathanFirmo/dotfiles/assets/79997705/2e739d21-1605-44b3-a559-e877530330e6)
+![2024-04-12_23-24_1](https://github.com/NathanFirmo/dotfiles/assets/79997705/63cc25b7-2d79-428b-b731-2ba568bf2036)
 
 ## My Zsh
 
