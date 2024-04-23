@@ -39,11 +39,13 @@ bindsym Print       exec flameshot gui -p ~/images/screenshots/
 # LAUNCH APPLICATIONS #
 #######################
 
-# bindsym $mod+Return exec alacritty
-# bindsym $mod+Return exec warp-terminal
 bindsym $mod+Return exec alacritty
 bindsym $mod+t exec tandem
-bindsym $mod+b exec google-chrome-stable
+bindsym $mod+b exec google-chrome-stable --profile-directory="Default" --new-window
+bindsym $mod+Shift+w exec google-chrome-stable --profile-directory="Default" --new-window --app="https://web.whatsapp.com/"
+bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 1" --new-window
+bindsym $mod+Shift+m exec google-chrome-stable --profile-directory="Profile 1" --new-window --app="https://mail.google.com/chat/u/0/"
+bindsym $mod+Shift+t exec google-chrome-stable --profile-directory="Profile 1" --new-window --app="https://app.clickup.com/36985242/home"
 bindsym $mod+d exec dbeaver
 bindsym $mod+i exec insomnia
 bindsym $mod+c exec mongodb-compass
@@ -164,7 +166,7 @@ bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 #######################
 
 font pango:FiraMono Nerd Font 8
-# gaps inner 10px
+gaps inner 10px
 exec --no-startup-id nitrogen --restore
 
 # Element               border  backgr. text    indicator child_border
@@ -181,7 +183,7 @@ client.background       #ffffff
 # }
 
 # Hide window title bar
-set $border_px 2
+set $border_px 0
 default_border pixel $border_px
 default_floating_border pixel $border_px
 for_window [class="^.*"] border pixel $border_px
