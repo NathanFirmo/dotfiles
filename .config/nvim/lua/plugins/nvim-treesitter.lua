@@ -19,7 +19,8 @@ return {
         'lua',
         'go',
         'http',
-        'angular'
+        'angular',
+        'markdown'
       },
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = true,
