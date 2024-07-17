@@ -43,9 +43,9 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+t exec tandem
 bindsym $mod+b exec google-chrome-stable --profile-directory="Default" --new-window
 bindsym $mod+Shift+w exec google-chrome-stable --profile-directory="Default" --new-window --app="https://web.whatsapp.com/"
-bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 1" --new-window
-bindsym $mod+Shift+m exec google-chrome-stable --profile-directory="Profile 1" --new-window --app="https://mail.google.com/chat/u/0/"
-bindsym $mod+Shift+t exec google-chrome-stable --profile-directory="Profile 1" --new-window --app="https://app.clickup.com/36985242/home"
+bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 2" --new-window
+bindsym $mod+Shift+m exec google-chrome-stable --profile-directory="Profile 2" --new-window --app="https://mail.google.com/chat/u/0/"
+bindsym $mod+Shift+t exec google-chrome-stable --profile-directory="Profile 2" --new-window --app="https://app.clickup.com/36985242/home"
 bindsym $mod+d exec dbeaver
 bindsym $mod+i exec insomnia
 bindsym $mod+c exec mongodb-compass
@@ -106,16 +106,16 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 output eDP
-workspace $ws2 output eDP
-workspace $ws3 output eDP
-workspace $ws4 output eDP
-workspace $ws5 output eDP
-workspace $ws6 output HDMI-A-0
-workspace $ws7 output HDMI-A-0
-workspace $ws8 output HDMI-A-0
-workspace $ws9 output HDMI-A-0
-workspace $ws10 output HDMI-A-0
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output HDMI-1
+workspace $ws7 output HDMI-1
+workspace $ws8 output HDMI-1
+workspace $ws9 output HDMI-1
+workspace $ws10 output HDMI-1
 
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2

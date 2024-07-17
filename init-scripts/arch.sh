@@ -59,9 +59,9 @@ logStep "Installing snap"
 
 yay -S snapd
 
-logStep "Installing flatpack"
+logStep "Installing flatpak"
 
-yay -S snapd
+sudo pacman -S flatpak
 
 logStep "Installing neovim"
 

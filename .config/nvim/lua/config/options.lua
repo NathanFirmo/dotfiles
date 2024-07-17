@@ -30,3 +30,4 @@ set.swapfile = false
 set.termguicolors = true
 
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber') -- Disable numbers on terminal buffer
+vim.cmd([[au BufNewFile,BufRead *.yaml.gotmpl setf yaml]])

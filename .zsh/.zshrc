@@ -1,24 +1,18 @@
 source ~/.zsh/env-vars.zsh
 source ~/.zsh/zinit.zsh
 
-plugins=(git zsh-syntax-highlighting)
-
 source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh/compdef/kubectl.zsh
-source ~/.zsh/compdef/kind.zsh
 
 source ~/.zsh/aliases.zsh
 
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+export PATH="/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH"
 
-# # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/nathan/pkg/google-cloud-sdk/path.zsh.inc' ]; then . '/home/nathan/pkg/google-cloud-sdk/path.zsh.inc'; fi
+export CLOUDSDK_ROOT_DIR=/opt/google-cloud-cli
+export CLOUDSDK_PYTHON=/usr/bin/python
+export CLOUDSDK_PYTHON_ARGS='-S -W ignore'
+export PATH=$CLOUDSDK_ROOT_DIR/bin:$PATH
+export GOOGLE_CLOUD_SDK_HOME=$CLOUDSDK_ROOT_DIR
 
-# # The next line enables shell command completion for gcloud.
-if [ -f '/home/nathan/pkg/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/nathan/pkg/google-cloud-sdk/completion.zsh.inc'; fi
-
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+source /usr/share/nvm/init-nvm.sh
