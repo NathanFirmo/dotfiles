@@ -115,10 +115,10 @@ return {
 
       ls.add_snippets(value, {
         s({
-          trig = "s:test",
-          docstring = "Generates an \"test\" block for Jest test"
+          trig = "s:it",
+          docstring = "Generates an \"it\" block for Jest test"
         }, {
-          t("test('"), i(1, "do something"), t({"', async () => {", "  "}),
+          t("it('"), i(1, "do something"), t({"', () => {", "  "}),
           i(2, {"// Do something"}),
           t({ "", "})" }),
         })
@@ -126,10 +126,21 @@ return {
 
       ls.add_snippets(value, {
         s({
-          trig = "s:test.todo",
-          docstring = "Generates an \"test.todo\" block for Jest test"
+          trig = "s:it.todo",
+          docstring = "Generates an \"it.todo\" block for Jest test"
         }, {
-          t("test.todo('"), i(1, "do something"), t({"')"}),
+          t("it.todo('"), i(1, "do something"), t({"')"}),
+        })
+      })
+
+      ls.add_snippets(value, {
+        s({
+          trig = "s:div",
+          docstring = "Generates an \"<div data-cy=\"\">\" for Cypress test"
+        }, {
+          t("<div data-cy=\""), i(2, "prop"), t({"\">", "  "}),
+          i(1,{ "<!-- Something -->" }),
+          t({"", "</div>"}),
         })
       })
 
@@ -149,7 +160,7 @@ return {
           trig = "s:beforeAll",
           docstring = "Generates an \"beforeAll\" block for Jest test"
         }, {
-          t("beforeAll("), t({"async () => {", "  "}),
+          t("beforeAll("), t({"() => {", "  "}),
           i(1, {"// Do something"}),
           t({ "", "})" }),
         })
@@ -160,7 +171,7 @@ return {
           trig = "s:beforeEach",
           docstring = "Generates an \"beforeEach\" block for Jest test"
         }, {
-          t("beforeEach("), t({"async () => {", "  "}),
+          t("beforeEach("), t({"() => {", "  "}),
           i(1, {"// Do something"}),
           t({ "", "})" }),
         })
@@ -171,7 +182,7 @@ return {
           trig = "s:afterAll",
           docstring = "Generates an \"afterAll\" block for Jest test"
         }, {
-          t("afterAll("), t({"async () => {", "  "}),
+          t("afterAll("), t({"() => {", "  "}),
           i(1, {"// Do something"}),
           t({ "", "})" }),
         })
@@ -182,7 +193,7 @@ return {
           trig = "s:afterEach",
           docstring = "Generates an \"afterEach\" block for Jest test"
         }, {
-          t("afterEach("), t({"async () => {", "  "}),
+          t("afterEach("), t({"() => {", "  "}),
           i(1, {"// Do something"}),
           t({ "", "})" }),
         })

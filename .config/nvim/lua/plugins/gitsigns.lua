@@ -1,6 +1,7 @@
 return {
   'lewis6991/gitsigns.nvim',
   event = "VeryLazy",
+  commit = '52f8da33cc0cadbf1164c4a91c8bfd6895533d67',
   opts = {
     signs = {
       add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},

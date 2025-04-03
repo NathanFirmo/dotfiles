@@ -49,6 +49,8 @@ bindsym $mod+Shift+t exec google-chrome-stable --profile-directory="Profile 2" -
 bindsym $mod+d exec dbeaver
 bindsym $mod+i exec insomnia
 bindsym $mod+c exec mongodb-compass
+bindsym $mod+r exec ~/pkg/redis-insight/redisinsight
+bindsym $mod+v exec ~/pkg/kdenlive.AppImage
 bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 bindsym $mod+m exec --no-startup-id dmenu_run
 bindsym $mod+q kill
@@ -87,9 +89,8 @@ floating_modifier $mod
 #  WINDOWS BEHAVIOUR  #
 #######################
 
-for_window [class="Tandem"] floating enable
-
-
+for_window [class="Tandem"] move to workspace $ws1, floating enable
+for_window [class="Cypress"] move to workspace $ws5
 
 #######################
 #  HANDLE WORKSPACES  #

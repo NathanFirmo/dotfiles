@@ -48,10 +48,7 @@ map('n', '<leader>,', ':%s/$/,<CR>G$xggyG:noh<CR>')
 
 -- Replace ------------------------------------------
 map('n', 'rp', ':%s/')
-
--- Replace across files ------------------------------
-map('n', '<Leader>ro', ":vimgrep /search_term/gj **/*")
-map('n', '<Leader>rp', ":cfdo %s/foo/bar/gc | update")
+map('v', 'rp', ':s/')
 
 -- Clear find ----------------------------------------
 map('n', '<Leader>cf', ':noh<cr>')
@@ -82,10 +79,10 @@ map('n', '<C-\\>', '@:')
 -- Note that this means e.g. "ad won't copy the text into
 -- register a anymore.  You have to explicitly yank it.
 -- and reselect and re-yank any text that is pasted in visual mode
-map('n', 'c', '"_c')
-map('v', 'c', '"_c')
-map('n', 'C', '"_C')
-map('v', 'C', '"_C')
+-- map('n', 'c', '"_c')
+-- map('v', 'c', '"_c')
+-- map('n', 'C', '"_C')
+-- map('v', 'C', '"_C')
 map('n', 's', '"_s')
 map('v', 's', '"_s')
 map('n', 'S', '"_S')
@@ -101,3 +98,18 @@ map('t', '<C-a>', '<C-\\><C-n>:NvimTreeToggle<CR>')
 map('t', '<C-s>', '<C-\\><C-n>:b#<CR>')
 map('t', '<C-x>', '<C-\\><C-n>:bd!<CR>')
 map('n', '<C-s>', ':edit term://zsh<CR>')
+map('n', '<C-t>', ':lua cypress()<CR>')
+
+function _G.cypress()
+  local buf_path = vim.api.nvim_buf_get_name(0)
+  local match = buf_path:match("apps/e2e/([^/]+)/")
+  
+  if not match then
+    print("Could not determine project name from buffer path.")
+    return
+  end
+  
+  local project_name = (match:find("api") and "" or "ui-") .. match .. "-e2e"
+
+  vim.cmd("vsplit term://nx e2e " .. project_name .. " --headed --no-exit --skip-nx-cache")
+end
