@@ -1,5 +1,6 @@
 source ~/.zsh/env-vars.zsh
 source ~/.zsh/zinit.zsh
+source ~/.zsh/zoxide.zsh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -8,6 +9,7 @@ source ~/.zsh/compdef/kubectl.zsh
 source ~/.zsh/aliases.zsh
 
 export PATH="/home/linuxbrew/.linuxbrew/opt/mysql-client/bin:$PATH"
+source "$HOME/.dotbins/shell/zsh.sh"
 
 export CLOUDSDK_ROOT_DIR=/opt/google-cloud-cli
 export CLOUDSDK_PYTHON=/usr/bin/python

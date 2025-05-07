@@ -1,0 +1,42 @@
+{
+  "helmfile/linux/amd64": {
+    "version": "1.0.0",
+    "updated_at": "2025-04-30T12:27:12.039208",
+    "sha256": "ef718dfb10e2396531736ae0dbbb3ba892fa0675788c47bb15104141b22d7a6a"
+  },
+  "k9s/linux/amd64": {
+    "version": "0.50.4",
+    "updated_at": "2025-04-25T10:59:38.682955",
+    "sha256": "1b658c6188339c9f8f271a22339b62d2653da0d636c855629019588d57e5570d"
+  },
+  "kind/linux/amd64": {
+    "version": "0.27.0",
+    "updated_at": "2025-04-25T10:59:38.704424",
+    "sha256": "a6875aaea358acf0ac07786b1a6755d08fd640f4c79b7a2e46681cc13f49a04b"
+  },
+  "sops/linux/amd64": {
+    "version": "3.10.2",
+    "updated_at": "2025-04-25T10:59:38.773582",
+    "sha256": "79b0f844237bd4b0446e4dc884dbc1765fc7dedc3968f743d5949c6f2e701739"
+  },
+  "task/linux/amd64": {
+    "version": "3.43.3",
+    "updated_at": "2025-04-28T11:37:29.902328",
+    "sha256": "9f93a694464addaf5205661fc43fc9b9fa2b31596731e91510b41811da79fe21"
+  },
+  "vcluster/linux/amd64": {
+    "version": "0.24.1",
+    "updated_at": "2025-04-25T11:01:55.605212",
+    "sha256": "e952bfa7e6a0bcc6e40969990f873e568baaccd996966a09dba75d21c0302801"
+  },
+  "yq/linux/amd64": {
+    "version": "4.45.1",
+    "updated_at": "2025-04-25T10:59:38.793347",
+    "sha256": "654d2943ca1d3be2024089eb4f270f4070f491a0610481d128509b2834870049"
+  },
+  "zoxide/linux/amd64": {
+    "version": "0.9.7",
+    "updated_at": "2025-04-28T11:37:29.924878",
+    "sha256": "ee53a42c11fe8a175ef7b136bb91f588aef76e1ae7133e58a695b1199588ee7e"
+  }
+}

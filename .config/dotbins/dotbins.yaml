@@ -1,0 +1,16 @@
+plataforms:
+  linux:
+    - amd64
+tools:
+  helmfile: helmfile/helmfile
+  sops: getsops/sops
+  kind: kubernetes-sigs/kind
+  task:
+    repo: go-task/task
+    shell_code: |
+      alias t="task"
+  yq: mikefarah/yq
+  k9s: derailed/k9s
+  vcluster: loft-sh/vcluster
+  zoxide: ajeetdsouza/zoxide
+  # neovim: neovim/neovim

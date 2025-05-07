@@ -3,8 +3,8 @@ return {
   event = "VeryLazy",
   opts = {
     debounce_delay = 135,
-    execution_message = {
-      enabled = false,
-    },
+    -- execution_message = {
+    --   enabled = false,
+    -- },
   },
 }

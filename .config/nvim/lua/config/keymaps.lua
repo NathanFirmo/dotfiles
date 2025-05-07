@@ -29,7 +29,7 @@ map('i', '<C-v>', '<Esc>pa')
 map('n', 'çç', ':x<CR>')
 
 -- Delete buffer ----------------------------------------
-map('n', 'PP', ':bd<CR>')
+map('n', 'ÇÇ', ':bd<CR>')
 
 -- Create splits --------------------------------------
 map('n', 'qq', ':vsplit<CR>')
