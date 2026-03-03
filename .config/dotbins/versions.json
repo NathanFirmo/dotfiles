@@ -1,42 +1,82 @@
 {
+  "buf/linux/amd64": {
+    "version": "1.66.0",
+    "updated_at": "2026-03-03T12:34:34.139836",
+    "sha256": "32e8e7b236e1b9da4eb20ad3c7701a404f7909b18d60f6d00837c63b31d4e6cf"
+  },
+  "cloudflared/linux/amd64": {
+    "version": "2026.2.0",
+    "updated_at": "2026-02-18T20:31:27.300466",
+    "sha256": "e3a6a2c9a225fa5be3708ea6e6095fdd1bcc03109be231d7c7f1225ae4f473e5"
+  },
+  "devbox/linux/amd64": {
+    "version": "0.0.1",
+    "updated_at": "2026-03-03T12:34:34.161017",
+    "sha256": "3ab3bc497a2342b2edbef14301f3ae119f0993a2bebf9f73c581c2346c29101c"
+  },
+  "fzf/linux/amd64": {
+    "version": "0.70.0",
+    "updated_at": "2026-03-03T12:34:34.235173",
+    "sha256": "8fd0e0b93bdf64ba90081ffb6658d77ea5a024c122b36852b1de30f9d2733754"
+  },
+  "grpcurl/linux/amd64": {
+    "version": "1.9.3",
+    "updated_at": "2025-10-07T13:07:15.893066",
+    "sha256": "a926b62a85787ccf73ef8736b3ae554f1242e39d92bb8767a79d6dd23b11d1d5"
+  },
   "helmfile/linux/amd64": {
-    "version": "1.0.0",
-    "updated_at": "2025-04-30T12:27:12.039208",
-    "sha256": "ef718dfb10e2396531736ae0dbbb3ba892fa0675788c47bb15104141b22d7a6a"
+    "version": "1.4.1",
+    "updated_at": "2026-03-03T12:34:35.407506",
+    "sha256": "d9a140aa60eeeebc8dc5576e38f2437370c093c634bd8e9ea7f21000de7405e5"
+  },
+  "hugo/linux/amd64": {
+    "version": "0.152.2",
+    "updated_at": "2025-12-05T14:07:28.639489",
+    "sha256": "416bcfbdf5f68469ec9644dbe507da50fc21b94b69a125b059d64ed2cb4d8c27"
   },
   "k9s/linux/amd64": {
-    "version": "0.50.4",
-    "updated_at": "2025-04-25T10:59:38.682955",
-    "sha256": "1b658c6188339c9f8f271a22339b62d2653da0d636c855629019588d57e5570d"
+    "version": "0.50.18",
+    "updated_at": "2026-02-18T20:31:28.918720",
+    "sha256": "0b697ed4aa80997f7de4deeed6f1fba73df191b28bf691b1f28d2f45fa2a9e9b"
   },
   "kind/linux/amd64": {
-    "version": "0.27.0",
-    "updated_at": "2025-04-25T10:59:38.704424",
-    "sha256": "a6875aaea358acf0ac07786b1a6755d08fd640f4c79b7a2e46681cc13f49a04b"
+    "version": "0.31.0",
+    "updated_at": "2026-02-18T20:31:28.962006",
+    "sha256": "eb244cbafcc157dff60cf68693c14c9a75c4e6e6fedaf9cd71c58117cb93e3fa"
+  },
+  "protoc/linux/amd64": {
+    "version": "32.1",
+    "updated_at": "2025-10-08T09:40:51.016848",
+    "sha256": "e9c129c176bb7df02546c4cd6185126ca53c89e7d2f09511e209319704b5dd7e"
   },
   "sops/linux/amd64": {
-    "version": "3.10.2",
-    "updated_at": "2025-04-25T10:59:38.773582",
-    "sha256": "79b0f844237bd4b0446e4dc884dbc1765fc7dedc3968f743d5949c6f2e701739"
+    "version": "3.12.1",
+    "updated_at": "2026-03-03T12:34:35.585252",
+    "sha256": "cf3136d20a6004405c986a48e179c3c7a731f777fbf105a37bd5dac5c9047100"
+  },
+  "stripe/linux/amd64": {
+    "version": "1.37.2",
+    "updated_at": "2026-03-03T12:34:35.831719",
+    "sha256": "1902ffd4c40da22d2576eab1fdfab8b40e69230b9f5d3b43d7333ddc79c1325f"
   },
   "task/linux/amd64": {
-    "version": "3.43.3",
-    "updated_at": "2025-04-28T11:37:29.902328",
-    "sha256": "9f93a694464addaf5205661fc43fc9b9fa2b31596731e91510b41811da79fe21"
+    "version": "3.48.0",
+    "updated_at": "2026-02-18T20:31:29.419629",
+    "sha256": "f4bfc4eef1b2557b262f3cc0a79976a421885cb7b9e71cfe75568a2ebe4d7ae5"
   },
   "vcluster/linux/amd64": {
-    "version": "0.24.1",
-    "updated_at": "2025-04-25T11:01:55.605212",
-    "sha256": "e952bfa7e6a0bcc6e40969990f873e568baaccd996966a09dba75d21c0302801"
+    "version": "0.23.1",
+    "updated_at": "2025-12-05T14:07:30.064580",
+    "sha256": "989514bdc2b254faba204a6721ae0fa369f15fc237746e22a45b87298524b3b1"
   },
   "yq/linux/amd64": {
-    "version": "4.45.1",
-    "updated_at": "2025-04-25T10:59:38.793347",
-    "sha256": "654d2943ca1d3be2024089eb4f270f4070f491a0610481d128509b2834870049"
+    "version": "4.52.4",
+    "updated_at": "2026-02-18T20:31:29.463862",
+    "sha256": "0c4d965ea944b64b8fddaf7f27779ee3034e5693263786506ccd1c120f184e8c"
   },
   "zoxide/linux/amd64": {
-    "version": "0.9.7",
-    "updated_at": "2025-04-28T11:37:29.924878",
-    "sha256": "ee53a42c11fe8a175ef7b136bb91f588aef76e1ae7133e58a695b1199588ee7e"
+    "version": "0.9.9",
+    "updated_at": "2026-02-18T20:31:29.494501",
+    "sha256": "4ff057d3c4d957946937274c2b8be7af2a9bbae7f90a1b5e9baaa7cb65a20caa"
   }
 }

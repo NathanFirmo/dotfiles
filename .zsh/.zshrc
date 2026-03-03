@@ -1,8 +1,10 @@
 source ~/.zsh/env-vars.zsh
 source ~/.zsh/zinit.zsh
 source ~/.zsh/zoxide.zsh
-
 source $ZSH/oh-my-zsh.sh
+. "$HOME/.cargo/env"
+
+eval "$(rbenv init - zsh)"
 
 source ~/.zsh/compdef/kubectl.zsh
 
@@ -18,6 +20,8 @@ export PATH=$CLOUDSDK_ROOT_DIR/bin:$PATH
 export GOOGLE_CLOUD_SDK_HOME=$CLOUDSDK_ROOT_DIR
 
 source /usr/share/nvm/init-nvm.sh
+
+source <(fzf --zsh)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

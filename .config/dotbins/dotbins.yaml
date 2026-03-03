@@ -11,6 +11,20 @@ tools:
       alias t="task"
   yq: mikefarah/yq
   k9s: derailed/k9s
-  vcluster: loft-sh/vcluster
+  vcluster:
+    repo: loft-sh/vcluster
+    tag: v0.23.1
+    platform_map:
+      macos: darwin
+      linux: linux
+    asset_patterns: vcluster-{platform}-{arch}
   zoxide: ajeetdsouza/zoxide
-  # neovim: neovim/neovim
+  grpcurl: ullstorydev/grpcurl
+  buf: bufbuild/buf
+  fzf: junegunn/fzf
+  cloudflared: cloudflare/cloudflared
+  stripe: stripe/stripe-cli
+  hugo: 
+    repo: gohugoio/hugo
+    extract_archive: true 
+    asset_patterns: hugo_extended_0.152.2_{platform}-{arch}.tar.gz

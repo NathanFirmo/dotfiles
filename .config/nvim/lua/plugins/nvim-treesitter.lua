@@ -20,7 +20,8 @@ return {
         'go',
         'http',
         'angular',
-        'markdown'
+        'markdown',
+        'proto'
       },
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = true,

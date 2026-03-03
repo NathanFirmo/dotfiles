@@ -14,4 +14,13 @@ export OPENSSL_CONF="/dev/null"
 export NVM_LAZY_LOAD="true"
 export PNPM_HOME="/home/nathan/.local/share/pnpm"
 export NVM_DIR="$HOME/.nvm"
-export WARP_THEMES_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal/themes"
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+
+export CAPACITOR_ANDROID_STUDIO_PATH="/usr/bin/android-studio"
+
+# tmp
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk

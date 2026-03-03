@@ -13,7 +13,8 @@ return {
     'css',
     'yaml',
     'c',
-    'go'
+    'go',
+    'proto'
   },
   config = function()
     -- Mappings.
@@ -100,6 +101,11 @@ return {
       on_attach = on_attach,
       capabilities = capabilities,
     }
+
+    -- lspconfig.protols.setup {
+    --   on_attach = on_attach,
+    --   capabilities = capabilities,
+    -- }
 
     lspconfig.tailwindcss.setup {
       on_attach = on_attach,

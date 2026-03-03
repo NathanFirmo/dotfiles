@@ -109,3 +109,8 @@ mods = "Control|Shift"
 action = "Copy"
 key = "C"
 mods = "Control|Shift"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"

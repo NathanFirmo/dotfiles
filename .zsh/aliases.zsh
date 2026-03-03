@@ -16,9 +16,6 @@ alias gd="git diff"
 alias gl="git log --oneline --decorate --graph --all"
 alias glp="git log -p"
 alias gb="git blame"
-alias lg="lazygit"
-alias azrun="az aks command invoke --resource-group k8s --name dev --command"
-alias swagger2http="node ~/projects/swagger2http/index.js"
 alias mic="amixer sset Capture"
 alias volume="amixer sset Master"
 alias ls="/usr/bin/ls --color=auto -la"
@@ -27,10 +24,9 @@ alias cpwd="pwd | xclip -sel clip"
 alias luamake="/home/nathan/lua-language-server/3rd/luamake/luamake"
 alias c='clear'
 alias grep='grep --color=auto'
-alias docker-up='systemctl start docker.socket'
-alias docker-down='systemctl stop docker.socket'
 alias bt-on='systemctl start bluetooth'
 alias bt-off='systemctl stop bluetooth'
+alias batcp="cat /sys/class/power_supply/BAT1/capacity"
 
 ## Functions ###
 

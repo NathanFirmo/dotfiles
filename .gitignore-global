@@ -10,3 +10,4 @@ httpRequests/*
 proxy.conf.json
 **/**/proxy.conf.json
 **/.local/proxy.conf.json
+bin

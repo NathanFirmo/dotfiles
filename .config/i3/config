@@ -40,18 +40,17 @@ bindsym Print       exec flameshot gui -p ~/images/screenshots/
 #######################
 
 bindsym $mod+Return exec alacritty
-bindsym $mod+t exec tandem
+bindsym $mod+t exec ~/pkg/tandem.AppImage
+bindsym $mod+n exec ~/pkg/intellij/bin/idea
 bindsym $mod+b exec google-chrome-stable --profile-directory="Default" --new-window
-bindsym $mod+Shift+w exec google-chrome-stable --profile-directory="Default" --new-window --app="https://web.whatsapp.com/"
 bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 2" --new-window
-bindsym $mod+Shift+m exec google-chrome-stable --profile-directory="Profile 2" --new-window --app="https://mail.google.com/chat/u/0/"
-bindsym $mod+Shift+t exec google-chrome-stable --profile-directory="Profile 2" --new-window --app="https://app.clickup.com/36985242/home"
 bindsym $mod+d exec dbeaver
 bindsym $mod+i exec insomnia
 bindsym $mod+c exec mongodb-compass
 bindsym $mod+r exec ~/pkg/redis-insight/redisinsight
 bindsym $mod+v exec ~/pkg/kdenlive.AppImage
-bindsym $mod+a exec ~/pkg/cursor.AppImage
+bindsym $mod+g exec google-chrome-stable --profile-directory="Default" --new-window --app="https://app.todoist.com/app/today"
+bindsym $mod+w exec google-chrome-stable --profile-directory="Default" --new-window --app="https://web.whatsapp.com"
 bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 bindsym $mod+m exec --no-startup-id dmenu_run
 bindsym $mod+q kill
