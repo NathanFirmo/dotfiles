@@ -1,13 +1,38 @@
 {
+  "argo/linux/amd64": {
+    "version": "4.0.6",
+    "updated_at": "2026-06-12T16:22:36.198189",
+    "sha256": "8ecdc25dcce175412093cc9b04fdd1063b1e7d635e90be6d01643fcb25a356e1"
+  },
   "buf/linux/amd64": {
-    "version": "1.66.0",
-    "updated_at": "2026-03-03T12:34:34.139836",
-    "sha256": "32e8e7b236e1b9da4eb20ad3c7701a404f7909b18d60f6d00837c63b31d4e6cf"
+    "version": "1.71.0",
+    "updated_at": "2026-06-23T11:20:11.887291",
+    "sha256": "d3de2838c68a5759ca276884254bc70df4e4ad185d6ed5f65f327b6ce6363eab"
+  },
+  "carbonyl/linux/amd64": {
+    "version": "0.0.3",
+    "updated_at": "2026-04-24T23:25:51.696335",
+    "sha256": "46a902ea29bb32f773fb4ee341423705b92345a810422b8df93eaea6a1ec7ad2"
   },
   "cloudflared/linux/amd64": {
-    "version": "2026.2.0",
-    "updated_at": "2026-02-18T20:31:27.300466",
-    "sha256": "e3a6a2c9a225fa5be3708ea6e6095fdd1bcc03109be231d7c7f1225ae4f473e5"
+    "version": "2026.6.1",
+    "updated_at": "2026-06-23T11:20:11.984467",
+    "sha256": "a22276b23500f75763604fd9bff7ece607f705ad62469344606bd662dbd3793d"
+  },
+  "codex/linux/amd64": {
+    "version": "rust-v0.142.0",
+    "updated_at": "2026-06-24T12:12:14.625910",
+    "sha256": "2e3acb39a277ff11c314d832cfdd246faebeea26bf01aff8e9e10641e6dea801"
+  },
+  "crush/linux/amd64": {
+    "version": "0.80.0",
+    "updated_at": "2026-06-28T12:42:02.348439",
+    "sha256": "773af708d5cb9bf896934335589e94aa0bb72b9b8a918d9f7160663a806a3f84"
+  },
+  "dbmate/linux/amd64": {
+    "version": "2.33.0",
+    "updated_at": "2026-06-03T10:21:59.313838",
+    "sha256": "dfd4027141b6e4357158099bdfe6c02b286af70f8e49057937744cf80b38ea1c"
   },
   "devbox/linux/amd64": {
     "version": "0.0.1",
@@ -15,9 +40,14 @@
     "sha256": "3ab3bc497a2342b2edbef14301f3ae119f0993a2bebf9f73c581c2346c29101c"
   },
   "fzf/linux/amd64": {
-    "version": "0.70.0",
-    "updated_at": "2026-03-03T12:34:34.235173",
-    "sha256": "8fd0e0b93bdf64ba90081ffb6658d77ea5a024c122b36852b1de30f9d2733754"
+    "version": "0.73.1",
+    "updated_at": "2026-06-03T10:21:59.428937",
+    "sha256": "f3252c2c366bc1700d3c85781ec8c9695998927ac127870eb049ceea2d540f8a"
+  },
+  "genact/linux/amd64": {
+    "version": "1.5.1",
+    "updated_at": "2026-06-24T18:33:09.605114",
+    "sha256": "f382b3466ef85ed8394064ef49ed8d446e6aebd67791a42456c3d36c6dd164e8"
   },
   "grpcurl/linux/amd64": {
     "version": "1.9.3",
@@ -25,9 +55,9 @@
     "sha256": "a926b62a85787ccf73ef8736b3ae554f1242e39d92bb8767a79d6dd23b11d1d5"
   },
   "helmfile/linux/amd64": {
-    "version": "1.4.1",
-    "updated_at": "2026-03-03T12:34:35.407506",
-    "sha256": "d9a140aa60eeeebc8dc5576e38f2437370c093c634bd8e9ea7f21000de7405e5"
+    "version": "1.6.0",
+    "updated_at": "2026-06-23T11:20:14.837414",
+    "sha256": "44c617bc12b5f7f1ca1da5333ccbd3865b314c132168b4ce1127f47e756008dc"
   },
   "hugo/linux/amd64": {
     "version": "0.152.2",
@@ -35,34 +65,39 @@
     "sha256": "416bcfbdf5f68469ec9644dbe507da50fc21b94b69a125b059d64ed2cb4d8c27"
   },
   "k9s/linux/amd64": {
-    "version": "0.50.18",
-    "updated_at": "2026-02-18T20:31:28.918720",
-    "sha256": "0b697ed4aa80997f7de4deeed6f1fba73df191b28bf691b1f28d2f45fa2a9e9b"
+    "version": "0.51.0",
+    "updated_at": "2026-06-12T16:22:40.015883",
+    "sha256": "c3752ad51a5a4015a113819c4eeb6e55a4d0e4b8e652494797532f6fc8161dd7"
   },
   "kind/linux/amd64": {
-    "version": "0.31.0",
-    "updated_at": "2026-02-18T20:31:28.962006",
-    "sha256": "eb244cbafcc157dff60cf68693c14c9a75c4e6e6fedaf9cd71c58117cb93e3fa"
+    "version": "0.32.0",
+    "updated_at": "2026-06-03T10:22:01.352855",
+    "sha256": "50030de23cf40a18505f20426f6a8506bedf13c6e509244bd1fa9463721b0f54"
   },
   "protoc/linux/amd64": {
     "version": "32.1",
     "updated_at": "2025-10-08T09:40:51.016848",
     "sha256": "e9c129c176bb7df02546c4cd6185126ca53c89e7d2f09511e209319704b5dd7e"
   },
+  "sgenact/linux/amd64": {
+    "version": "1.5.1",
+    "updated_at": "2026-06-24T18:32:52.500386",
+    "sha256": "f382b3466ef85ed8394064ef49ed8d446e6aebd67791a42456c3d36c6dd164e8"
+  },
   "sops/linux/amd64": {
-    "version": "3.12.1",
-    "updated_at": "2026-03-03T12:34:35.585252",
-    "sha256": "cf3136d20a6004405c986a48e179c3c7a731f777fbf105a37bd5dac5c9047100"
+    "version": "3.13.1",
+    "updated_at": "2026-06-03T10:22:01.606105",
+    "sha256": "620a9d7e3352ababeca6908cea24a6e8b14ce89a448ddbd3f94f1ef3398f470a"
   },
   "stripe/linux/amd64": {
-    "version": "1.37.2",
-    "updated_at": "2026-03-03T12:34:35.831719",
-    "sha256": "1902ffd4c40da22d2576eab1fdfab8b40e69230b9f5d3b43d7333ddc79c1325f"
+    "version": "1.43.2",
+    "updated_at": "2026-06-28T12:42:02.517135",
+    "sha256": "462c2d15869817f2c9bc1a99b521e203223d7014a5a8b67d4423e7b8b34614bb"
   },
   "task/linux/amd64": {
-    "version": "3.48.0",
-    "updated_at": "2026-02-18T20:31:29.419629",
-    "sha256": "f4bfc4eef1b2557b262f3cc0a79976a421885cb7b9e71cfe75568a2ebe4d7ae5"
+    "version": "3.51.1",
+    "updated_at": "2026-06-03T10:22:02.748663",
+    "sha256": "da7e92f0ff961ef2aae7cfecbad8d1fd2a08d7b09ba968673adf7ff389b243b5"
   },
   "vcluster/linux/amd64": {
     "version": "0.23.1",
@@ -70,9 +105,9 @@
     "sha256": "989514bdc2b254faba204a6721ae0fa369f15fc237746e22a45b87298524b3b1"
   },
   "yq/linux/amd64": {
-    "version": "4.52.4",
-    "updated_at": "2026-02-18T20:31:29.463862",
-    "sha256": "0c4d965ea944b64b8fddaf7f27779ee3034e5693263786506ccd1c120f184e8c"
+    "version": "4.53.3",
+    "updated_at": "2026-06-12T16:22:40.280162",
+    "sha256": "fa52a4e758c63d38299163fbdd1edfb4c4963247918bf9c1c5d31d84789eded4"
   },
   "zoxide/linux/amd64": {
     "version": "0.9.9",
