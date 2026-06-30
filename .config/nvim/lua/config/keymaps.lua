@@ -25,11 +25,8 @@ map('n', '<leader>L', ':Lazy<CR>')
 -- Use CTRL + v to paste on Insert Mode -------------
 map('i', '<C-v>', '<Esc>pa')
 
--- Close panel ----------------------------------------
-map('n', 'ÇÇ', ':x<CR>')
-
 -- Delete buffer ----------------------------------------
-map('n', 'çç', ':bd<CR>')
+map('n', ';;', ':bd<CR>')
 
 -- Create splits --------------------------------------
 map('n', 'qq', ':vsplit<CR>')
