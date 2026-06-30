@@ -24,3 +24,9 @@ export CAPACITOR_ANDROID_STUDIO_PATH="/usr/bin/android-studio"
 
 # tmp
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+
+# Argo Workflows
+export ARGO_SERVER='argo-workflows.incentive.land:443'
+export ARGO_HTTP1=true
+export ARGO_SECURE=true
+export ARGO_NAMESPACE=icv
