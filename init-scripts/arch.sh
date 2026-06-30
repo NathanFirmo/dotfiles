@@ -117,6 +117,10 @@ logStep "Installing ripgrep"
 
 sudo pacman -S ripgrep
 
+logStep "Installing xdotool"
+
+sudo pacman -S xdotool
+
 logStep "Installing silver-searcher-git"
 
 yay -S silver-searcher-git

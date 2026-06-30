@@ -4,6 +4,7 @@
 #        MOD KEY      #
 #######################
 set $mod Mod4
+set $alt Mod1
 
 
 
@@ -19,6 +20,10 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 # Autostart picom when starting the i3 window manager
 exec_always --no-startup-id picom -b
+# Night shift (color temperature based on time/location)
+exec --no-startup-id redshift-gtk
+# Auto brightness (time-based)
+exec --no-startup-id systemctl --user start brightness-auto
 
 
 
@@ -31,7 +36,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
-bindsym Print       exec flameshot gui -p ~/images/screenshots/
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10 -time 200
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 200
+bindsym Print       exec flameshot gui -p ~/images/screenshots/ -c
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui -p ~/images/screenshots/ -c
 
 
 
@@ -54,6 +62,15 @@ bindsym $mod+w exec google-chrome-stable --profile-directory="Default" --new-win
 bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 bindsym $mod+m exec --no-startup-id dmenu_run
 bindsym $mod+q kill
+
+#######################
+#   SEND ARROW KEYS   #
+#######################
+
+bindsym --release $alt+h exec --no-startup-id xdotool key --clearmodifiers Left
+bindsym --release $alt+j exec --no-startup-id xdotool key --clearmodifiers Down
+bindsym --release $alt+k exec --no-startup-id xdotool key --clearmodifiers Up
+bindsym --release $alt+l exec --no-startup-id xdotool key --clearmodifiers Right
 
 #######################
 #    HANDLE WINDOWS   #
