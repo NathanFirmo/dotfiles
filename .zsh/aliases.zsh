@@ -1,10 +1,9 @@
 ## Aliases ###
 
 unalias -a
+alias cd="z"
 alias icv="~/work/main"
 alias icvw="~/work/main/monorepo"
-alias ys="yarn start"
-alias yd="yarn dev"
 alias gs="git status"
 alias gc="git commit -m "
 alias gp="git pull --rebase --autostash && git push"
@@ -15,8 +14,6 @@ alias gd="git diff"
 alias gl="git log --oneline --decorate --graph --all"
 alias glp="git log -p"
 alias gb="git blame"
-alias mic="amixer sset Capture"
-alias volume="amixer sset Master"
 alias ls="/usr/bin/ls --color=auto -la"
 alias copy="xclip -sel clip"
 alias cpwd="pwd | xclip -sel clip"

@@ -29,3 +29,8 @@ export NVM_DIR="$HOME/.nvm"
 
 # Keep GPG pinentry attached to the current terminal session.
 export GPG_TTY=$(tty)
+
+# Silencia warnings do fontconfig vendorizado no Chromium/Electron (Cypress etc.):
+# faz o Electron usar o fonts.conf do sistema (conf.d curado) em vez de varrer
+# /usr/share/fontconfig/conf.avail, que contém arquivos que o parser antigo dele não entende.
+export FONTCONFIG_FILE=/etc/fonts/fonts.conf

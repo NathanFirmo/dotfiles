@@ -16,14 +16,24 @@ set $alt Mod1
 exec --no-startup-id dex --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Disable X11 screen blanking and display power management on startup.
+exec --no-startup-id xset s off
+exec --no-startup-id xset s noblank
+exec --no-startup-id xset -dpms
+# Keep logind from suspending this session while i3 is running.
+exec --no-startup-id systemctl --user start no-sleep-inhibit.service
 # NetworkManager 
 exec --no-startup-id nm-applet
 # Autostart picom when starting the i3 window manager
 exec_always --no-startup-id picom -b
+# Notification daemon (dunst) — needed for earlyoom/systemd popups
+exec --no-startup-id dunst
 # Night shift (color temperature based on time/location)
 exec --no-startup-id redshift-gtk
 # Auto brightness (time-based)
 exec --no-startup-id systemctl --user start brightness-auto
+# Screenshot daemon (flameshot v12+ needs the background service running for `flameshot gui`)
+exec --no-startup-id flameshot
 
 
 
@@ -38,7 +48,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10 -time 200
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 200
-bindsym Print       exec flameshot gui -p ~/images/screenshots/ -c
+bindsym Print       exec --no-startup-id flameshot gui -p ~/images/screenshots/ -c
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui -p ~/images/screenshots/ -c
 
 
@@ -47,9 +57,8 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui -p ~/images/screenshots/
 # LAUNCH APPLICATIONS #
 #######################
 
-bindsym $mod+Return exec alacritty
-bindsym $mod+t exec ~/pkg/tandem.AppImage
-bindsym $mod+n exec ~/pkg/intellij/bin/idea
+# Terminal roda dentro do dev.slice (teto de memoria p/ builds/testes) — Camada 2
+bindsym $mod+Return exec --no-startup-id systemd-run --user --slice=dev.slice --scope alacritty
 bindsym $mod+b exec google-chrome-stable --profile-directory="Default" --new-window
 bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 2" --new-window
 bindsym $mod+d exec dbeaver
@@ -60,6 +69,8 @@ bindsym $mod+v exec ~/pkg/kdenlive.AppImage
 bindsym $mod+g exec google-chrome-stable --profile-directory="Default" --new-window --app="https://app.todoist.com/app/today"
 bindsym $mod+w exec google-chrome-stable --profile-directory="Default" --new-window --app="https://web.whatsapp.com"
 bindsym $mod+o exec flatpak run md.obsidian.Obsidian
+bindsym $mod+a exec --no-startup-id codex-desktop
+bindsym $mod+Shift+a exec --no-startup-id claude-desktop
 bindsym $mod+m exec --no-startup-id dmenu_run
 bindsym $mod+q kill
 
@@ -107,7 +118,7 @@ floating_modifier $mod
 #######################
 
 for_window [class="Tandem"] move to workspace $ws1, floating enable
-for_window [class="Cypress"] move to workspace $ws5
+for_window [class="(?i)^chromium(-browser)?$"] move to workspace $ws5
 
 #######################
 #  HANDLE WORKSPACES  #
