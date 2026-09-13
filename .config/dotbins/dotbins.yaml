@@ -18,22 +18,30 @@ tools:
       macos: darwin
       linux: linux
     asset_patterns: vcluster-{platform}-{arch}
+  calibre:
+    repo: kovidgoyal/calibre
+    binary_name: calibre.txz
+    extract_archive: false
+    arch_map:
+      amd64: x86_64
+    asset_patterns:
+      linux: calibre-{version}-{arch}.txz
+  hugo:
+    repo: gohugoio/hugo
+    extract_archive: true
+    asset_patterns: hugo_extended_{version}_{platform}-{arch}.tar.gz
   zoxide: ajeetdsouza/zoxide
   buf: bufbuild/buf
   fzf: junegunn/fzf
   cloudflared: cloudflare/cloudflared
   stripe: stripe/stripe-cli
+  zappy-webhook-listener:
+    repo: firmo-tecnologia/zappy-webhook-listener
+    extract_archive: false
+    asset_patterns:
+      linux: zappy-webhook-listener_{version}_linux_{arch}
   dbmate: amacneil/dbmate
   genact: svenstaro/genact
   crush: charmbracelet/crush
-  codex:
-    repo: openai/codex
-    arch_map:
-      amd64: x86_64
-      arm64: aarch64
-    asset_patterns:
-      linux: codex-{arch}-unknown-linux-musl.tar.gz
-  hugo:
-    repo: gohugoio/hugo
-    extract_archive: true
-    asset_patterns: hugo_extended_0.152.2_{platform}-{arch}.tar.gz
+  herdr: ogulcancelik/herdr
+  glow: charmbracelet/glow

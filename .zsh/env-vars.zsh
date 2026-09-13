@@ -1,4 +1,5 @@
 export GPG_TTY=/dev/pts/1
+export DISPLAY="${DISPLAY:-:0}"
 export ZSH="/home/nathan/.oh-my-zsh"
 export EDITOR="nvim"
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
