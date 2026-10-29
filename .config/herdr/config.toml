@@ -1,0 +1,17 @@
+onboarding = false
+[ui]
+agent_panel_sort = "spaces"
+
+show_agent_labels_on_pane_borders = true
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "system"
+
+[experimental]
+kitty_graphics = true
+
+[theme]
+name = "terminal"
+auto_switch = false
