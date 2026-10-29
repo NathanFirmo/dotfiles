@@ -14,12 +14,11 @@ set $alt Mod1
 
 # Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# Do not start xss-lock/i3lock: keep the session from entering the gray lock screen.
 # Disable X11 screen blanking and display power management on startup.
-exec --no-startup-id xset s off
-exec --no-startup-id xset s noblank
-exec --no-startup-id xset -dpms
+exec_always --no-startup-id xset s off
+exec_always --no-startup-id xset s noblank
+exec_always --no-startup-id xset -dpms
 # Keep logind from suspending this session while i3 is running.
 exec --no-startup-id systemctl --user start no-sleep-inhibit.service
 # NetworkManager 
@@ -57,8 +56,7 @@ bindsym $mod+Shift+s exec --no-startup-id flameshot gui -p ~/images/screenshots/
 # LAUNCH APPLICATIONS #
 #######################
 
-# Terminal roda dentro do dev.slice (teto de memoria p/ builds/testes) — Camada 2
-bindsym $mod+Return exec --no-startup-id systemd-run --user --slice=dev.slice --scope alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
 bindsym $mod+b exec google-chrome-stable --profile-directory="Default" --new-window
 bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 2" --new-window
 bindsym $mod+d exec dbeaver
@@ -72,6 +70,9 @@ bindsym $mod+o exec flatpak run md.obsidian.Obsidian
 bindsym $mod+a exec --no-startup-id codex-desktop
 bindsym $mod+Shift+a exec --no-startup-id claude-desktop
 bindsym $mod+m exec --no-startup-id dmenu_run
+bindsym $mod+t exec --no-startup-id ~/.config/i3/show-clock.sh
+bindsym $mod+Control+u exec --no-startup-id setxkbmap -model pc105 -layout us -variant intl
+bindsym $mod+Control+b exec --no-startup-id setxkbmap -model pc105 -layout br -variant abnt2
 bindsym $mod+q kill
 
 #######################

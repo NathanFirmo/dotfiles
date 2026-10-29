@@ -1,0 +1,217 @@
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+
+#######################
+#        MOD KEY      #
+#######################
+set $mod Mod4
+set $alt Mod1
+
+
+
+#######################
+#   STARTUP OPTIONS   #
+#######################
+
+# Start XDG autostart .desktop files using dex. See also https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+# Do not start xss-lock/i3lock: keep the session from entering the gray lock screen.
+# Disable X11 screen blanking and display power management on startup.
+exec_always --no-startup-id xset s off
+exec_always --no-startup-id xset s noblank
+exec_always --no-startup-id xset -dpms
+# Keep logind from suspending this session while i3 is running.
+exec --no-startup-id systemctl --user start no-sleep-inhibit.service
+# NetworkManager 
+exec --no-startup-id nm-applet
+# Autostart picom when starting the i3 window manager
+exec_always --no-startup-id picom -b
+# Notification daemon (dunst) — needed for earlyoom/systemd popups
+exec --no-startup-id dunst
+# Night shift (color temperature based on time/location)
+exec --no-startup-id redshift-gtk
+# Auto brightness (time-based)
+exec --no-startup-id systemctl --user start brightness-auto
+# Screenshot daemon (flameshot v12+ needs the background service running for `flameshot gui`)
+exec --no-startup-id flameshot
+
+
+
+#################################
+# HANDLE KEYBOARD FUNCTION KEYS #
+#################################
+
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10 -time 200
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 -time 200
+bindsym Print       exec --no-startup-id flameshot gui -p ~/images/screenshots/ -c
+bindsym $mod+Shift+s exec --no-startup-id flameshot gui -p ~/images/screenshots/ -c
+
+
+
+#######################
+# LAUNCH APPLICATIONS #
+#######################
+
+# Terminal roda dentro do dev.slice (teto de memoria p/ builds/testes) — Camada 2
+bindsym $mod+Return exec --no-startup-id systemd-run --user --slice=dev.slice --scope alacritty
+bindsym $mod+b exec google-chrome-stable --profile-directory="Default" --new-window
+bindsym $mod+Shift+b exec google-chrome-stable --profile-directory="Profile 2" --new-window
+bindsym $mod+d exec dbeaver
+bindsym $mod+i exec insomnia
+bindsym $mod+c exec mongodb-compass
+bindsym $mod+r exec ~/pkg/redis-insight/redisinsight
+bindsym $mod+v exec ~/pkg/kdenlive.AppImage
+bindsym $mod+g exec google-chrome-stable --profile-directory="Default" --new-window --app="https://app.todoist.com/app/today"
+bindsym $mod+w exec google-chrome-stable --profile-directory="Default" --new-window --app="https://web.whatsapp.com"
+bindsym $mod+o exec flatpak run md.obsidian.Obsidian
+bindsym $mod+a exec --no-startup-id codex-desktop
+bindsym $mod+Shift+a exec --no-startup-id claude-desktop
+bindsym $mod+m exec --no-startup-id dmenu_run
+bindsym $mod+q kill
+
+#######################
+#   SEND ARROW KEYS   #
+#######################
+
+bindsym --release $alt+h exec --no-startup-id xdotool key --clearmodifiers Left
+bindsym --release $alt+j exec --no-startup-id xdotool key --clearmodifiers Down
+bindsym --release $alt+k exec --no-startup-id xdotool key --clearmodifiers Up
+bindsym --release $alt+l exec --no-startup-id xdotool key --clearmodifiers Right
+
+#######################
+#    HANDLE WINDOWS   #
+#######################
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+F11 fullscreen toggle
+
+set $resizing_gap 5
+bindsym $mod+Control+l resize grow width $resizing_gap px or $resizing_gap ppt
+bindsym $mod+Control+h resize shrink width $resizing_gap px or $resizing_gap ppt
+bindsym $mod+Control+k resize grow height $resizing_gap px or $resizing_gap ppt
+bindsym $mod+Control+j resize shrink height $resizing_gap px or $resizing_gap ppt
+
+# Change split cursor position
+bindsym $mod+semicolon split toggle 
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+
+
+#######################
+#  WINDOWS BEHAVIOUR  #
+#######################
+
+for_window [class="Tandem"] move to workspace $ws1, floating enable
+for_window [class="(?i)^chromium(-browser)?$"] move to workspace $ws5
+
+#######################
+#  HANDLE WORKSPACES  #
+#######################
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+workspace $ws1 output eDP-1
+workspace $ws2 output eDP-1
+workspace $ws3 output eDP-1
+workspace $ws4 output eDP-1
+workspace $ws5 output eDP-1
+workspace $ws6 output HDMI-1
+workspace $ws7 output HDMI-1
+workspace $ws8 output HDMI-1
+workspace $ws9 output HDMI-1
+workspace $ws10 output HDMI-1
+
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# Use tabs by default (useful to work only on notebook)
+# workspace_layout tabbed
+
+
+
+#######################
+#      HANDLE i3      #
+#######################
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+
+
+#######################
+# HANDLE Xorg session #
+#######################
+
+bindsym $mod+Shift+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
+
+#######################
+#     APPEARANCE      #
+#######################
+
+font pango:FiraMono Nerd Font 8
+gaps inner 10px
+exec --no-startup-id nitrogen --restore
+
+# Element               border  backgr. text    indicator child_border
+client.focused          #bac8de #285577 #ffffff #2e9ef4   #bac8de
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+# bar {
+#         position top
+#         status_command i3status
+# }
+
+# Hide window title bar
+set $border_px 0
+default_border pixel $border_px
+default_floating_border pixel $border_px
+for_window [class="^.*"] border pixel $border_px
