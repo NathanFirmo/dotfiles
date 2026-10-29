@@ -18,8 +18,9 @@ alias ls="/usr/bin/ls --color=auto -la"
 alias copy="xclip -sel clip"
 alias cpwd="pwd | xclip -sel clip"
 alias cpimg="xclip -selection clipboard -t image/png -i"
-alias luamake="/home/nathan/lua-language-server/3rd/luamake/luamake"
+alias claude='CLAUDE_CONFIG_DIR=~/.claude-incentiveme command claude'
 alias c='clear'
+alias a='CLAUDE_CONFIG_DIR=~/.claude-firmo-tecnologia-ltda command claude'
 alias grep='grep --color=auto'
 alias bt-on='systemctl start bluetooth'
 alias bt-off='systemctl stop bluetooth'
@@ -63,6 +64,10 @@ function ga() {
   else
     for word in "$@"; do 
       git status | grep "$word" | awk '{ print $NF }' | xargs git add
-    done 
+    done
   fi
+}
+
+function hnew() {
+  herdr workspace create --cwd "${1:-$PWD}" --focus > /dev/null && herdr
 }

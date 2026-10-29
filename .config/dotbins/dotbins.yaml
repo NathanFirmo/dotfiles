@@ -45,3 +45,4 @@ tools:
   crush: charmbracelet/crush
   herdr: ogulcancelik/herdr
   glow: charmbracelet/glow
+  gorest: NathanFirmo/gorest
