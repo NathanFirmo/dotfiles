@@ -5,6 +5,8 @@ agent_panel_sort = "spaces"
 show_agent_labels_on_pane_borders = true
 [ui.sound]
 enabled = true
+done_path = "sounds/done.mp3"
+request_path = "sounds/request.mp3"
 
 [ui.toast]
 delivery = "system"
